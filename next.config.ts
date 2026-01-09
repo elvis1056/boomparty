@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  // basePath: '/boomparty', // 移除 basePath，部署到根路徑
+  basePath: '/boomparty', // 移除 basePath，部署到根路徑
   compiler: {
     styledComponents: true,
   },
