@@ -5,8 +5,11 @@ import { theme } from '@/constants/theme';
 const logoStyles = css`
   .logo-wrapper {
     position: relative;
-    width: 58px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .desktop-logo {
@@ -15,6 +18,11 @@ const logoStyles = css`
     left: 0;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
+
+    img {
+      border-radius: 8px;
+      object-fit: contain;
+    }
   }
 
   .mobile-logo {
@@ -23,12 +31,17 @@ const logoStyles = css`
     left: 0;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+
+    img {
+      border-radius: 6px;
+      object-fit: contain;
+    }
   }
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     .logo-wrapper {
       width: 40px;
-      height: 28px;
+      height: 40px;
     }
 
     .desktop-logo {

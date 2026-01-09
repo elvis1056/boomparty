@@ -5,6 +5,7 @@ import { theme } from '@/constants/theme';
 const style = css`
   width: 100%;
   padding: 2rem 0;
+  background-color: ${theme.colors.background.paper};
 
   .carousel-container {
     max-width: 1200px;

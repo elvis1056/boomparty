@@ -75,7 +75,7 @@ export default css`
           .nav-link {
             display: block;
             text-decoration: none;
-            color: ${theme.colors.secondary.main};
+            color: ${theme.colors.primary.main};
             font-weight: ${theme.typography.fontWeight.medium};
             font-size: ${theme.typography.fontSize.base};
             padding: 0.625rem 1.25rem;
@@ -109,7 +109,7 @@ export default css`
 
           .auth-link {
             text-decoration: none;
-            color: ${theme.colors.secondary.main};
+            color: ${theme.colors.primary.main};
             font-weight: ${theme.typography.fontWeight.medium};
             font-size: ${theme.typography.fontSize.base};
             padding: 0.5rem 1rem;
@@ -222,7 +222,7 @@ export default css`
         .mobile-nav-link {
           display: block;
           text-decoration: none;
-          color: ${theme.colors.secondary.main};
+          color: ${theme.colors.primary.main};
           font-weight: ${theme.typography.fontWeight.medium};
           font-size: ${theme.typography.fontSize.base};
           padding: 0.875rem 1rem;
