@@ -99,7 +99,7 @@ function BlogPostContent({ className, post }: BlogPostContentProps) {
                 );
               },
               img({ src, alt }) {
-                const basePath = ''; // 移除 /boomparty，部署到根路徑
+                const basePath = 'boomparty'; // 移除 /boomparty，部署到根路徑
                 const imageSrc = src?.startsWith('/')
                   ? `${basePath}${src}`
                   : src;
