@@ -1,71 +1,72 @@
 export const colors = {
-  // Primary - 深橄欖綠系列（自然、專業、沉穩）
+  // Primary - 蒂芙尼藍系列（清新、優雅、海洋風）
   primary: {
-    main: '#6B7F5C', // 深橄欖綠
-    light: '#8FA17D', // 淺橄欖綠
-    dark: '#4D5E42', // 深綠
-    50: '#f4f6f2', // 最淺（淡綠白）
-    100: '#e8ede4', // 很淺
-    200: '#8FA17D', // 淺色
-    300: '#6B7F5C', // 主色
-    400: '#4D5E42', // 深色
-    500: '#3A4833', // 最深
+    main: '#00CED1', // 蒂芙尼藍
+    light: '#40E0D0', // 淺藍綠
+    dark: '#008B8B', // 深青色
+    50: '#E0F7F8', // 最淺（淡藍白）
+    100: '#B3EFEF', // 很淺
+    200: '#40E0D0', // 淺色
+    300: '#00CED1', // 主色
+    400: '#008B8B', // 深色
+    500: '#006666', // 最深
   },
 
-  // Secondary - 金棕色系列（溫暖、奢華）
+  // Secondary - 溫暖橘色系列（點綴、活力）
   secondary: {
-    main: '#9B764F', // 金棕色
-    light: '#B89470', // 淺金棕
-    dark: '#7A5D3F', // 深棕
+    main: '#FFB366', // 溫暖橘
+    light: '#FFCC99', // 淺橘
+    dark: '#FF9933', // 深橘
   },
 
-  // Accent - 金色點綴
+  // Accent - 燭光橘與沙灘色點綴
   accent: {
-    main: '#D4AF37', // 金色
-    light: '#E5C56B', // 淺金
-    dark: '#B8942A', // 深金
+    main: '#FFA040', // 燭光橘
+    light: '#FFB570', // 淺燭光
+    dark: '#FF8820', // 深燭光
+    sand: '#D4C4A8', // 沙灘色
   },
 
   // Neutral - 中性色
   neutral: {
-    white: '#fefefe',
-    gray50: '#f9fafb',
-    gray100: '#f3f4f6',
-    gray200: '#e5e7eb',
-    gray300: '#d1d5db',
-    gray400: '#9ca3af',
-    gray500: '#6b7280',
-    gray600: '#4b5563',
+    white: '#FFFFFF',
+    gray50: '#F8F8F8',
+    gray100: '#F0F0F0',
+    gray200: '#E5E5E5',
+    gray300: '#D1D5DB',
+    gray400: '#9CA3AF',
+    gray500: '#6B7280',
+    gray600: '#4B5563',
     gray700: '#374151',
     gray900: '#111827',
     black: '#000000',
   },
 
   // Semantic - 語意色
-  success: '#10b981',
-  warning: '#f59e0b',
-  error: '#ef4444',
-  info: '#3b82f6',
+  success: '#10B981',
+  warning: '#F59E0B',
+  error: '#EF4444',
+  info: '#00CED1', // 使用主色調
 
   // Background
   background: {
-    default: '#f5e6d3', // 淺米黃紙質色
-    paper: '#faf6f0', // 卡片背景稍亮一點
-    hover: '#ebe1d0', // hover 稍深一點
+    default: '#FFFFFF', // 純白
+    paper: '#F8F8F8', // 卡片背景淡灰白
+    hover: '#F0F0F0', // hover 淺灰
   },
 
   // Border
   border: {
-    light: '#e8ede4', // 淺綠白
-    main: '#8FA17D', // 淺橄欖綠
-    dark: '#6B7F5C', // 深橄欖綠
+    light: '#E0F7F8', // 淺藍白
+    main: '#40E0D0', // 淺藍綠
+    dark: '#00CED1', // 蒂芙尼藍
   },
 
   // Text
   text: {
-    primary: '#000000', // 主要文字：黑色
-    secondary: '#374151', // 次要文字：深灰
-    disabled: '#9ca3af', // 禁用文字：淺灰
+    primary: '#2C3E50', // 主要文字：深灰藍
+    secondary: '#7F8C8D', // 次要文字：中灰
+    disabled: '#BDC3C7', // 禁用文字：淺灰
   },
 } as const;
 
@@ -108,9 +109,9 @@ export const breakpoints = {
 } as const;
 
 export const shadows = {
-  sm: '0 1px 2px rgba(107, 127, 92, 0.06)', // 深橄欖綠陰影
-  md: '0 2px 8px rgba(107, 127, 92, 0.1)',
-  lg: '0 4px 16px rgba(107, 127, 92, 0.15)',
+  sm: '0 1px 2px rgba(0, 206, 209, 0.06)', // 蒂芙尼藍陰影
+  md: '0 2px 8px rgba(0, 206, 209, 0.1)',
+  lg: '0 4px 16px rgba(0, 206, 209, 0.15)',
 } as const;
 
 export const zIndex = {
