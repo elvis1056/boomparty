@@ -1,4 +1,4 @@
-# 5dpapa
+# boomparty
 
 電商+部落格平台，採用 Next.js 架構。
 

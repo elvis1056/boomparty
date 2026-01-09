@@ -11,7 +11,7 @@
 ```
 // ❌ 移除這些（靜態網站專用）
 output: 'export';
-basePath: '/5dpapa';
+basePath: '/boomparty';
 images: {
   unoptimized: true;
 }

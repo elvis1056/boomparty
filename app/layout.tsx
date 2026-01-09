@@ -9,7 +9,7 @@ import { QueryProvider } from './query-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: '5dpapa - 電商與部落格',
+  title: 'boomparty - 電商與部落格',
   description: '電商網站兼部落格系統',
 };
 

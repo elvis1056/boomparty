@@ -18,7 +18,7 @@ import type { MetadataRoute } from 'next';
 
 import { fetchBlogPosts } from '@/lib/api/blog';
 
-const BASE_URL = 'https://elvis1056.github.io/5dpapa';
+const BASE_URL = 'https://elvis1056.github.io/boomparty';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 固定頁面

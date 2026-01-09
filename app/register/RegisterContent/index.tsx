@@ -72,7 +72,7 @@ function RegisterContent({ className }: RegisterContentProps) {
     <div className={className}>
       <div className="register-card">
         <h1 className="title">註冊</h1>
-        <p className="subtitle">加入 5dpapa 會員</p>
+        <p className="subtitle">加入 boomparty 會員</p>
 
         {error && <div className="error-message">{error}</div>}
 

@@ -12,7 +12,7 @@ export function Logo() {
       <div className="logo-wrapper">
         <div className="desktop-logo">
           <Image
-            alt="5dpapa Logo"
+            alt="boomparty Logo"
             height={40}
             src={assetPath('/logo.svg')}
             width={58}
@@ -20,7 +20,7 @@ export function Logo() {
         </div>
         <div className="mobile-logo">
           <Image
-            alt="5dpapa Logo"
+            alt="boomparty Logo"
             height={28}
             src={assetPath('/logo-mobile.svg')}
             width={40}

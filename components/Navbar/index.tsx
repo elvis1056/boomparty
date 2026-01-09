@@ -70,7 +70,7 @@ function Navbar({ className }: { className?: string }) {
         <div className="container">
           <Link className="logo-link" href="/">
             <Logo />
-            <span className="logo-text">5dpapa</span>
+            <span className="logo-text">boomparty</span>
           </Link>
 
           <div className="nav-right">

@@ -45,7 +45,7 @@ function LoginContent({ className }: LoginContentProps) {
     <div className={className}>
       <div className="login-card">
         <h1 className="title">登入</h1>
-        <p className="subtitle">歡迎回到 5dpapa</p>
+        <p className="subtitle">歡迎回到 boomparty</p>
 
         {error && <div className="error-message">{error}</div>}
 

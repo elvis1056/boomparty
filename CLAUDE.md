@@ -1,4 +1,4 @@
-# 5dpapa 專案規範
+# boomparty 專案規範
 
 ## 📚 LESSONS LEARNED FROM PRODUCTION PROJECTS
 

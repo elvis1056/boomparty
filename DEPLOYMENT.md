@@ -27,7 +27,7 @@
 
 **步驟：**
 
-1. 前往 https://github.com/elvis1056/5dpapa/settings/pages
+1. 前往 https://github.com/elvis1056/boomparty/settings/pages
 2. **Source** 選擇：`GitHub Actions`（不是 Deploy from a branch）
 3. 儲存設定
 
@@ -67,7 +67,7 @@ git push origin feature/新功能名稱
 # 4. 在 GitHub 開 Pull Request
 # 5. 等待 GitHub Actions 建置測試通過 ✅
 # 6. 檢查沒問題後點 "Merge pull request"
-# 7. 自動部署到 https://elvis1056.github.io/5dpapa/
+# 7. 自動部署到 https://elvis1056.github.io/boomparty/
 ```
 
 ---
@@ -78,7 +78,7 @@ git push origin feature/新功能名稱
 
 1. 推送所有變更到 main
 2. 檢查 GitHub Actions 執行狀態
-3. 確認部署成功後訪問：https://elvis1056.github.io/5dpapa/
+3. 確認部署成功後訪問：https://elvis1056.github.io/boomparty/
 4. 檢查頁面是否正常顯示
 
 ---
@@ -153,5 +153,5 @@ git push origin feature/新功能名稱
 完成後：
 
 - 每次開 PR：GitHub Actions 自動測試建置
-- PR 合併到 main：自動部署到 https://elvis1056.github.io/5dpapa/
+- PR 合併到 main：自動部署到 https://elvis1056.github.io/boomparty/
 - 有問題的程式碼在 PR 階段就被攔截，不會上線
