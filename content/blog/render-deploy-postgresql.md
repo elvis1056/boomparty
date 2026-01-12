@@ -1,6 +1,6 @@
 進入到 Render 的控制台(dashboard)，
 
-![Render Dashboard 1](/images/blog/render-deploy-postgresql/render-dashboard-1.png)
+![Render Dashboard 1](/images/blog/render-deploy-postgresql/render-dashboard-1.jpg)
 
 由於要使用免費方案，
 
@@ -8,7 +8,7 @@
 
 （額外要注意資料只會保存官方所設定的時間）
 
-![Render Dashboard 2](/images/blog/render-deploy-postgresql/render-dashboard-2.png)
+![Render Dashboard 2](/images/blog/render-deploy-postgresql/render-dashboard-2.jpg)
 
 先安裝好 pgAdmin
 
@@ -20,16 +20,16 @@ General 填寫 Name
 
 Connection 填寫 Host name / Port / Maintenance database / Username / Password
 
-![Render Dashboard 3](/images/blog/render-deploy-postgresql/render-dashboard-3.png)
+![Render Dashboard 3](/images/blog/render-deploy-postgresql/render-dashboard-3.jpg)
 
-![Render Dashboard 4](/images/blog/render-deploy-postgresql/render-dashboard-4.png)
+![Render Dashboard 4](/images/blog/render-deploy-postgresql/render-dashboard-4.jpg)
 
-![Render Dashboard 5](/images/blog/render-deploy-postgresql/render-dashboard-5.png)
+![Render Dashboard 5](/images/blog/render-deploy-postgresql/render-dashboard-5.jpg)
 
 外部網址設定：
 postgres://[username]:[password]@[hostname].[伺服器位置].render.com/[database]
 
-![Render Dashboard 6](/images/blog/render-deploy-postgresql/render-dashboard-6.png)
+![Render Dashboard 6](/images/blog/render-deploy-postgresql/render-dashboard-6.jpg)
 
 Render 有提供怎麼設定連線至「你的 database」。
 https://render.com/docs/postgresql-creating-connecting#connect-to-your-database
