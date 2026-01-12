@@ -54,8 +54,17 @@ export default css`
         .logo-text {
           font-size: ${theme.typography.fontSize['2xl']};
           font-weight: ${theme.typography.fontWeight.bold};
-          color: ${theme.colors.primary.main};
+          background-image: linear-gradient(
+            to right,
+            #86500e 0%,
+            #a37000 90%,
+            #c5973d 100%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           letter-spacing: 0.5px;
+          display: inline;
         }
       }
 
@@ -88,7 +97,7 @@ export default css`
             }
 
             &.active {
-              color: ${theme.colors.primary.main};
+              color: ${theme.colors.neutral.white};
               background-color: ${theme.colors.primary[100]};
               font-weight: ${theme.typography.fontWeight.semibold};
             }
@@ -235,7 +244,7 @@ export default css`
           }
 
           &.active {
-            color: ${theme.colors.primary.main};
+            color: ${theme.colors.neutral.white};
             background-color: ${theme.colors.primary[100]};
             font-weight: ${theme.typography.fontWeight.semibold};
           }
@@ -324,6 +333,15 @@ export default css`
 
       .logo-link .logo-text {
         font-size: ${theme.typography.fontSize.xl};
+        background-image: linear-gradient(
+          to right,
+          #86500e 0%,
+          #a37000 90%,
+          #c5973d 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
     }
   }
