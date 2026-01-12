@@ -11,6 +11,7 @@ import { fetchTopLevelCategories } from '@/lib/api/category';
 import { fetchProducts } from '@/lib/api/products';
 import type { Product, ShopCategory } from '@/types';
 
+import Banner from './Banner';
 import style from './style';
 
 interface ShopContentProps {
@@ -95,12 +96,13 @@ function ShopContent({ className }: ShopContentProps) {
   return (
     <main className={className}>
       <div className="shop-container">
-        <header className="shop-header">
+        <Banner />
+        {/* <header className="shop-header">
           <h1 className="shop-title">氣球商城</h1>
           <p className="shop-subtitle">
             為每個特別的時刻增添色彩,打造難忘的回憶
           </p>
-        </header>
+        </header> */}
 
         <div className="shop-layout">
           {/* 桌面版側邊欄 */}

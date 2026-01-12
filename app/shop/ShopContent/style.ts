@@ -35,6 +35,7 @@ export default css`
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 2rem;
+    padding-top: 1rem;
   }
 
   .desktop-filter {
