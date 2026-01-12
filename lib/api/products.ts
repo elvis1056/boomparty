@@ -1,10 +1,15 @@
-// import { assetPath } from '@/lib/utils/asset-path';
+import { mockProducts } from '@/constants/mockData';
 import type { Product } from '@/types';
 
 import { apiClient } from './client';
 
 export async function fetchProducts(): Promise<Product[]> {
-  return apiClient.get<Product[]>('/api/products');
+  // 模擬網路延遲
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return mockProducts;
+
+  // 真實 API（已註解）
+  // return apiClient.get<Product[]>('/api/products');
 }
 
 // 🔥 假資料 - 之後改成真實 API

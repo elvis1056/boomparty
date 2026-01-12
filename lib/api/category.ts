@@ -1,3 +1,4 @@
+import { mockCategories } from '@/constants/mockData';
 import type { ShopCategory, CategoryChild, CategoryRequest } from '@/types';
 
 import { apiClient } from './client';
@@ -6,14 +7,24 @@ import { apiClient } from './client';
  * 查詢所有分類
  */
 export async function fetchCategories(): Promise<ShopCategory[]> {
-  return apiClient.get<ShopCategory[]>('/api/categories');
+  // 模擬網路延遲
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return mockCategories;
+
+  // 真實 API（已註解）
+  // return apiClient.get<ShopCategory[]>('/api/categories');
 }
 
 /**
  * 查詢所有頂層分類
  */
 export async function fetchTopLevelCategories(): Promise<ShopCategory[]> {
-  return apiClient.get<ShopCategory[]>('/api/categories/top-level');
+  // 模擬網路延遲
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return mockCategories.filter((cat) => cat.isTopLevel);
+
+  // 真實 API（已註解）
+  // return apiClient.get<ShopCategory[]>('/api/categories/top-level');
 }
 
 /**
