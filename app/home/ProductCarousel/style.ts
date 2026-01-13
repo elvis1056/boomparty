@@ -8,9 +8,10 @@ const style = css`
   background-color: ${theme.colors.background.paper};
 
   .carousel-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
+    padding: 0 1rem;
   }
 
   .carousel-header {
