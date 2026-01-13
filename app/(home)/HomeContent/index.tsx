@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BannerCarousel from '@/app/(home)/HomeContent/BannerCarousel';
 import ProductCarousel from '@/app/home/ProductCarousel';
 import { bannerImages } from '@/constants/bannerImages';
+import { assetPath } from '@/lib/utils/asset-path';
 
 import style from './style';
 
@@ -69,7 +70,7 @@ function HomeContent({ className }: { className?: string }) {
             title: '活動',
             subtitle: '為特別時刻，增添繽紛色彩',
             actions: [
-              { text: '探索商品', href: '/shop' },
+              { text: '探索商品', href: `${assetPath('/shop')}` },
               // { text: '查看案例', href: '#' },
             ],
           }}
