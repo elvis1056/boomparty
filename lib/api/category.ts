@@ -1,4 +1,4 @@
-import { mockCategories } from '@/constants/mockData';
+import { mockCategories } from '@/constants/mockCategories';
 import type { ShopCategory, CategoryChild, CategoryRequest } from '@/types';
 
 import { apiClient } from './client';

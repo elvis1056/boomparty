@@ -1,4 +1,4 @@
-import { mockProducts } from '@/constants/mockData';
+import { mockProducts } from '@/constants/mockProducts';
 import type { Product } from '@/types';
 
 import { apiClient } from './client';
