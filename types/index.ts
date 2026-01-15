@@ -39,3 +39,6 @@ export type {
 
 // Order Types
 export type { Order, OrderItem, OrderStatus } from './order';
+
+// Performer Types
+export type { Performer } from './performer';
