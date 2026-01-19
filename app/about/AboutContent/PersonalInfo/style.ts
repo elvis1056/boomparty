@@ -143,8 +143,6 @@ export default css`
   }
 
   @media (max-width: 768px) {
-    min-height: 300px;
-
     .personal-bg {
       min-height: 300px;
     }
