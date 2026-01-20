@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { theme } from '@/constants/theme';
 
 export default css`
-  padding: ${theme.spacing['3xl']} ${theme.spacing.md};
+  padding: ${theme.spacing['2xl']} ${theme.spacing.md};
   background: linear-gradient(
     135deg,
     ${theme.colors.neutral.gray50} 0%,
@@ -12,7 +12,7 @@ export default css`
   );
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: ${theme.spacing['4xl']} ${theme.spacing.xl};
+    padding: ${theme.spacing['2xl']} ${theme.spacing.xl};
   }
 
   .showcase-container {
