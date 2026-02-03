@@ -16,14 +16,23 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# 接收 build args（NEXT_PUBLIC_ 變數需要在 build 時設定）
+ARG NEXT_PUBLIC_BASE_PATH='/boomparty'
+ENV NEXT_PUBLIC_BASE_PATH=$NEXT_PUBLIC_BASE_PATH
+
 # 從 deps stage 複製已安裝的 node_modules
 COPY --from=deps /app/node_modules ./node_modules
 
 # 複製所有原始碼
 COPY . .
 
+# 使用 NAS 專用的 next.config（output: standalone）
+# 原始的 next.config.ts 是 output: export（給 GitHub Pages 用）
+RUN cp next.config-NAS.ts next.config.ts
+
 # 執行建置（產生 .next/standalone 資料夾）
 # standalone 模式會自動排除不需要的檔案，只保留運行必需的內容
+# NEXT_PUBLIC_BASE_PATH 會在此時被內嵌到 JS bundle
 RUN npm run build
 
 # ===== Stage 3: 運行應用程式 =====
