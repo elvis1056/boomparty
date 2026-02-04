@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 import PerformerShowcase from './PerformerShowcase';
-import PersonalInfo from './PersonalInfo';
+// import PersonalInfo from './PersonalInfo';
 import style from './style';
 
 interface AboutContentProps {
@@ -14,7 +14,7 @@ function AboutContent({ className }: AboutContentProps) {
   return (
     <main className={className}>
       <PerformerShowcase />
-      <PersonalInfo />
+      {/* <PersonalInfo /> */}
     </main>
   );
 }
