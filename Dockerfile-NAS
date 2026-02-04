@@ -18,7 +18,9 @@ WORKDIR /app
 
 # 接收 build args（NEXT_PUBLIC_ 變數需要在 build 時設定）
 ARG NEXT_PUBLIC_BASE_PATH='/boomparty'
+ARG NEXT_PUBLIC_API_BASE_URL='https://fivedpapabackend.onrender.com'
 ENV NEXT_PUBLIC_BASE_PATH=$NEXT_PUBLIC_BASE_PATH
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 
 # 從 deps stage 複製已安裝的 node_modules
 COPY --from=deps /app/node_modules ./node_modules
@@ -29,6 +31,10 @@ COPY . .
 # 使用 NAS 專用的 next.config（output: standalone）
 # 原始的 next.config.ts 是 output: export（給 GitHub Pages 用）
 RUN cp next.config-NAS.ts next.config.ts
+
+# 移除開發環境的 .env.local（避免 localhost:8080 被內嵌）
+# 改用 docker-compose 的 build args 傳入正確的 API URL
+RUN rm -f .env.local .env.development .env.development.local
 
 # 執行建置（產生 .next/standalone 資料夾）
 # standalone 模式會自動排除不需要的檔案，只保留運行必需的內容
