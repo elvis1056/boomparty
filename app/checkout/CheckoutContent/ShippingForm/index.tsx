@@ -1,10 +1,7 @@
 'use client';
 
 import type { DebouncedFunc } from 'lodash';
-import { useState } from 'react';
 import styled from 'styled-components';
-
-import type { Address, DeliveryTimeSlot } from '@/types';
 
 import style from './style';
 
@@ -16,10 +13,7 @@ interface ShippingData {
   district: string;
   postalCode: string;
   addressLine: string;
-  deliveryTimeSlot: DeliveryTimeSlot;
-  selectedAddressId: number | null;
-  saveAddress: boolean;
-  setAsDefaultAddress: boolean;
+  note: string;
 }
 
 interface ShippingFormProps {
@@ -35,65 +29,9 @@ function ShippingForm({
   shippingData,
   onFieldChange,
 }: ShippingFormProps) {
-  // TODO: 未來從 API 載入會員常用地址
-  const [savedAddresses] = useState<Address[]>([]);
-
-  // 選擇常用地址
-  const selectAddress = (addressId: number | null) => {
-    if (addressId === null) {
-      // 清空表單
-      onFieldChange('selectedAddressId', null);
-      onFieldChange('recipientName', '');
-      onFieldChange('recipientPhone', '');
-      onFieldChange('city', '');
-      onFieldChange('district', '');
-      onFieldChange('postalCode', '');
-      onFieldChange('addressLine', '');
-      return;
-    }
-
-    const address = savedAddresses.find((a) => a.id === addressId);
-    if (!address) return;
-
-    // 填入地址資料
-    onFieldChange('selectedAddressId', addressId);
-    onFieldChange('recipientName', address.recipientName);
-    onFieldChange('recipientPhone', address.recipientPhone);
-    onFieldChange('city', address.city);
-    onFieldChange('district', address.district);
-    onFieldChange('postalCode', address.postalCode);
-    onFieldChange('addressLine', address.addressLine);
-  };
-
   return (
     <div className={className}>
       <h2 className="section-title">收件資訊</h2>
-
-      {/* 常用地址選擇（未來啟用） */}
-      {savedAddresses.length > 0 && (
-        <div className="form-group">
-          <label className="form-label" htmlFor="savedAddress">
-            選擇常用地址
-          </label>
-          <select
-            className="form-select"
-            id="savedAddress"
-            onChange={(e) =>
-              selectAddress(e.target.value ? Number(e.target.value) : null)
-            }
-            value={shippingData.selectedAddressId || ''}
-          >
-            <option value="">手動填寫新地址</option>
-            {savedAddresses.map((addr) => (
-              <option key={addr.id} value={addr.id}>
-                {addr.recipientName} - {addr.city}
-                {addr.district}
-                {addr.addressLine}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
 
       {/* 基本資訊 */}
       <div className="form-row">
@@ -206,49 +144,19 @@ function ShippingForm({
         />
       </div>
 
-      {/* 配送時段 */}
+      {/* 訂單備註 */}
       <div className="form-group">
-        <label className="form-label">
-          配送時段 <span className="required">*</span>
+        <label className="form-label" htmlFor="note">
+          訂單備註（選填）
         </label>
-        <div className="time-slot-options">
-          <label className="radio-option">
-            <input
-              checked={shippingData.deliveryTimeSlot === 'DELIVERY_MORNING'}
-              name="deliveryTimeSlot"
-              onChange={(e) =>
-                onFieldChange('deliveryTimeSlot', e.target.value)
-              }
-              type="radio"
-              value="DELIVERY_MORNING"
-            />
-            <span>上午 (09:00-12:00)</span>
-          </label>
-          <label className="radio-option">
-            <input
-              checked={shippingData.deliveryTimeSlot === 'DELIVERY_AFTERNOON'}
-              name="deliveryTimeSlot"
-              onChange={(e) =>
-                onFieldChange('deliveryTimeSlot', e.target.value)
-              }
-              type="radio"
-              value="DELIVERY_AFTERNOON"
-            />
-            <span>下午 (12:00-18:00)</span>
-          </label>
-          <label className="radio-option">
-            <input
-              checked={shippingData.deliveryTimeSlot === 'DELIVERY_EVENING'}
-              name="deliveryTimeSlot"
-              onChange={(e) =>
-                onFieldChange('deliveryTimeSlot', e.target.value)
-              }
-              type="radio"
-              value="DELIVERY_EVENING"
-            />
-            <span>晚上 (18:00-21:00)</span>
-          </label>
-        </div>
+        <textarea
+          className="form-textarea"
+          id="note"
+          onChange={(e) => onFieldChange('note', e.target.value)}
+          placeholder="如有特殊需求請在此註明（例如：希望配送時間、包裝需求等）"
+          rows={3}
+          value={shippingData.note}
+        />
       </div>
     </div>
   );

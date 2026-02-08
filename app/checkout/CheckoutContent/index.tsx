@@ -10,12 +10,10 @@ import {
   FORM_VALIDATION,
   FIELD_LABELS,
 } from '@/constants/checkout';
+import { createOrder } from '@/lib/api/orders';
 import { useAuthStore } from '@/stores/authStore';
 import { useCartStore } from '@/stores/cartStore';
-import type {
-  DeliveryTimeSlot,
-  PaymentMethod as PaymentMethodType,
-} from '@/types';
+import type { PaymentMethod as PaymentMethodType } from '@/types';
 
 import OrderSummary from './OrderSummary';
 import PaymentMethod from './PaymentMethod';
@@ -35,10 +33,7 @@ interface ShippingData {
   district: string;
   postalCode: string;
   addressLine: string;
-  deliveryTimeSlot: DeliveryTimeSlot;
-  selectedAddressId: number | null;
-  saveAddress: boolean;
-  setAsDefaultAddress: boolean;
+  note: string;
 }
 
 // 付款資訊 State
@@ -61,10 +56,7 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
     district: '',
     postalCode: '',
     addressLine: '',
-    deliveryTimeSlot: 'DELIVERY_AFTERNOON',
-    selectedAddressId: null,
-    saveAddress: false,
-    setAsDefaultAddress: false,
+    note: '',
   });
 
   // 拆分 State：付款資訊
@@ -152,28 +144,31 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
     setIsSubmitting(true);
 
     try {
-      // TODO: 未來串接後端 API
-      // 組合所有 state 成為訂單資料
-      // const orderData = {
-      //   ...shippingData,
-      //   ...paymentData,
-      //   ...orderNote,
-      // };
-      // const order = await createOrder(orderData);
+      // 組合訂單資料
+      const orderData = {
+        recipientName: shippingData.recipientName,
+        recipientPhone: shippingData.recipientPhone,
+        recipientEmail: shippingData.recipientEmail || undefined,
+        city: shippingData.city,
+        district: shippingData.district,
+        postalCode: shippingData.postalCode,
+        addressLine: shippingData.addressLine,
+        note: shippingData.note || undefined,
+        paymentMethod: paymentData.paymentMethod,
+      };
 
-      // 模擬 API 呼叫
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // 呼叫後端 API 建立訂單
+      const order = await createOrder(orderData);
 
       alert('訂單建立成功！');
 
-      // TODO: 未來導向訂單詳情頁
-      // router.push(`/orders/${order.id}`);
-
-      // 暫時導向商城
-      router.push('/shop');
+      // 導向訂單詳情頁
+      router.push(`/orders/${order.id}`);
     } catch (error) {
       console.error('Failed to create order:', error);
-      alert('訂單建立失敗，請稍後再試');
+      alert(
+        error instanceof Error ? error.message : '訂單建立失敗，請稍後再試'
+      );
     } finally {
       setIsSubmitting(false);
     }
