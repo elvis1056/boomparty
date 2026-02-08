@@ -138,8 +138,34 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    ```
 
 2. **未使用參數**
+
    ```typescript
    function Component({ used, _unused }: Props) {} // 底線前綴
+   ```
+
+3. **函式命名：不使用 handle 前綴**
+
+   ```typescript
+   // ❌ 錯誤
+   const handleAddToCart = () => {};
+   const handleSubmit = () => {};
+
+   // ✅ 正確：直接用動作命名
+   const addToCart = () => {};
+   const submitForm = () => {};
+   const buyNowGotoCart = () => {};
+   ```
+
+4. **不使用 nullish coalescing（??），用三元運算子**
+
+   ```typescript
+   // ❌ 錯誤
+   const value = data ?? defaultValue;
+
+   // ✅ 正確：用三元運算子
+   const value = data !== null && data !== undefined ? data : defaultValue;
+   // 或簡化版（如果 falsy 值都要用預設）
+   const value = data ? data : defaultValue;
    ```
 
 ### Import 順序（遵循 ESLint import/order）
