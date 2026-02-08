@@ -82,18 +82,11 @@ export default css`
     overflow: hidden;
   }
 
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    gap: 0.5rem;
-  }
-
   .card-price {
     display: flex;
     align-items: baseline;
     gap: 0.25rem;
+    margin-top: 0.25rem;
   }
 
   .price-label {
@@ -108,57 +101,142 @@ export default css`
     color: ${theme.colors.primary.main};
   }
 
-  .add-to-cart-btn {
-    flex-shrink: 0;
-    background: ${theme.colors.primary.main};
-    color: ${theme.colors.neutral.white};
-    border: none;
-    padding: 0.5rem 0.875rem;
+  /* 數量選擇器 */
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid ${theme.colors.neutral.gray200};
+  }
+
+  .quantity-label {
+    font-size: 0.8125rem;
+    color: ${theme.colors.neutral.gray600};
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .quantity-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid ${theme.colors.neutral.gray300};
+    border-radius: 4px;
+    background: ${theme.colors.neutral.white};
+    color: ${theme.colors.neutral.gray700};
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      border-color: ${theme.colors.primary.main};
+      color: ${theme.colors.primary.main};
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .quantity-input {
+    width: 3rem;
+    height: 28px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: ${theme.colors.neutral.gray900};
+    border: 1px solid ${theme.colors.neutral.gray300};
+    border-radius: 4px;
+    background: ${theme.colors.neutral.white};
+
+    /* 隱藏 number input 的上下箭頭 */
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: ${theme.colors.primary.main};
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  /* 按鈕區 */
+  .card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .btn-add-cart,
+  .btn-buy-now {
+    flex: 1;
+    padding: 0.625rem 0.5rem;
     border-radius: 6px;
     font-size: 0.8125rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    white-space: nowrap;
-
-    &:hover:not(:disabled) {
-      background: ${theme.colors.primary.dark};
-      transform: scale(1.05);
-    }
-
-    &:active:not(:disabled) {
-      transform: scale(0.98);
-    }
+    border: none;
 
     &:disabled {
       cursor: not-allowed;
-      opacity: 0.7;
+      opacity: 0.6;
+    }
+  }
+
+  .btn-add-cart {
+    background: ${theme.colors.neutral.white};
+    color: ${theme.colors.primary.main};
+    border: 1.5px solid ${theme.colors.primary.main};
+
+    &:hover:not(:disabled) {
+      background: ${theme.colors.primary.light};
+      color: ${theme.colors.neutral.white};
     }
 
-    /* 已加入成功狀態 */
     &.added {
       background: ${theme.colors.success};
-      animation: success-pulse 0.5s ease;
+      color: ${theme.colors.neutral.white};
+      border-color: ${theme.colors.success};
     }
+  }
 
-    @keyframes success-pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
+  .btn-buy-now {
+    background: ${theme.colors.primary.main};
+    color: ${theme.colors.neutral.white};
+
+    &:hover:not(:disabled) {
+      background: ${theme.colors.primary.dark};
     }
+  }
+
+  /* 缺貨標籤 */
+  .badge.out-of-stock {
+    background: ${theme.colors.neutral.gray500};
   }
 
   /* Mobile */
   @media (max-width: ${theme.breakpoints.mobile}) {
     .card-info {
       padding: 0.75rem;
-      gap: 0.375rem;
+      gap: 0.25rem;
     }
 
     .card-name {
@@ -170,19 +248,38 @@ export default css`
       -webkit-line-clamp: 1;
     }
 
-    .card-footer {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.5rem;
-    }
-
     .price-value {
       font-size: 1.125rem;
     }
 
-    .add-to-cart-btn {
-      width: 100%;
-      padding: 0.5rem;
+    .quantity-selector {
+      margin-top: 0.375rem;
+      padding: 0.375rem 0;
+    }
+
+    .quantity-label {
+      font-size: 0.75rem;
+    }
+
+    .quantity-btn {
+      width: 24px;
+      height: 24px;
+      font-size: 0.875rem;
+    }
+
+    .quantity-input {
+      width: 2.5rem;
+      height: 24px;
+      font-size: 0.8125rem;
+    }
+
+    .card-actions {
+      margin-top: 0.5rem;
+    }
+
+    .btn-add-cart,
+    .btn-buy-now {
+      padding: 0.5rem 0.375rem;
       font-size: 0.75rem;
     }
 
