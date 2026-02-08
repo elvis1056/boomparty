@@ -65,6 +65,7 @@ export default css`
           background-clip: text;
           letter-spacing: 0.5px;
           display: inline;
+          white-space: nowrap;
         }
       }
 
@@ -80,6 +81,7 @@ export default css`
           list-style: none;
           margin: 0;
           padding: 0;
+          white-space: nowrap;
 
           .nav-link {
             display: block;
@@ -141,6 +143,7 @@ export default css`
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.2s ease;
+            white-space: nowrap;
 
             &:hover {
               border-color: ${theme.colors.error};
