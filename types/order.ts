@@ -1,56 +1,50 @@
 /**
- * 訂單相關 Types（訂單詳情頁使用）
+ * 訂單相關 Types（對應後端 OrderResponse）
  */
 
-import type { DeliveryTimeSlot, PaymentMethod, PaymentStatus } from './payment';
+import type { PaymentMethod } from './payment';
 
-// 訂單狀態
+// 訂單狀態（對應後端 OrderStatus enum）
 export type OrderStatus =
-  | 'ORDER_PENDING' // 待處理
-  | 'ORDER_CONFIRMED' // 已確認
+  | 'ORDER_PENDING' // 待付款
+  | 'ORDER_PAID' // 已付款
   | 'ORDER_PROCESSING' // 處理中
-  | 'ORDER_SHIPPING' // 配送中
+  | 'ORDER_SHIPPED' // 已出貨
   | 'ORDER_DELIVERED' // 已送達
   | 'ORDER_COMPLETED' // 已完成
   | 'ORDER_CANCELLED'; // 已取消
 
-// 訂單商品項目
+// 訂單商品項目（對應後端 OrderItemResponse）
 export interface OrderItem {
   id: number;
-  orderId: number;
   productId: number;
   productName: string;
-  productDescription: string;
-  productImageUrl: string | null;
+  productImage: string | null; // 商品圖片（快照）
   unitPrice: number; // 單價
   quantity: number; // 數量
   subtotal: number; // 小計
 }
 
-// 訂單
+// 訂單（對應後端 OrderResponse）
 export interface Order {
   id: number;
-  userId: number;
-  orderNumber: string; // 訂單編號（例如：ORD20250101001）
+  orderNumber: string; // 訂單編號（例如：ORD-20260206-0001）
   status: OrderStatus;
 
   // 收件資訊
   recipientName: string;
   recipientPhone: string;
-  recipientEmail: string;
+  recipientEmail: string | null;
   city: string;
   district: string;
   postalCode: string;
   addressLine: string;
-  deliveryTimeSlot: DeliveryTimeSlot;
   note: string | null; // 訂單備註
 
   // 付款資訊
   paymentMethod: PaymentMethod;
-  paymentStatus: PaymentStatus;
 
   // 金額
-  subtotal: number; // 商品小計
   shippingFee: number; // 運費
   totalAmount: number; // 總金額
 
@@ -59,7 +53,7 @@ export interface Order {
   updatedAt: string;
   paidAt: string | null; // 付款時間
   shippedAt: string | null; // 出貨時間
-  deliveredAt: string | null; // 送達時間
+  completedAt: string | null; // 完成時間
 
   // 訂單項目
   items: OrderItem[];

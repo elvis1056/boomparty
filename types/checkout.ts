@@ -30,25 +30,20 @@ export interface CreateAddressRequest {
   isDefault?: boolean;
 }
 
-// 建立訂單請求
+// 建立訂單請求（對應後端 CreateOrderRequest）
 export interface CreateOrderRequest {
   // 收件資訊
   recipientName: string;
   recipientPhone: string;
-  recipientEmail: string;
+  recipientEmail?: string;
   city: string;
   district: string;
   postalCode: string;
   addressLine: string;
-  deliveryTimeSlot: DeliveryTimeSlot;
   note?: string;
 
   // 付款方式
   paymentMethod: PaymentMethod;
-
-  // 可選：是否將此地址儲存為常用地址
-  saveAddress?: boolean;
-  setAsDefaultAddress?: boolean;
 }
 
 // 結帳表單資料（前端使用）
