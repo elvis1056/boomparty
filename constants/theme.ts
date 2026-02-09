@@ -77,6 +77,15 @@ export const spacing = {
   lg: '24px',
   xl: '32px',
   '2xl': '48px',
+  '3xl': '64px',
+} as const;
+
+export const borderRadius = {
+  sm: '4px',
+  md: '8px',
+  lg: '12px',
+  xl: '16px',
+  full: '9999px',
 } as const;
 
 export const typography = {
@@ -128,6 +137,7 @@ export const zIndex = {
 export const theme = {
   colors,
   spacing,
+  borderRadius,
   typography,
   breakpoints,
   shadows,
