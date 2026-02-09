@@ -7,8 +7,11 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { cancelOrder, fetchOrderById } from '@/lib/api/orders';
+import { IS_STATIC_MODE } from '@/lib/env';
 import { useAuthStore } from '@/stores/authStore';
 import type { Order, OrderStatus, PaymentMethod } from '@/types';
+
+import { getMockOrder } from '../mockOrderData';
 
 import style from './style';
 
@@ -42,15 +45,34 @@ function OrderDetailContent({ className }: OrderDetailContentProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isCancelling, setIsCancelling] = useState(false);
+  const [isMockData, setIsMockData] = useState(false);
 
   // 載入訂單詳情
   useEffect(() => {
-    if (!user || !orderId) return;
+    if (!orderId) return;
 
     const loadOrder = async () => {
       try {
         setIsLoading(true);
         setError(null);
+        setIsMockData(false);
+
+        // 靜態模式：永遠使用假資料展示
+        if (IS_STATIC_MODE) {
+          const mockOrder = getMockOrder(orderId);
+          setOrder(mockOrder);
+          setIsMockData(true);
+          setIsLoading(false);
+          return;
+        }
+
+        // 動態模式：未登入時不載入資料（讓組件顯示「請先登入」）
+        if (!user) {
+          setIsLoading(false);
+          return;
+        }
+
+        // 動態模式且已登入：從 API 獲取真實資料
         const data = await fetchOrderById(orderId);
         setOrder(data);
       } catch (err) {
@@ -167,6 +189,20 @@ function OrderDetailContent({ className }: OrderDetailContentProps) {
             {statusInfo.label}
           </span>
         </div>
+
+        {/* 假資料提示 */}
+        {isMockData && (
+          <div className="mock-data-notice">
+            <div className="notice-icon">ℹ️</div>
+            <div className="notice-content">
+              <strong>示例資料展示</strong>
+              <p>
+                此為靜態頁面示例資料，僅用於展示介面設計。如需查看真實訂單，請
+                <Link href="/login">登入</Link>後於動態環境中訪問。
+              </p>
+            </div>
+          </div>
+        )}
 
         <div className="order-content">
           {/* 商品列表 */}

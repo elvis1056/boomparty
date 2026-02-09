@@ -111,6 +111,50 @@ const style = css`
     font-weight: ${theme.typography.fontWeight.medium};
   }
 
+  /* 假資料提示 */
+  .mock-data-notice {
+    display: flex;
+    gap: ${theme.spacing.md};
+    padding: ${theme.spacing.md};
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: ${theme.borderRadius.md};
+    margin-bottom: ${theme.spacing.xl};
+  }
+
+  .notice-icon {
+    font-size: ${theme.typography.fontSize['2xl']};
+    flex-shrink: 0;
+  }
+
+  .notice-content {
+    flex: 1;
+
+    strong {
+      display: block;
+      color: ${theme.colors.text.primary};
+      font-size: ${theme.typography.fontSize.base};
+      font-weight: ${theme.typography.fontWeight.semibold};
+      margin-bottom: ${theme.spacing.xs};
+    }
+
+    p {
+      margin: 0;
+      color: ${theme.colors.text.secondary};
+      font-size: ${theme.typography.fontSize.sm};
+      line-height: 1.5;
+
+      a {
+        color: ${theme.colors.primary.main};
+        text-decoration: underline;
+
+        &:hover {
+          color: ${theme.colors.primary.dark};
+        }
+      }
+    }
+  }
+
   /* 訂單內容 */
   .order-content {
     display: flex;
@@ -161,7 +205,7 @@ const style = css`
     border-radius: ${theme.borderRadius.md};
     overflow: hidden;
     flex-shrink: 0;
-    background-color: ${theme.colors.background.subtle};
+    background-color: ${theme.colors.background.paper};
   }
 
   .no-image {
@@ -170,7 +214,7 @@ const style = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${theme.colors.text.tertiary};
+    color: ${theme.colors.text.disabled};
     font-size: ${theme.typography.fontSize.xs};
   }
 
@@ -225,7 +269,7 @@ const style = css`
 
   /* 金額摘要 */
   .summary-section {
-    background-color: ${theme.colors.background.subtle};
+    background-color: ${theme.colors.background.paper};
   }
 
   .summary-row {
@@ -262,7 +306,7 @@ const style = css`
 
   .summary-divider {
     height: 1px;
-    background-color: ${theme.colors.border.default};
+    background-color: ${theme.colors.border.light};
     margin: ${theme.spacing.sm} 0;
   }
 
@@ -276,8 +320,8 @@ const style = css`
   .cancel-btn {
     padding: ${theme.spacing.sm} ${theme.spacing.xl};
     background-color: white;
-    color: ${theme.colors.error.main};
-    border: 1px solid ${theme.colors.error.main};
+    color: ${theme.colors.error};
+    border: 1px solid ${theme.colors.error};
     border-radius: ${theme.borderRadius.md};
     font-size: ${theme.typography.fontSize.base};
     font-weight: ${theme.typography.fontWeight.medium};
@@ -285,7 +329,7 @@ const style = css`
     transition: all 0.2s;
 
     &:hover:not(:disabled) {
-      background-color: ${theme.colors.error.main};
+      background-color: ${theme.colors.error};
       color: white;
     }
 
