@@ -112,6 +112,93 @@ export default css`
           align-items: center;
           gap: 0.75rem;
 
+          /* User Menu Wrapper */
+          .user-menu-wrapper {
+            position: relative;
+
+            .user-menu-button {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              background: none;
+              border: 1px solid ${theme.colors.border.light};
+              padding: 0.5rem 1rem;
+              border-radius: 0.5rem;
+              cursor: pointer;
+              transition: all 0.2s ease;
+
+              &:hover {
+                border-color: ${theme.colors.primary.main};
+                background-color: ${theme.colors.primary[50]};
+              }
+
+              .user-name {
+                font-size: ${theme.typography.fontSize.base};
+                color: ${theme.colors.neutral.gray700};
+                font-weight: ${theme.typography.fontWeight.medium};
+              }
+
+              .dropdown-icon {
+                font-size: 0.625rem;
+                color: ${theme.colors.neutral.gray500};
+              }
+            }
+
+            /* User Menu Backdrop */
+            .user-menu-backdrop {
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: ${theme.zIndex.dropdown};
+            }
+
+            /* User Menu Dropdown */
+            .user-menu-dropdown {
+              position: absolute;
+              top: calc(100% + 0.5rem);
+              right: 0;
+              background: ${theme.colors.background.default};
+              border: 1px solid ${theme.colors.border.light};
+              border-radius: ${theme.borderRadius.md};
+              box-shadow: ${theme.shadows.lg};
+              min-width: 160px;
+              z-index: ${theme.zIndex.dropdown + 1};
+              overflow: hidden;
+              animation: dropdownFadeIn 0.2s ease;
+
+              .user-menu-item {
+                display: block;
+                width: 100%;
+                text-align: left;
+                text-decoration: none;
+                background: none;
+                border: none;
+                color: ${theme.colors.neutral.gray700};
+                font-size: ${theme.typography.fontSize.base};
+                font-weight: ${theme.typography.fontWeight.medium};
+                padding: 0.75rem 1rem;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                  background-color: ${theme.colors.primary[50]};
+                  color: ${theme.colors.primary.main};
+                }
+
+                &.logout {
+                  border-top: 1px solid ${theme.colors.border.light};
+
+                  &:hover {
+                    background-color: #fee;
+                    color: ${theme.colors.error};
+                  }
+                }
+              }
+            }
+          }
+
           .user-name {
             font-size: ${theme.typography.fontSize.base};
             color: ${theme.colors.neutral.gray700};
@@ -272,6 +359,23 @@ export default css`
           }
         }
 
+        .mobile-menu-link {
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          color: ${theme.colors.primary.main};
+          background: ${theme.colors.primary[50]};
+          font-weight: ${theme.typography.fontWeight.semibold};
+          font-size: ${theme.typography.fontSize.base};
+          padding: 0.875rem 1rem;
+          border-radius: 0.5rem;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: ${theme.colors.primary[100]};
+          }
+        }
+
         .mobile-auth-link {
           display: block;
           text-align: center;
@@ -318,6 +422,17 @@ export default css`
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @keyframes dropdownFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 

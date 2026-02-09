@@ -17,6 +17,7 @@ function Navbar({ className }: { className?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const user = useAuthStore((state) => state.user);
@@ -96,12 +97,42 @@ function Navbar({ className }: { className?: string }) {
               {mounted && (
                 <>
                   {user ? (
-                    <>
-                      <span className="user-name">{user.username}</span>
-                      <button className="logout-btn" onClick={logout}>
-                        登出
+                    <div className="user-menu-wrapper">
+                      <button
+                        className="user-menu-button"
+                        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                      >
+                        <span className="user-name">{user.username}</span>
+                        <span className="dropdown-icon">▼</span>
                       </button>
-                    </>
+
+                      {isUserMenuOpen && (
+                        <>
+                          <div
+                            className="user-menu-backdrop"
+                            onClick={() => setIsUserMenuOpen(false)}
+                          />
+                          <div className="user-menu-dropdown">
+                            <Link
+                              className="user-menu-item"
+                              href="/orders"
+                              onClick={() => setIsUserMenuOpen(false)}
+                            >
+                              訂單查詢
+                            </Link>
+                            <button
+                              className="user-menu-item logout"
+                              onClick={() => {
+                                logout();
+                                setIsUserMenuOpen(false);
+                              }}
+                            >
+                              登出
+                            </button>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   ) : (
                     <Link className="auth-link" href="/login">
                       登入
@@ -163,6 +194,13 @@ function Navbar({ className }: { className?: string }) {
                             {user.username}
                           </span>
                         </div>
+                        <Link
+                          className="mobile-menu-link"
+                          href="/orders"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          訂單查詢
+                        </Link>
                         <button
                           className="mobile-logout-btn"
                           onClick={() => {
