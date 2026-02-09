@@ -29,8 +29,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build for GitHub Pages (static mode)
+        run: npm run build:static
+        env:
+          NEXT_PUBLIC_BUILD_MODE: static
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
