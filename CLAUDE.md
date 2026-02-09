@@ -258,20 +258,104 @@ import style from './style';
 
 ### Commit 規範
 
-```bash
-feat: 新功能
-fix: 修正錯誤
-style: 樣式調整
-refactor: 重構
-chore: 雜項（套件更新）
-docs: 文件更新
+#### Commit Message 格式
+
+```
+<type>: <簡短描述>
+
+<詳細說明>
+
+【Revert 說明】
+📦 依賴項：<列出此 commit 依賴的其他 commit>
+⚠️  如需 revert：<說明 revert 的影響和注意事項>
+✅ 獨立 revert：<說明是否可以單獨 revert>
+🔧 影響功能：<列出會受影響的功能>
 ```
 
-**Commit 前必須執行**：
+#### Type 類型
 
-```bash
-npm run lint
+| Type     | 說明                   |
+| -------- | ---------------------- |
+| feat     | 新功能                 |
+| fix      | 修正錯誤               |
+| perf     | 效能優化               |
+| refactor | 重構（不改變功能）     |
+| style    | 樣式調整（不影響邏輯） |
+| docs     | 文件更新               |
+| chore    | 建構工具、依賴更新     |
+
+#### 切分 Commit 原則
+
+**✅ 好的切分**：
+
+- 每個 commit 完成一個完整的小功能
+- 可以單獨 revert 而不影響其他功能
+- 從 commit message 就能理解改了什麼
+- 相關的檔案放在同一個 commit
+
+**❌ 避免**：
+
+- 太大的 commit（難以 revert）
+- 太碎的 commit（失去上下文）
+- 混合不相關的改動
+
+#### 依賴關係管理
+
+**⚠️ 重要：先 commit 被依賴的，後 commit 依賴的**
+
+範例順序：
+
 ```
+1. Theme 常數        ← 被依賴
+2. 環境配置          ← 被依賴
+3. 假資料            ← 被依賴
+4. 使用以上的元件    ← 依賴 1,2,3
+```
+
+**Revert 順序：必須先 revert 依賴者，再 revert 被依賴者**
+
+#### Revert 說明分類
+
+**完全獨立**：
+
+```
+【Revert 說明】
+📦 依賴項：無
+✅ 獨立 revert：不影響其他功能
+🔧 影響功能：<說明>
+```
+
+**有依賴**：
+
+```
+【Revert 說明】
+📦 依賴項：Commit X (功能名稱)
+⚠️  如需 revert：可單獨 revert，但會失去某功能
+✅ 獨立 revert：不影響其他功能
+🔧 影響功能：<說明>
+```
+
+**強依賴**：
+
+```
+【Revert 說明】
+📦 依賴項：
+   - Commit 1 (功能 A)
+   - Commit 2 (功能 B)
+⚠️  如需 revert：必須先 revert 依賴此項的所有 commits
+✅ 建議 revert 範圍：Commit 1-4 整組 revert
+🔧 影響功能：<說明>
+```
+
+#### Commit 前檢查清單
+
+- [ ] Commit message 包含 type
+- [ ] 簡短描述清楚明確（<50 字）
+- [ ] 詳細說明列出所有改動檔案
+- [ ] 包含完整的 Revert 說明
+- [ ] 確認依賴關係正確
+- [ ] 執行 `npm run lint` 確認無錯誤
+- [ ] 可以獨立編譯/運行
 
 ---
 
