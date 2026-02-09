@@ -2,7 +2,7 @@
 
 import debounce from 'lodash/debounce';
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -24,18 +24,6 @@ interface CheckoutPageContentProps {
   className?: string;
 }
 
-// 收件資訊 State
-interface ShippingData {
-  recipientName: string;
-  recipientPhone: string;
-  recipientEmail: string;
-  city: string;
-  district: string;
-  postalCode: string;
-  addressLine: string;
-  note: string;
-}
-
 // 付款資訊 State
 interface PaymentData {
   paymentMethod: PaymentMethodType;
@@ -47,73 +35,138 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
   const { cart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // 拆分 State：收件資訊
-  const [shippingData, setShippingData] = useState<ShippingData>({
-    recipientName: '',
-    recipientPhone: '',
-    recipientEmail: user?.email || '',
-    city: '',
-    district: '',
-    postalCode: '',
-    addressLine: '',
-    note: '',
-  });
+  // 使用 useRef 儲存表單值（不觸發 re-render）
+  const recipientNameRef = useRef('');
+  const recipientPhoneRef = useRef('');
+  const recipientEmailRef = useRef(user?.email || '');
+  const cityRef = useRef('');
+  const districtRef = useRef('');
+  const postalCodeRef = useRef('');
+  const addressLineRef = useRef('');
+  const noteRef = useRef('');
 
-  // 拆分 State：付款資訊
+  // 錯誤訊息用 state（需要顯示）
+  const [recipientNameError, setRecipientNameError] = useState('');
+  const [recipientPhoneError, setRecipientPhoneError] = useState('');
+  const [recipientEmailError, setRecipientEmailError] = useState('');
+  const [cityError, setCityError] = useState('');
+  const [districtError, setDistrictError] = useState('');
+  const [postalCodeError, setPostalCodeError] = useState('');
+  const [addressLineError, setAddressLineError] = useState('');
+
+  // 付款資訊
   const [paymentData, setPaymentData] = useState<PaymentData>({
     paymentMethod: 'CASH_ON_DELIVERY',
   });
 
-  // 註：購物車已由 CartButton (Navbar) 載入，此處不需重複呼叫 loadCart()
-
-  // Debounced 更新收件資訊
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const updateShippingField = useCallback(
-    debounce(
-      (field: keyof ShippingData, value: string | number | boolean | null) => {
-        setShippingData((prev) => ({
-          ...prev,
-          [field]: value,
-        }));
-      },
-      FORM_VALIDATION.DEBOUNCE_DELAY
-    ),
+  // 每個欄位獨立的 debounced 驗證函數
+  const debounceNameCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = recipientNameRef.current;
+        setRecipientNameError(
+          value ? '' : `請填寫 ${FIELD_LABELS.recipientName}`
+        );
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
     []
   );
 
-  // 更新付款方式（不需要 debounce，單選）
+  const debouncePhoneCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = recipientPhoneRef.current;
+        if (!value) {
+          setRecipientPhoneError('請填寫聯絡電話');
+        } else if (!FORM_VALIDATION.PHONE_REGEX.test(value)) {
+          setRecipientPhoneError('電話格式不正確');
+        } else {
+          setRecipientPhoneError('');
+        }
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  const debounceEmailCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = recipientEmailRef.current;
+        if (!value) {
+          setRecipientEmailError('請填寫 Email');
+        } else if (!FORM_VALIDATION.EMAIL_REGEX.test(value)) {
+          setRecipientEmailError('Email 格式不正確');
+        } else {
+          setRecipientEmailError('');
+        }
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  const debounceCityCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = cityRef.current;
+        setCityError(value ? '' : `請填寫 ${FIELD_LABELS.city}`);
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  const debounceDistrictCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = districtRef.current;
+        setDistrictError(value ? '' : `請填寫 ${FIELD_LABELS.district}`);
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  const debouncePostalCodeCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = postalCodeRef.current;
+        setPostalCodeError(value ? '' : `請填寫 ${FIELD_LABELS.postalCode}`);
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  const debounceAddressLineCheck = useMemo(
+    () =>
+      debounce(() => {
+        const value = addressLineRef.current;
+        setAddressLineError(value ? '' : `請填寫 ${FIELD_LABELS.addressLine}`);
+      }, FORM_VALIDATION.DEBOUNCE_DELAY),
+    []
+  );
+
+  // 更新付款方式
   const updatePaymentMethod = (method: PaymentMethodType) => {
     setPaymentData({ paymentMethod: method });
   };
 
-  // 表單驗證
+  // 最終提交驗證（不延遲，立即顯示所有錯誤）
   const validateForm = (): boolean => {
-    const requiredFields: (keyof typeof FIELD_LABELS)[] = [
-      'recipientName',
-      'recipientPhone',
-      'recipientEmail',
-      'city',
-      'district',
-      'postalCode',
-      'addressLine',
-    ];
+    // 立即驗證所有欄位
+    debounceNameCheck.flush();
+    debouncePhoneCheck.flush();
+    debounceEmailCheck.flush();
+    debounceCityCheck.flush();
+    debounceDistrictCheck.flush();
+    debouncePostalCodeCheck.flush();
+    debounceAddressLineCheck.flush();
 
-    for (const field of requiredFields) {
-      if (!shippingData[field as keyof ShippingData]) {
-        alert(`請填寫 ${FIELD_LABELS[field]}`);
-        return false;
-      }
-    }
+    // 檢查是否有錯誤
+    const hasError =
+      !recipientNameRef.current ||
+      !recipientPhoneRef.current ||
+      !recipientEmailRef.current ||
+      !cityRef.current ||
+      !districtRef.current ||
+      !postalCodeRef.current ||
+      !addressLineRef.current ||
+      !FORM_VALIDATION.EMAIL_REGEX.test(recipientEmailRef.current) ||
+      !FORM_VALIDATION.PHONE_REGEX.test(recipientPhoneRef.current);
 
-    // 驗證 Email 格式
-    if (!FORM_VALIDATION.EMAIL_REGEX.test(shippingData.recipientEmail)) {
-      alert('Email 格式不正確');
-      return false;
-    }
-
-    // 驗證電話格式
-    if (!FORM_VALIDATION.PHONE_REGEX.test(shippingData.recipientPhone)) {
-      alert('電話格式不正確');
+    if (hasError) {
+      alert('請檢查表單欄位是否填寫正確');
       return false;
     }
 
@@ -144,16 +197,16 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
     setIsSubmitting(true);
 
     try {
-      // 組合訂單資料
+      // 從 refs 讀取表單資料
       const orderData = {
-        recipientName: shippingData.recipientName,
-        recipientPhone: shippingData.recipientPhone,
-        recipientEmail: shippingData.recipientEmail || undefined,
-        city: shippingData.city,
-        district: shippingData.district,
-        postalCode: shippingData.postalCode,
-        addressLine: shippingData.addressLine,
-        note: shippingData.note || undefined,
+        recipientName: recipientNameRef.current,
+        recipientPhone: recipientPhoneRef.current,
+        recipientEmail: recipientEmailRef.current || undefined,
+        city: cityRef.current,
+        district: districtRef.current,
+        postalCode: postalCodeRef.current,
+        addressLine: addressLineRef.current,
+        note: noteRef.current || undefined,
         paymentMethod: paymentData.paymentMethod,
       };
 
@@ -184,8 +237,28 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
           <div className="checkout-forms">
             {/* 收件資訊 */}
             <ShippingForm
-              onFieldChange={updateShippingField}
-              shippingData={shippingData}
+              addressLineError={addressLineError}
+              addressLineRef={addressLineRef}
+              cityError={cityError}
+              cityRef={cityRef}
+              debounceAddressLineCheck={debounceAddressLineCheck}
+              debounceCityCheck={debounceCityCheck}
+              debounceDistrictCheck={debounceDistrictCheck}
+              debounceEmailCheck={debounceEmailCheck}
+              debounceNameCheck={debounceNameCheck}
+              debouncePhoneCheck={debouncePhoneCheck}
+              debouncePostalCodeCheck={debouncePostalCodeCheck}
+              districtError={districtError}
+              districtRef={districtRef}
+              noteRef={noteRef}
+              postalCodeError={postalCodeError}
+              postalCodeRef={postalCodeRef}
+              recipientEmailError={recipientEmailError}
+              recipientEmailRef={recipientEmailRef}
+              recipientNameError={recipientNameError}
+              recipientNameRef={recipientNameRef}
+              recipientPhoneError={recipientPhoneError}
+              recipientPhoneRef={recipientPhoneRef}
             />
 
             {/* 付款方式 */}

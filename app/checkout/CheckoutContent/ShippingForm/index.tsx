@@ -1,36 +1,76 @@
 'use client';
 
 import type { DebouncedFunc } from 'lodash';
+import type { MutableRefObject } from 'react';
 import styled from 'styled-components';
+
+import { theme } from '@/constants/theme';
 
 import style from './style';
 
-interface ShippingData {
-  recipientName: string;
-  recipientPhone: string;
-  recipientEmail: string;
-  city: string;
-  district: string;
-  postalCode: string;
-  addressLine: string;
-  note: string;
-}
-
 interface ShippingFormProps {
-  className?: string;
-  shippingData: ShippingData;
-  onFieldChange: DebouncedFunc<
-    (field: keyof ShippingData, value: string | number | boolean | null) => void
-  >;
+  recipientNameRef: MutableRefObject<string>;
+  recipientPhoneRef: MutableRefObject<string>;
+  recipientEmailRef: MutableRefObject<string>;
+  cityRef: MutableRefObject<string>;
+  districtRef: MutableRefObject<string>;
+  postalCodeRef: MutableRefObject<string>;
+  addressLineRef: MutableRefObject<string>;
+  noteRef: MutableRefObject<string>;
+  recipientNameError: string;
+  recipientPhoneError: string;
+  recipientEmailError: string;
+  cityError: string;
+  districtError: string;
+  postalCodeError: string;
+  addressLineError: string;
+  debounceNameCheck: DebouncedFunc<() => void>;
+  debouncePhoneCheck: DebouncedFunc<() => void>;
+  debounceEmailCheck: DebouncedFunc<() => void>;
+  debounceCityCheck: DebouncedFunc<() => void>;
+  debounceDistrictCheck: DebouncedFunc<() => void>;
+  debouncePostalCodeCheck: DebouncedFunc<() => void>;
+  debounceAddressLineCheck: DebouncedFunc<() => void>;
 }
 
+// 只有這個組件有樣式
+const StyledWrapper = styled.div`
+  ${style}
+
+  .error {
+    color: ${theme.colors.error};
+    font-size: ${theme.typography.fontSize.sm};
+    margin-top: 4px;
+  }
+`;
+
+// 主組件
 function ShippingForm({
-  className,
-  shippingData,
-  onFieldChange,
+  recipientNameRef,
+  recipientPhoneRef,
+  recipientEmailRef,
+  cityRef,
+  districtRef,
+  postalCodeRef,
+  addressLineRef,
+  noteRef,
+  recipientNameError,
+  recipientPhoneError,
+  recipientEmailError,
+  cityError,
+  districtError,
+  postalCodeError,
+  addressLineError,
+  debounceNameCheck,
+  debouncePhoneCheck,
+  debounceEmailCheck,
+  debounceCityCheck,
+  debounceDistrictCheck,
+  debouncePostalCodeCheck,
+  debounceAddressLineCheck,
 }: ShippingFormProps) {
   return (
-    <div className={className}>
+    <StyledWrapper>
       <h2 className="section-title">收件資訊</h2>
 
       {/* 基本資訊 */}
@@ -41,13 +81,19 @@ function ShippingForm({
           </label>
           <input
             className="form-input"
+            defaultValue={recipientNameRef.current}
             id="recipientName"
-            onChange={(e) => onFieldChange('recipientName', e.target.value)}
+            onChange={(e) => {
+              recipientNameRef.current = e.target.value;
+              debounceNameCheck();
+            }}
             placeholder="請輸入收件人姓名"
             required
             type="text"
-            value={shippingData.recipientName}
           />
+          {recipientNameError && (
+            <div className="error">{recipientNameError}</div>
+          )}
         </div>
 
         <div className="form-group">
@@ -56,13 +102,19 @@ function ShippingForm({
           </label>
           <input
             className="form-input"
+            defaultValue={recipientPhoneRef.current}
             id="recipientPhone"
-            onChange={(e) => onFieldChange('recipientPhone', e.target.value)}
+            onChange={(e) => {
+              recipientPhoneRef.current = e.target.value;
+              debouncePhoneCheck();
+            }}
             placeholder="0912-345-678"
             required
             type="tel"
-            value={shippingData.recipientPhone}
           />
+          {recipientPhoneError && (
+            <div className="error">{recipientPhoneError}</div>
+          )}
         </div>
       </div>
 
@@ -72,13 +124,19 @@ function ShippingForm({
         </label>
         <input
           className="form-input"
+          defaultValue={recipientEmailRef.current}
           id="recipientEmail"
-          onChange={(e) => onFieldChange('recipientEmail', e.target.value)}
+          onChange={(e) => {
+            recipientEmailRef.current = e.target.value;
+            debounceEmailCheck();
+          }}
           placeholder="example@email.com"
           required
           type="email"
-          value={shippingData.recipientEmail}
         />
+        {recipientEmailError && (
+          <div className="error">{recipientEmailError}</div>
+        )}
       </div>
 
       {/* 地址資訊 */}
@@ -89,13 +147,17 @@ function ShippingForm({
           </label>
           <input
             className="form-input"
+            defaultValue={cityRef.current}
             id="city"
-            onChange={(e) => onFieldChange('city', e.target.value)}
+            onChange={(e) => {
+              cityRef.current = e.target.value;
+              debounceCityCheck();
+            }}
             placeholder="台北市"
             required
             type="text"
-            value={shippingData.city}
           />
+          {cityError && <div className="error">{cityError}</div>}
         </div>
 
         <div className="form-group">
@@ -104,13 +166,17 @@ function ShippingForm({
           </label>
           <input
             className="form-input"
+            defaultValue={districtRef.current}
             id="district"
-            onChange={(e) => onFieldChange('district', e.target.value)}
+            onChange={(e) => {
+              districtRef.current = e.target.value;
+              debounceDistrictCheck();
+            }}
             placeholder="信義區"
             required
             type="text"
-            value={shippingData.district}
           />
+          {districtError && <div className="error">{districtError}</div>}
         </div>
 
         <div className="form-group">
@@ -119,13 +185,17 @@ function ShippingForm({
           </label>
           <input
             className="form-input"
+            defaultValue={postalCodeRef.current}
             id="postalCode"
-            onChange={(e) => onFieldChange('postalCode', e.target.value)}
+            onChange={(e) => {
+              postalCodeRef.current = e.target.value;
+              debouncePostalCodeCheck();
+            }}
             placeholder="110"
             required
             type="text"
-            value={shippingData.postalCode}
           />
+          {postalCodeError && <div className="error">{postalCodeError}</div>}
         </div>
       </div>
 
@@ -135,13 +205,17 @@ function ShippingForm({
         </label>
         <input
           className="form-input"
+          defaultValue={addressLineRef.current}
           id="addressLine"
-          onChange={(e) => onFieldChange('addressLine', e.target.value)}
+          onChange={(e) => {
+            addressLineRef.current = e.target.value;
+            debounceAddressLineCheck();
+          }}
           placeholder="請輸入路名、巷弄、門牌號碼"
           required
           type="text"
-          value={shippingData.addressLine}
         />
+        {addressLineError && <div className="error">{addressLineError}</div>}
       </div>
 
       {/* 訂單備註 */}
@@ -151,17 +225,17 @@ function ShippingForm({
         </label>
         <textarea
           className="form-textarea"
+          defaultValue={noteRef.current}
           id="note"
-          onChange={(e) => onFieldChange('note', e.target.value)}
+          onChange={(e) => {
+            noteRef.current = e.target.value;
+          }}
           placeholder="如有特殊需求請在此註明（例如：希望配送時間、包裝需求等）"
           rows={3}
-          value={shippingData.note}
         />
       </div>
-    </div>
+    </StyledWrapper>
   );
 }
 
-export default styled(ShippingForm)`
-  ${style}
-`;
+export default ShippingForm;
