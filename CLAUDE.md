@@ -168,6 +168,74 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    const value = data ? data : defaultValue;
    ```
 
+### React Hooks & Performance
+
+**表單輸入優化：使用 useRef 避免卡頓**
+
+對於表單輸入，使用 `useRef` 儲存值 + `debounce` 驗證，而不是直接 debounce state 更新。
+
+```typescript
+// ❌ 錯誤：debounce state 更新會導致輸入卡頓
+const [value, setValue] = useState('');
+const debouncedUpdate = debounce(setValue, 200);
+<input onChange={(e) => debouncedUpdate(e.target.value)} />
+
+// ✅ 正確：ref 儲存值 + debounce 驗證
+const valueRef = useRef('');
+const [error, setError] = useState('');
+const debounceValidate = useMemo(
+  () => debounce(() => {
+    const checkResult = validate(valueRef.current);
+    setError(checkResult);
+  }, 200),
+  []
+);
+<input onChange={(e) => {
+  valueRef.current = e.target.value;  // 立即更新 ref
+  debounceValidate();  // debounce 驗證
+}} />
+```
+
+**Debounced 函數可讀性原則**
+
+每個欄位使用獨立的 debounced 驗證函數，而不是一個大的 switch 函數：
+
+```typescript
+// ❌ 錯誤：可讀性差
+const debouncedValidate = useMemo(
+  () => debounce((field: string, value: string) => {
+    switch (field) {  // 難讀、難維護
+      case 'name': validateName(value); break;
+      case 'phone': validatePhone(value); break;
+    }
+  }, 200),
+  []
+);
+
+// ✅ 正確：每個欄位獨立
+const debounceNameCheck = useMemo(
+  () => debounce(() => {
+    const result = validateName(nameRef.current);
+    setNameError(result);
+  }, 200),
+  []
+);
+
+const debouncePhoneCheck = useMemo(
+  () => debounce(() => {
+    const result = validatePhone(phoneRef.current);
+    setPhoneError(result);
+  }, 200),
+  []
+);
+```
+
+**優點：**
+- ✅ 每個欄位獨立的驗證函數
+- ✅ 一眼就知道這個函數做什麼
+- ✅ 容易修改和維護
+- ✅ 輸入流暢不卡頓
+
 ### Import 順序（遵循 ESLint import/order）
 
 ```typescript
