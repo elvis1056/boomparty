@@ -102,7 +102,24 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
 
 ### CSS / Styled-components
 
-1. **巢狀層級符合 HTML 結構**
+1. **❌ 禁止使用 inline style（大忌）**
+
+   ```typescript
+   // ❌ 錯誤：絕對不要使用 inline style
+   <div style={{ width: '100%', display: 'flex' }}>...</div>
+
+   // ✅ 正確：使用 styled-components
+   import styled from 'styled-components';
+   import style from './style';
+
+   function Component({ className }: { className?: string }) {
+     return <div className={className}>...</div>;
+   }
+
+   export default styled(Component)`${style}`;
+   ```
+
+2. **巢狀層級符合 HTML 結構**
 
    ```typescript
    .navbar {
@@ -114,7 +131,7 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    }
    ```
 
-2. **使用 theme 變數**
+3. **使用 theme 變數**
 
    ```typescript
    color: ${theme.colors.primary.main};
@@ -122,7 +139,7 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    font-size: ${theme.typography.fontSize.base};
    ```
 
-3. **檔案結構**
+4. **檔案結構**
    ```
    ComponentName/
      index.tsx    # 元件邏輯
@@ -143,17 +160,29 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    function Component({ used, _unused }: Props) {} // 底線前綴
    ```
 
-3. **函式命名：不使用 handle 前綴**
+3. **❌ 函式命名：禁止使用 handle 前綴（重要準則）**
+
+   **原則：根據函數實際做什麼來命名，不使用模糊的 handle 前綴**
 
    ```typescript
-   // ❌ 錯誤
+   // ❌ 錯誤：使用 handle 前綴（看不出在做什麼）
    const handleAddToCart = () => {};
    const handleSubmit = () => {};
+   const handleGoogleSuccess = async (response) => {};
+   const handleError = () => {};
 
-   // ✅ 正確：直接用動作命名
+   // ✅ 正確：直接用動作命名（一眼看出功能）
    const addToCart = () => {};
    const submitForm = () => {};
+   const loginWithGoogle = async (response) => {};
+   const showError = () => {};
    const buyNowGotoCart = () => {};
+   ```
+
+   **命名思路：主要看內容在做什麼**
+   - 如果函數在「驗證並登入」→ `authenticateWithGoogle` 或 `loginWithGoogle`
+   - 如果函數在「顯示錯誤」→ `showError` 或 `displayError`
+   - 如果函數在「儲存資料」→ `saveData` 或 `storeUserInfo`
    ```
 
 4. **不使用 nullish coalescing（??），用三元運算子**
@@ -270,6 +299,14 @@ import style from './style';
 ⚠️  如需 revert：<說明 revert 的影響和注意事項>
 ✅ 獨立 revert：<說明是否可以單獨 revert>
 🔧 影響功能：<列出會受影響的功能>
+```
+
+**❌ 重要：不要添加 Co-Authored-By**
+```
+# ❌ 錯誤：不要加入 Co-Authored-By
+Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+
+# ✅ 正確：直接結束 commit message
 ```
 
 #### Type 類型
