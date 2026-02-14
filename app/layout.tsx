@@ -1,3 +1,4 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import type { Metadata } from 'next';
 
 import 'github-markdown-css/github-markdown-light.css';
@@ -50,12 +51,16 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <QueryProvider>
-          <AuthInit />
-          <Navbar />
-          {children}
-          <Footer />
-        </QueryProvider>
+        <GoogleOAuthProvider
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+        >
+          <QueryProvider>
+            <AuthInit />
+            <Navbar />
+            {children}
+            <Footer />
+          </QueryProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );
