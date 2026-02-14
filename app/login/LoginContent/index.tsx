@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { login, loginWithFacebook, loginWithGoogle } from '@/lib/api/auth';
+import GoogleLoginButton from '@/components/GoogleLoginButton';
+import { login, loginWithFacebook } from '@/lib/api/auth';
 import { useAuthStore } from '@/stores/authStore';
 
 import style from './style';
@@ -88,14 +89,7 @@ function LoginContent({ className }: LoginContentProps) {
         </div>
 
         <div className="oauth-buttons">
-          <button
-            className="oauth-btn google"
-            onClick={loginWithGoogle}
-            type="button"
-          >
-            <span className="oauth-icon">G</span>
-            Google 登入
-          </button>
+          <GoogleLoginButton />
           <button
             className="oauth-btn facebook"
             onClick={loginWithFacebook}
