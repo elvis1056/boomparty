@@ -4,7 +4,7 @@ import { theme } from '@/constants/theme';
 
 const style = css`
   width: 100%;
-  padding: 2rem 0;
+  padding-top: 1rem;
   background-color: ${theme.colors.background.paper};
 
   .carousel-container {

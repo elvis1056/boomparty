@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { theme } from '@/constants/theme';
 
 const pageStyle = css`
-  padding: ${theme.spacing['2xl']};
+  padding: 1rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 
