@@ -430,7 +430,7 @@ export default css`
     }
 
     .total-amount {
-      font-size: ${theme.typography.fontSize.xxl};
+      font-size: ${theme.typography.fontSize['2xl']};
       font-weight: ${theme.typography.fontWeight.bold};
       color: ${theme.colors.primary.main};
     }
