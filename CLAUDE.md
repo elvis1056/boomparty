@@ -146,6 +146,134 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
      style.ts     # 樣式定義（使用 css`` 從 styled-components）
    ```
 
+5. **主色統一**
+
+   ```typescript
+   // ❌ 錯誤：硬編碼顏色
+   background: #4f46e5;
+
+   // ✅ 正確：使用 theme 變數（蒂芙尼藍）
+   background: ${theme.colors.primary.main}; // #00CED1
+   ```
+
+### 組件架構規範
+
+1. **❌ 禁止大包 style.ts**
+
+   每個組件必須有自己的目錄，包含獨立的 style.ts
+
+   ```
+   ❌ 錯誤結構：
+   BookingContent/
+   ├── index.tsx
+   ├── style.ts              # 大包所有子組件的樣式
+   ├── ServiceSelect.tsx
+   ├── StaffSelect.tsx
+   └── DateTimeSelect.tsx
+
+   ✅ 正確結構：
+   BookingContent/
+   ├── index.tsx
+   ├── style.ts              # 只包含容器自己的樣式
+   ├── ServiceSelect/
+   │   ├── index.tsx
+   │   └── style.ts          # ServiceSelect 專屬樣式
+   ├── StaffSelect/
+   │   ├── index.tsx
+   │   └── style.ts          # StaffSelect 專屬樣式
+   └── DateTimeSelect/
+       ├── index.tsx
+       └── style.ts          # DateTimeSelect 專屬樣式
+   ```
+
+2. **可重用組件分離**
+
+   如 StepIndicator 等可重用組件應放在 `components/` 目錄
+
+   ```typescript
+   // ❌ 錯誤：放在業務組件內
+   app/booking/BookingContent/StepIndicator.tsx
+
+   // ✅ 正確：獨立可重用組件
+   components/StepIndicator/
+   ├── index.tsx
+   └── style.ts
+
+   // 使用時由父層傳入狀態
+   <StepIndicator currentStep={currentStep} steps={STEPS} />
+   ```
+
+3. **❌ 禁止 toggle 函數包裝**
+
+   對於簡單的兩狀態切換，直接在 onClick 裡處理
+
+   ```typescript
+   // ❌ 錯誤：不必要的包裝函數
+   const toggleService = (service: Service) => {
+     if (isServiceSelected(service.id)) {
+       removeService(service.id)
+     } else {
+       addService(service)
+     }
+   }
+   onClick={() => toggleService(service)}
+
+   // ✅ 正確：直接處理
+   onClick={() => {
+     if (isServiceSelected(service.id)) {
+       removeService(service.id)
+     } else {
+       addService(service)
+     }
+   }}
+   ```
+
+4. **字串常數化（物件分組結構）**
+
+   避免 magic string，使用物件分組常數
+
+   ```typescript
+   // ❌ 錯誤：magic string
+   if (category === 'all') { ... }
+   if (step === 1) { ... }
+
+   // ✅ 正確：常數結構
+   export const SERVICE_CATEGORY = {
+     ALL: 'all',
+     PLANNING: 'planning',
+     VENUE: 'venue',
+     PHOTOGRAPHY: 'photography',
+     HOSTING: 'hosting',
+     OTHER: 'other',
+   } as const
+
+   export const BOOKING_STEP = {
+     SERVICE: 1,
+     STAFF: 2,
+     DATETIME: 3,
+     CUSTOMER: 4,
+     PAYMENT: 5,
+     CONFIRM: 6,
+   } as const
+
+   // 使用
+   if (category === SERVICE_CATEGORY.ALL) { ... }
+   if (step === BOOKING_STEP.SERVICE) { ... }
+   ```
+
+5. **Import 路徑規範**
+
+   目錄 import 會自動找 index.tsx，不需要額外指定
+
+   ```typescript
+   // ✅ 正確：自動找 ComponentName/index.tsx
+   import Component from './ComponentName'
+
+   // ❌ 錯誤：多此一舉
+   import Component from './ComponentName/'
+   import Component from './ComponentName/index'
+   ```
+
 ### TypeScript
 
 1. **Interface 命名**
@@ -290,9 +418,15 @@ import style from './style';
 #### Commit Message 格式
 
 ```
-<type>: <簡短描述>
+<type>: <English short description>
 
-<詳細說明>
+English details:
+- point 1
+- point 2
+
+中文說明：
+- 點 1
+- 點 2
 
 【Revert 說明】
 📦 依賴項：<列出此 commit 依賴的其他 commit>
@@ -300,6 +434,11 @@ import style from './style';
 ✅ 獨立 revert：<說明是否可以單獨 revert>
 🔧 影響功能：<列出會受影響的功能>
 ```
+
+**語言規範**：
+- 第一行（標題）：**英文**
+- Body 先寫英文說明，再附上中文翻譯
+- 標題和 body 中間空一行
 
 **❌ 重要：不要添加 Co-Authored-By**
 ```
