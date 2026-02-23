@@ -32,6 +32,7 @@ function Navbar({ className }: { className?: string }) {
     { href: '/about', label: '關於我' },
     { href: '/shop', label: '商城' },
     { href: '/blog', label: '部落格' },
+    { href: '/booking', label: '預約活動' },
   ];
 
   const logout = async () => {
