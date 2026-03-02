@@ -102,7 +102,21 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
 
 ### CSS / Styled-components
 
-1. **❌ 禁止使用 inline style（大忌）**
+1. **❌ 禁止使用 `& + &` 選擇器 → 改用 `:not(:first-child)`**
+
+   ```css
+   /* ❌ 錯誤：難以閱讀 */
+   & + & {
+     margin-top: 4px;
+   }
+
+   /* ✅ 正確：語意明確 */
+   &:not(:first-child) {
+     margin-top: 4px;
+   }
+   ```
+
+2. **❌ 禁止使用 inline style（大忌）**
 
    ```typescript
    // ❌ 錯誤：絕對不要使用 inline style
