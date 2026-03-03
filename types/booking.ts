@@ -56,3 +56,28 @@ export interface Booking {
   status: 'pending' | 'confirmed' | 'cancelled';
   createdAt: Date;
 }
+
+// ===== API 溝通用（與後端對接）=====
+
+export interface CreateBookingApiRequest {
+  serviceName: string;
+  servicePrice: number;
+  performerName: string | null;
+  bookingType: 'COMPLETION' | 'TIME_SLOT';
+  completionTime: string | null; // ISO 8601
+  performanceStart: string | null; // ISO 8601
+  performanceEnd: string | null; // ISO 8601
+  customerName: string;
+  customerPhone: string;
+  customerEmail: string;
+  customerNotes: string | null;
+  paymentMethod: 'ONLINE' | 'ONSITE';
+  totalPrice: number;
+}
+
+export interface BookingApiResponse {
+  id: number;
+  bookingReference: string; // "BP-XXXXXXXX"
+  status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+  createdAt: string;
+}
