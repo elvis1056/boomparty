@@ -84,6 +84,7 @@ export default css`
     position: relative;
     width: 16px;
     height: 16px;
+    margin: 8px;
   }
 
   .expand-icon {
@@ -134,7 +135,6 @@ export default css`
 
       &.active {
         background: ${theme.colors.primary.light};
-        color: ${theme.colors.primary.main};
         font-weight: 500;
       }
     }
