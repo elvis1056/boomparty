@@ -27,6 +27,9 @@ interface BookingState {
   // ===== 付款方式 =====
   paymentMethod: 'online' | 'onsite' | null;
 
+  // ===== 預約結果 =====
+  bookingReference: string | null;
+
   // ===== Actions =====
   setCurrentStep: (step: number) => void;
   nextStep: () => void;
@@ -37,6 +40,7 @@ interface BookingState {
   setPerformanceTime: (start: Date | null, end: Date | null) => void;
   setCustomerInfo: (info: CustomerInfo) => void;
   setPaymentMethod: (method: 'online' | 'onsite') => void;
+  setBookingReference: (ref: string) => void;
   resetBooking: () => void;
 }
 
@@ -51,6 +55,7 @@ export const useBookingStore = create<BookingState>((set) => ({
   performanceEnd: null,
   customerInfo: null,
   paymentMethod: null,
+  bookingReference: null,
 
   // ===== Actions =====
   setCurrentStep: (step) => set({ currentStep: step }),
@@ -87,6 +92,8 @@ export const useBookingStore = create<BookingState>((set) => ({
 
   setPaymentMethod: (method) => set({ paymentMethod: method }),
 
+  setBookingReference: (ref) => set({ bookingReference: ref }),
+
   resetBooking: () =>
     set({
       currentStep: 1,
@@ -98,5 +105,6 @@ export const useBookingStore = create<BookingState>((set) => ({
       performanceEnd: null,
       customerInfo: null,
       paymentMethod: null,
+      bookingReference: null,
     }),
 }));
