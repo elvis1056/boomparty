@@ -21,12 +21,16 @@ const URL_TO_STEP: Record<string, number> = {
   '/booking/confirm': 4,
 };
 
+// 這些頁面不顯示步驟條
+const HIDE_STEP_INDICATOR = ['/booking/success', '/booking/status'];
+
 function BookingLayoutContent({
   children,
   className,
 }: BookingLayoutContentProps) {
   const pathname = usePathname();
   const currentStep = URL_TO_STEP[pathname] || 1;
+  const showStepIndicator = !HIDE_STEP_INDICATOR.includes(pathname);
 
   return (
     <div className={className}>
@@ -36,7 +40,12 @@ function BookingLayoutContent({
           <p>專業活動公關服務，為您打造完美活動體驗</p>
         </div>
 
-        <StepIndicator currentStep={currentStep} steps={BOOKING_STEP_LABELS} />
+        {showStepIndicator && (
+          <StepIndicator
+            currentStep={currentStep}
+            steps={BOOKING_STEP_LABELS}
+          />
+        )}
 
         <div className="booking-content">{children}</div>
       </div>
