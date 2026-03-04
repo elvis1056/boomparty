@@ -41,6 +41,7 @@ interface BookingState {
   setCustomerInfo: (info: CustomerInfo) => void;
   setPaymentMethod: (method: 'online' | 'onsite') => void;
   setBookingReference: (ref: string) => void;
+  resetFormFields: () => void;
   resetBooking: () => void;
 }
 
@@ -93,6 +94,20 @@ export const useBookingStore = create<BookingState>((set) => ({
   setPaymentMethod: (method) => set({ paymentMethod: method }),
 
   setBookingReference: (ref) => set({ bookingReference: ref }),
+
+  resetFormFields: () =>
+    set({
+      currentStep: 1,
+      selectedService: null,
+      totalPrice: 0,
+      selectedPerformer: null,
+      completionTime: null,
+      performanceStart: null,
+      performanceEnd: null,
+      customerInfo: null,
+      paymentMethod: null,
+      // bookingReference 保留，讓成功頁繼續顯示
+    }),
 
   resetBooking: () =>
     set({

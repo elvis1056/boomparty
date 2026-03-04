@@ -14,13 +14,20 @@ interface BookingSuccessProps {
 
 function BookingSuccess({ className }: BookingSuccessProps) {
   const router = useRouter();
-  const { bookingReference, customerInfo, resetBooking } = useBookingStore();
+  const { bookingReference, customerInfo, resetFormFields, resetBooking } =
+    useBookingStore();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!bookingReference) {
       router.replace('/booking/service');
     }
-  }, [bookingReference, router]);
+
+    // 離開成功頁時清空表單資料（bookingReference 由 resetBooking 清）
+    return () => {
+      resetFormFields();
+    };
+  }, []);
 
   if (!bookingReference) return null;
 
