@@ -1,5 +1,6 @@
 'use client';
 
+import classnames from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -165,7 +166,7 @@ function ProductCard({ product, className }: ProductCardProps) {
           <span className="quantity-label">數量</span>
           <div className="quantity-controls">
             <button
-              className="quantity-btn"
+              className="quantity-decrease"
               disabled={quantity <= 1 || isOutOfStock}
               onClick={decreaseQuantity}
               type="button"
@@ -183,7 +184,7 @@ function ProductCard({ product, className }: ProductCardProps) {
               value={quantity === 0 ? '' : quantity}
             />
             <button
-              className="quantity-btn"
+              className="quantity-increase"
               disabled={quantity >= maxStock || isOutOfStock}
               onClick={increaseQuantity}
               type="button"
@@ -196,7 +197,7 @@ function ProductCard({ product, className }: ProductCardProps) {
         {/* 按鈕區 */}
         <div className="card-actions">
           <button
-            className={`btn-add-cart ${justAdded ? 'added' : ''}`}
+            className={classnames('add-to-cart', { added: justAdded })}
             disabled={isAdding || justAdded || isOutOfStock}
             onClick={addToCart}
             type="button"
@@ -204,7 +205,7 @@ function ProductCard({ product, className }: ProductCardProps) {
             {isAdding ? '加入中...' : justAdded ? '✓ 已加入' : '加入購物車'}
           </button>
           <button
-            className="btn-buy-now"
+            className="buy-now"
             disabled={isOutOfStock}
             onClick={buyNowGotoCart}
             type="button"
