@@ -158,6 +158,13 @@ export const mockCategories: ShopCategory[] = [
         productCount: 0,
       },
       {
+        id: 54,
+        name: '花朵系列',
+        description: '花朵造型氣球，適合送禮與佈置點綴',
+        active: true,
+        productCount: 0,
+      },
+      {
         id: 27,
         name: '其他系列',
         description: '其他創意造型氣球',
@@ -361,6 +368,13 @@ export const mockCategories: ShopCategory[] = [
         productCount: 0,
       },
       {
+        id: 60,
+        name: '氣球拱門',
+        description: '活動入口、舞台前方大型氣球拱門造型',
+        active: true,
+        productCount: 0,
+      },
+      {
         id: 48,
         name: '其他企業商用佈置',
         description: '其他企業商業場合氣球佈置',
@@ -420,6 +434,52 @@ export const mockCategories: ShopCategory[] = [
     active: true,
     createdAt: '2026-03-03T00:00:00.000000',
     updatedAt: '2026-03-03T00:00:00.000000',
+    isTopLevel: true,
+    productCount: 0,
+  },
+  {
+    id: 55,
+    name: '空飄系列',
+    description: '氦氣充填空飄氣球，依材質分類，適合各式派對與場地佈置點綴',
+    parentId: null,
+    parentName: null,
+    children: [
+      {
+        id: 56,
+        name: '乳膠氣球',
+        description:
+          '價格親民、顏色多樣，提供標準色、珍珠色、金屬色及大理石紋，飄浮時間約 8–12 小時',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 57,
+        name: '鋁箔氣球',
+        description:
+          '造型多變（數字、字母、卡通、愛心、星星），自封口設計密封性佳，飄浮時間約 3–7 天以上',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 58,
+        name: '泡泡球',
+        description:
+          '透明高彈性 PVC 材質，可內含羽毛、紙花或小氣球，常搭配客製化割字貼紙，外觀精緻',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 59,
+        name: '特殊造型鋁箔',
+        description:
+          '立體造型鋁箔氣球（Orbz、DMZ、CBZ 等），外型特殊圓潤，適合現代感或奢華感婚禮與派對',
+        active: true,
+        productCount: 0,
+      },
+    ],
+    active: true,
+    createdAt: '2026-03-07T00:00:00.000000',
+    updatedAt: '2026-03-07T00:00:00.000000',
     isTopLevel: true,
     productCount: 0,
   },
