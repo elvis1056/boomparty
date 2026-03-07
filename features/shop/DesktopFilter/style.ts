@@ -122,7 +122,7 @@ export default css`
 
     .category-item {
       width: 100%;
-      padding-left: 2.5rem;
+      padding-left: 1rem;
       font-size: 0.875rem;
       background: ${theme.colors.neutral.gray50};
       overflow: hidden;

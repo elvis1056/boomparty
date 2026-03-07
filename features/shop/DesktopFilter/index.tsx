@@ -1,10 +1,12 @@
 'use client';
 
 import classnames from 'classnames';
+import { LayoutGrid } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import { CATEGORY_ICONS } from '@/constants/categoryIcons';
 import { assetPath } from '@/lib/utils/asset-path';
 import type { ShopCategory } from '@/types';
 
@@ -57,7 +59,7 @@ function DesktopFilter({
                   onCategoryChange(null);
                 }}
               >
-                {/* <span className="category-icon">🎈</span> */}
+                <LayoutGrid className="category-icon" size={18} />
                 <span className="category-name">全部商品</span>
               </button>
             </div>
@@ -79,6 +81,12 @@ function DesktopFilter({
                     }}
                     title={category.name}
                   >
+                    {(() => {
+                      const Icon = CATEGORY_ICONS[category.id];
+                      return Icon ? (
+                        <Icon className="category-icon" size={18} />
+                      ) : null;
+                    })()}
                     <span className="category-name">{category.name}</span>
                   </button>
                   {hasChildren && (
@@ -107,6 +115,12 @@ function DesktopFilter({
                           }}
                           title={child.name}
                         >
+                          {(() => {
+                            const Icon = CATEGORY_ICONS[child.id];
+                            return Icon ? (
+                              <Icon className="category-icon" size={14} />
+                            ) : null;
+                          })()}
                           <span className="category-name">{child.name}</span>
                           <span className="product-count">
                             ({child.productCount})
