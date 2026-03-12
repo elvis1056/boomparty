@@ -14,6 +14,37 @@ import type { Product, ShopCategory } from '@/types';
 import Banner from './Banner';
 import style from './style';
 
+function fillProductCountsFromProducts(
+  categories: ShopCategory[],
+  products: Product[]
+): ShopCategory[] {
+  return categories.map((category) => {
+    const categoryChildrenWithComputedCounts = category.children.map(
+      (child) => {
+        const count =
+          child.productCount > 0
+            ? child.productCount
+            : products.filter((p) => p.categoryId === child.id).length;
+        return { ...child, productCount: count };
+      }
+    );
+
+    const categoryCount =
+      category.productCount > 0
+        ? category.productCount
+        : categoryChildrenWithComputedCounts.reduce(
+            (sum, child) => sum + child.productCount,
+            0
+          );
+
+    return {
+      ...category,
+      children: categoryChildrenWithComputedCounts,
+      productCount: categoryCount,
+    };
+  });
+}
+
 interface ShopContentProps {
   className?: string;
 }
@@ -41,7 +72,9 @@ function ShopContent({ className }: ShopContentProps) {
     Promise.all([fetchProducts(), fetchTopLevelCategories()])
       .then(([productsData, categoriesData]) => {
         setProducts(productsData);
-        setCategories(categoriesData);
+        setCategories(
+          fillProductCountsFromProducts(categoriesData, productsData)
+        );
       })
       .catch((error) => {
         console.error('Failed to fetch data:', error);
