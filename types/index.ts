@@ -35,6 +35,7 @@ export type {
   CreateAddressRequest,
   CreateOrderRequest,
   CheckoutFormData,
+  CouponValidateResult,
 } from './checkout';
 
 // Order Types

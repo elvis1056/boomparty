@@ -30,6 +30,13 @@ export interface CreateAddressRequest {
   isDefault?: boolean;
 }
 
+// 優惠碼驗證結果
+export interface CouponValidateResult {
+  valid: boolean;
+  discountAmount: number;
+  message: string;
+}
+
 // 建立訂單請求（對應後端 CreateOrderRequest）
 export interface CreateOrderRequest {
   // 收件資訊
@@ -44,6 +51,12 @@ export interface CreateOrderRequest {
 
   // 付款方式
   paymentMethod: PaymentMethod;
+
+  // 優惠碼（選填，後端自行計算折扣）
+  couponCode?: string;
+
+  // Affiliate 推薦碼（選填）
+  affiliateReferralCode?: string;
 }
 
 // 結帳表單資料（前端使用）

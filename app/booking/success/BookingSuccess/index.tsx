@@ -17,7 +17,6 @@ function BookingSuccess({ className }: BookingSuccessProps) {
   const { bookingReference, customerInfo, resetFormFields, resetBooking } =
     useBookingStore();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!bookingReference) {
       router.replace('/booking/service');
@@ -27,6 +26,7 @@ function BookingSuccess({ className }: BookingSuccessProps) {
     return () => {
       resetFormFields();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!bookingReference) return null;
