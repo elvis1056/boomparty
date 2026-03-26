@@ -1,5 +1,9 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+
+import { recordAffiliateClick } from '@/lib/api/orders';
 import { useAuthStore } from '@/stores/authStore';
 import { useCartStore } from '@/stores/cartStore';
 
@@ -9,6 +13,16 @@ import CheckoutEmpty from './CheckoutEmpty';
 export default function CheckoutPage() {
   const user = useAuthStore((state) => state.user);
   const { cart } = useCartStore();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const ref = searchParams.get('ref');
+    if (!ref) return;
+
+    sessionStorage.setItem('affiliateReferralCode', ref);
+    recordAffiliateClick(ref).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 未登入
   if (!user) {

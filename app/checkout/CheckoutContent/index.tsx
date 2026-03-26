@@ -15,6 +15,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { useCartStore } from '@/stores/cartStore';
 import type { PaymentMethod as PaymentMethodType } from '@/types';
 
+import CouponInput from './CouponInput';
 import OrderSummary from './OrderSummary';
 import PaymentMethod from './PaymentMethod';
 import ShippingForm from './ShippingForm';
@@ -34,6 +35,8 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
   const user = useAuthStore((state) => state.user);
   const { cart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [couponCode, setCouponCode] = useState('');
+  const [discountAmount, setDiscountAmount] = useState(0);
 
   // 使用 useRef 儲存表單值（不觸發 re-render）
   const recipientNameRef = useRef('');
@@ -142,6 +145,16 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
     setPaymentData({ paymentMethod: method });
   };
 
+  const couponValidated = (code: string, discount: number) => {
+    setCouponCode(code);
+    setDiscountAmount(discount);
+  };
+
+  const couponCleared = () => {
+    setCouponCode('');
+    setDiscountAmount(0);
+  };
+
   // 最終提交驗證（不延遲，立即顯示所有錯誤）
   const validateForm = (): boolean => {
     // 立即驗證所有欄位
@@ -198,6 +211,9 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
 
     try {
       // 從 refs 讀取表單資料
+      const affiliateReferralCode =
+        sessionStorage.getItem('affiliateReferralCode') || undefined;
+
       const orderData = {
         recipientName: recipientNameRef.current,
         recipientPhone: recipientPhoneRef.current,
@@ -208,6 +224,8 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
         addressLine: addressLineRef.current,
         note: noteRef.current || undefined,
         paymentMethod: paymentData.paymentMethod,
+        couponCode: couponCode || undefined,
+        affiliateReferralCode,
       };
 
       // 呼叫後端 API 建立訂單
@@ -266,11 +284,19 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
               onMethodChange={updatePaymentMethod}
               selectedMethod={paymentData.paymentMethod}
             />
+
+            {/* 優惠碼 */}
+            <CouponInput
+              cartAmount={cart ? cart.totalAmount : 0}
+              onCleared={couponCleared}
+              onValidated={couponValidated}
+            />
           </div>
 
           {/* 右側：訂單摘要 */}
           <OrderSummary
             cart={cart}
+            discountAmount={discountAmount}
             isSubmitting={isSubmitting}
             onSubmit={onSubmit}
             shippingFee={SHIPPING_FEE}

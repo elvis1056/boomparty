@@ -142,6 +142,12 @@ export default css`
     color: ${theme.colors.neutral.gray600};
   }
 
+  .price-row.discount {
+    .price-value {
+      color: #16a34a;
+    }
+  }
+
   .price-value {
     font-size: 1rem;
     font-weight: 600;

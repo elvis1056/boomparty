@@ -11,6 +11,7 @@ interface OrderSummaryProps {
   className?: string;
   cart: Cart | null;
   shippingFee: number;
+  discountAmount: number;
   onSubmit: () => void;
   isSubmitting: boolean;
 }
@@ -19,6 +20,7 @@ function OrderSummary({
   className,
   cart,
   shippingFee,
+  discountAmount,
   onSubmit,
   isSubmitting,
 }: OrderSummaryProps) {
@@ -26,7 +28,10 @@ function OrderSummary({
     return null;
   }
 
-  const totalAmount = cart.totalAmount + shippingFee;
+  const totalAmount = Math.max(
+    0,
+    cart.totalAmount - discountAmount + shippingFee
+  );
 
   return (
     <div className={className}>
@@ -67,6 +72,15 @@ function OrderSummary({
             NT$ {cart.totalAmount.toLocaleString()}
           </span>
         </div>
+
+        {discountAmount > 0 && (
+          <div className="price-row discount">
+            <span className="price-label">優惠折扣</span>
+            <span className="price-value">
+              -NT$ {discountAmount.toLocaleString()}
+            </span>
+          </div>
+        )}
 
         <div className="price-row">
           <span className="price-label">運費</span>
