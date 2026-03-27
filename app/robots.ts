@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/cart', '/checkout', '/orders', '/login', '/register'],
     },
-    sitemap: 'https://elvis1056.boomparty.tw/sitemap.xml',
+    sitemap: 'https://boomparty.tw/sitemap.xml',
   };
 }

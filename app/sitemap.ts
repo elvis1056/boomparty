@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 import { fetchBlogPosts } from '@/lib/api/blog';
 
-const BASE_URL = 'https://elvis1056.boomparty.tw';
+const BASE_URL = 'https://boomparty.tw';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [

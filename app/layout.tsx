@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'zh_TW',
-    url: 'https://elvis1056.boomparty.tw',
+    url: 'https://boomparty.tw',
     siteName: 'Elvis | 個人作品集',
     title: 'Elvis | 全端工程師 · Next.js & Spring Boot',
     description:
