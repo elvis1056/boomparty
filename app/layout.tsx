@@ -11,8 +11,37 @@ import { QueryProvider } from './query-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'boomparty - 電商與部落格',
-  description: '電商網站兼部落格系統',
+  title: {
+    default: 'Elvis | 工程師 · Next.js & Spring Boot',
+    template: '%s | Elvis',
+  },
+  description:
+    '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。這裡展示我的個人作品、UI 元件與技術履歷。',
+  keywords: [
+    'Elvis',
+    'Next.js',
+    'Spring Boot',
+    '前端工程師',
+    '軟體工程師',
+    '全端工程師',
+    '作品集',
+  ],
+  authors: [{ name: 'Elvis' }],
+  openGraph: {
+    type: 'website',
+    locale: 'zh_TW',
+    url: 'https://elvis1056.boomparty.tw',
+    siteName: 'Elvis | 個人作品集',
+    title: 'Elvis | 全端工程師 · Next.js & Spring Boot',
+    description:
+      '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。這裡展示我的個人作品、UI 元件與技術履歷。',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Elvis | 工程師 · Next.js & Spring Boot',
+    description:
+      '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。',
+  },
 };
 
 export default function RootLayout({
