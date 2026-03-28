@@ -42,15 +42,15 @@ export const mockProducts: Product[] = [
     name: '婚宴廳簡約氣球拱門',
     description:
       '大型透明圓弧拱門橫跨婚宴廳走道，搭配裸粉色圓形氣球柱，典雅簡約，完美襯托婚禮氛圍',
-    price: 10000.0,
+    price: 8000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/婚禮求婚/婚禮佈置/2024-03-02-婚禮簡約拱門.jpg'
     ),
     active: true,
     featured: true,
-    categoryId: 41,
-    categoryName: '婚禮佈置',
+    categoryId: 60,
+    categoryName: '氣球拱門',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -99,8 +99,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 48,
-    categoryName: '其他企業商用佈置',
+    categoryId: 18,
+    categoryName: '其他佈置',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -116,8 +116,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 48,
-    categoryName: '其他企業商用佈置',
+    categoryId: 18,
+    categoryName: '其他佈置',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -126,7 +126,7 @@ export const mockProducts: Product[] = [
     name: '玫瑰金圓形金屬氣球柱',
     description:
       '兩根高聳玫瑰金金屬光澤大圓球氣球柱，頂端大型圓球搭配花朵裝飾與紗帶蝴蝶結，典雅高貴，適合婚宴、企業發布會等正式場合',
-    price: 10000.0,
+    price: 3000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球柱/2024-03-02-圓形金屬氣球柱.jpg'
@@ -134,7 +134,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: true,
     categoryId: 46,
-    categoryName: '氣球柱',
+    categoryName: '氣球柱（單支）',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -150,8 +150,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 46,
-    categoryName: '氣球柱',
+    categoryId: 8,
+    categoryName: '畢業佈置',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -184,8 +184,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 12,
-    categoryName: '背板佈置',
+    categoryId: 11,
+    categoryName: '展演佈置',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -235,8 +235,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 35,
-    categoryName: '0 歲佈置',
+    categoryId: 82,
+    categoryName: '性別揭曉派對',
     createdAt: '2026-03-06T00:00:00.000000',
     updatedAt: '2026-03-06T00:00:00.000000',
   },
@@ -245,13 +245,13 @@ export const mockProducts: Product[] = [
     name: '校慶週年氣球牆（56 & 30）',
     description:
       '校園走廊兩側大型繽紛氣球牆，色彩豐富活潑，左右分別嵌入金色數字「56」與「30」鋁箔氣球，點綴 LED 燈串',
-    price: 10000.0,
+    price: 20000.0,
     stock: 99,
     imageUrl: assetPath('/images/shop/企業商用/氣球牆/2024-03-02-56.jpg'),
     active: true,
     featured: false,
     categoryId: 47,
-    categoryName: '氣球牆',
+    categoryName: '氣球牆 / 氣球背板',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -260,7 +260,7 @@ export const mockProducts: Product[] = [
     name: '泡泡球搭配乳膠球空飄組',
     description:
       '透明泡泡球內含玫瑰金金屬色乳膠球，搭配白色乳膠球群組，低調奢華',
-    price: 10000.0,
+    price: 1500.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/空飄系列/泡泡球/2024-03-02-泡泡球搭配乳膠球.jpg'
@@ -268,7 +268,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: true,
     categoryId: 58,
-    categoryName: '泡泡球',
+    categoryName: '空飄氣球套組（一般組合）',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -277,7 +277,7 @@ export const mockProducts: Product[] = [
     name: '遠東百貨週年慶印字氣球柱',
     description:
       '粉藕色系 Orbz 圓球頂端印製活動資訊，搭配紙花裝飾，多組陳列於廣場',
-    price: 10000.0,
+    price: 3000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球柱/2024-信義A13遠東百貨週年慶氣球柱.jpg'
@@ -285,7 +285,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: false,
     categoryId: 46,
-    categoryName: '氣球柱',
+    categoryName: '氣球柱（單支）',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -294,7 +294,7 @@ export const mockProducts: Product[] = [
     name: '新光人壽珍珠計畫氣球牆',
     description:
       '藍白銀三色有機造型氣球牆，搭配珍珠貝殼裝飾與空飄泡泡球，海洋珍珠主題意象鮮明',
-    price: 10000.0,
+    price: 20000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球牆/2024-新光人壽-珍珠計畫.jpg'
@@ -302,7 +302,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: true,
     categoryId: 47,
-    categoryName: '氣球牆',
+    categoryName: '氣球牆 / 氣球背板',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -311,7 +311,7 @@ export const mockProducts: Product[] = [
     name: '企業活動入口海洋風格氣球柱',
     description:
       '企業活動入口兩側海洋風格氣球柱，頂端大型透明泡泡球內含銀藍氣球，藍白銀配色，典雅專業',
-    price: 10000.0,
+    price: 3000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球柱/2024-新光人壽-海洋風格氣球柱.jpg'
@@ -319,7 +319,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: false,
     categoryId: 46,
-    categoryName: '氣球柱',
+    categoryName: '氣球柱（單支）',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -328,13 +328,13 @@ export const mockProducts: Product[] = [
     name: '畢業典禮彩虹入口氣球柱',
     description:
       '畢業典禮入口彩虹色系氣球柱一對，搭配男女畢業生造型鋁箔氣球與星星裝飾，頂端接成半弧形',
-    price: 10000.0,
+    price: 3000.0,
     stock: 99,
     imageUrl: assetPath('/images/shop/企業商用/氣球柱/2024-畢業氣球柱.jpg'),
     active: true,
     featured: false,
     categoryId: 46,
-    categoryName: '氣球柱',
+    categoryName: '氣球柱（單支）',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -343,13 +343,13 @@ export const mockProducts: Product[] = [
     name: '羽球賽事活動入口氣球柱',
     description:
       '活動入口綠白銀三色有機氣球柱一對，搭配白色羽球造型氣球點綴，活力清新',
-    price: 10000.0,
+    price: 3000.0,
     stock: 99,
     imageUrl: assetPath('/images/shop/企業商用/氣球柱/2024-羽球賽事氣球柱.jpg'),
     active: true,
     featured: false,
     categoryId: 46,
-    categoryName: '氣球柱',
+    categoryName: '氣球柱（單支）',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -391,7 +391,7 @@ export const mockProducts: Product[] = [
     name: 'WELCOME 彩虹氣球拱門',
     description:
       '彩虹色系 WELCOME 氣球拱門，頂端金色字母搭配笑臉太陽鋁箔氣球，兩側彩虹氣球柱，明亮活潑',
-    price: 10000.0,
+    price: 8000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球拱門/2024-新北市政府-彩虹拱門.jpg'
@@ -425,7 +425,7 @@ export const mockProducts: Product[] = [
     name: '畢業彩虹連續氣球拱門',
     description:
       '禮堂走道馬卡龍彩虹連續大型拱門，多色漸層氣球串接成氣勢壯觀的通道，天花板另有空飄氣球點綴',
-    price: 10000.0,
+    price: 8000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球拱門/2024-萬芳附設幼兒園-畢業彩虹連續拱門.jpg'
@@ -459,7 +459,7 @@ export const mockProducts: Product[] = [
     name: '馬卡龍彩色螺旋星星拱門',
     description:
       '馬卡龍粉嫩色系螺旋氣球拱門，搭配多色星形鋁箔氣球，頂端畢業帽裝飾，歡樂活潑',
-    price: 10000.0,
+    price: 8000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球拱門/2024-星星彩色螺旋拱門.jpg'
@@ -476,7 +476,7 @@ export const mockProducts: Product[] = [
     name: '金黃爆炸星大型氣球拱門',
     description:
       '金黃白色系大型氣球拱門，兩側 Starburst 爆炸星鋁箔氣球點綴，氣派奢華',
-    price: 10000.0,
+    price: 8000.0,
     stock: 99,
     imageUrl: assetPath(
       '/images/shop/企業商用/氣球拱門/2024-金黃兩色星星拱門.jpg'
@@ -551,8 +551,8 @@ export const mockProducts: Product[] = [
     ),
     active: true,
     featured: false,
-    categoryId: 36,
-    categoryName: '1 歲佈置',
+    categoryId: 35,
+    categoryName: '彌月 / 抓周佈置',
     createdAt: '2026-03-07T00:00:00.000000',
     updatedAt: '2026-03-07T00:00:00.000000',
   },
@@ -602,7 +602,7 @@ export const mockProducts: Product[] = [
     active: true,
     featured: false,
     categoryId: 19,
-    categoryName: '',
+    categoryName: '動物造型',
     createdAt: '2025-12-05T09:38:27.662527',
     updatedAt: '2025-12-05T09:39:46.880625',
   },
