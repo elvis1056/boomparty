@@ -12,35 +12,41 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Elvis | 工程師 · Next.js & Spring Boot',
-    template: '%s | Elvis',
+    default: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
+    template: '%s | 蹦娛樂 BoomParty',
   },
   description:
-    '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。這裡展示我的個人作品、UI 元件與技術履歷。',
+    '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務，提供造型氣球、空飄充氣、客製印刷一站式解決方案。',
   keywords: [
-    'Elvis',
-    'Next.js',
-    'Spring Boot',
-    '前端工程師',
-    '軟體工程師',
-    '全端工程師',
-    '作品集',
+    '蹦娛樂',
+    'BoomParty',
+    '氣球佈置',
+    '造型氣球',
+    '生日佈置',
+    '婚禮佈置',
+    '求婚佈置',
+    '空飄氣球',
+    '台灣氣球',
   ],
-  authors: [{ name: 'Elvis' }],
+  authors: [{ name: '蹦娛樂 BoomParty' }],
+  icons: {
+    icon: '/boomparty-logo.jpg',
+    apple: '/boomparty-logo.jpg',
+  },
   openGraph: {
     type: 'website',
     locale: 'zh_TW',
     url: 'https://boomparty.tw',
-    siteName: 'Elvis | 個人作品集',
-    title: 'Elvis | 全端工程師 · Next.js & Spring Boot',
+    siteName: '蹦娛樂 BoomParty',
+    title: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
     description:
-      '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。這裡展示我的個人作品、UI 元件與技術履歷。',
+      '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務，提供造型氣球、空飄充氣、客製印刷一站式解決方案。',
   },
   twitter: {
     card: 'summary',
-    title: 'Elvis | 工程師 · Next.js & Spring Boot',
+    title: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
     description:
-      '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。',
+      '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務。',
   },
 };
 

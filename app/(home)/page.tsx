@@ -4,9 +4,9 @@ import { Suspense } from 'react';
 import HomeContent from './HomeContent';
 
 export const metadata: Metadata = {
-  title: 'Elvis | 工程師 · Next.js & Spring Boot',
+  title: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
   description:
-    '嗨，我是 Elvis，軟體工程師，專注於 Next.js 前端開發與 Spring Boot 後端架構。這裡展示我的個人作品、UI 元件與技術履歷。',
+    '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務，提供造型氣球、空飄充氣、客製印刷一站式解決方案。',
   alternates: {
     canonical: 'https://boomparty.tw',
   },
