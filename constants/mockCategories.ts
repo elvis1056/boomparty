@@ -2,7 +2,7 @@ import type { ShopCategory } from '@/types';
 /**
  * Mock 分類資料（來自真實 API）
  * 對齊 dev-seed.sql，10 個頂層分類，依 SEO 搜尋量排序
- * 最後更新：2026-03-28
+ * 最後更新：2026-03-30（分類名稱縮短至 6 字以內）
  */
 export const mockCategories: ShopCategory[] = [
   // ─────────────────────────────────────────────
@@ -38,14 +38,14 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 35,
-        name: '彌月 / 抓周佈置',
+        name: '彌月抓周',
         description: '彌月、百日、抓周嬰幼兒專屬氣球佈置',
         active: true,
         productCount: 0,
       },
       {
         id: 81,
-        name: '後車廂驚喜佈置',
+        name: '後車廂佈置',
         description: '生日、求婚、告白後車廂驚喜氣球佈置',
         active: true,
         productCount: 0,
@@ -73,7 +73,7 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 83,
-        name: '尾牙 / 春酒佈置',
+        name: '尾牙春酒',
         description: '企業年終尾牙、春酒聚餐氣球佈置',
         active: true,
         productCount: 0,
@@ -192,14 +192,14 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 39,
-        name: '13~18 歲佈置',
+        name: '青少年佈置',
         description: '青少年生日派對時尚主題氣球佈置',
         active: true,
         productCount: 0,
       },
       {
         id: 40,
-        name: '19+ 歲佈置',
+        name: '成人佈置',
         description: '成人生日派對精緻主題氣球佈置',
         active: true,
         productCount: 0,
@@ -252,14 +252,14 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 46,
-        name: '氣球柱（單支）',
+        name: '氣球柱',
         description: '活動入口、舞台兩側氣球柱造型',
         active: true,
         productCount: 0,
       },
       {
         id: 47,
-        name: '氣球牆 / 氣球背板',
+        name: '氣球牆',
         description: '大型氣球牆佈置，適合拍照打卡',
         active: true,
         productCount: 0,
@@ -280,18 +280,18 @@ export const mockCategories: ShopCategory[] = [
   },
 
   // ─────────────────────────────────────────────
-  // 3. 空飄充氣 / 套組類（id=55）
+  // 3. 空飄充氣（id=55）
   // ─────────────────────────────────────────────
   {
     id: 55,
-    name: '空飄充氣 / 套組類',
+    name: '空飄充氣',
     description: '含氦氣充氣服務及主題空飄套組',
     parentId: null,
     parentName: null,
     children: [
       {
         id: 56,
-        name: '乳膠氣球充氣（代客充氣）',
+        name: '乳膠充氣',
         description: '9–12 吋，可空飄約 6–12 小時',
         active: true,
         productCount: 0,
@@ -305,14 +305,14 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 58,
-        name: '空飄氣球套組（一般組合）',
+        name: '空飄套組',
         description: '乳膠 20 顆或鋁箔 8 顆，含氦氣',
         active: true,
         productCount: 0,
       },
       {
         id: 59,
-        name: '求婚 / 生日主題套組',
+        name: '主題套組',
         description: '字母＋數字＋造型球組合，適合特定場合',
         active: true,
         productCount: 0,
@@ -326,32 +326,32 @@ export const mockCategories: ShopCategory[] = [
   },
 
   // ─────────────────────────────────────────────
-  // 4. 鋁箔 / 造型氣球素材（id=62）
+  // 4. 鋁箔素材（id=62）
   // ─────────────────────────────────────────────
   {
     id: 62,
-    name: '鋁箔 / 造型氣球素材',
+    name: '鋁箔素材',
     description: '數字、字母、造型鋁箔氣球及透明泡泡球，持久耐用',
     parentId: null,
     parentName: null,
     children: [
       {
         id: 49,
-        name: '一般造型鋁箔氣球',
+        name: '鋁箔氣球',
         description: '星形、愛心、圓形等各式造型，18–36 吋，持久耐用',
         active: true,
         productCount: 0,
       },
       {
         id: 63,
-        name: '數字 / 字母鋁箔氣球',
+        name: '數字字母',
         description: '16–40 吋，生日週年慶必備',
         active: true,
         productCount: 0,
       },
       {
         id: 64,
-        name: '水晶 / 泡泡氣球（Bobo Ball）',
+        name: '泡泡氣球',
         description: '透明球，20–24 吋，可內含裝飾',
         active: true,
         productCount: 0,
@@ -376,22 +376,43 @@ export const mockCategories: ShopCategory[] = [
     children: [
       {
         id: 51,
-        name: '圓形 / 心型乳膠氣球',
-        description: '10–100 顆包裝，標準 11–12 吋，顏色多樣',
+        name: '圓型',
+        description: '11–12 吋圓形乳膠氣球，標準尺寸，顏色多樣',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 84,
+        name: '心型',
+        description: '心型乳膠氣球，適合求婚、情人節佈置',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 85,
+        name: '長條160',
+        description: '160Q 造型氣球，入門折氣球常用',
         active: true,
         productCount: 0,
       },
       {
         id: 50,
-        name: '長條造型氣球（260Q）',
-        description: '折氣球造型用，100 條裝',
+        name: '長條260',
+        description: '260Q 造型氣球，折氣球主流尺寸',
+        active: true,
+        productCount: 0,
+      },
+      {
+        id: 86,
+        name: '長條350',
+        description: '350Q 造型氣球，適合大型造型',
         active: true,
         productCount: 0,
       },
       {
         id: 61,
-        name: '巨型乳膠氣球（36 吋以上）',
-        description: '拍照道具、佈置重點氣球，大尺寸視覺震撼',
+        name: '特殊形狀',
+        description: '愛心柱、花形、巨型等特殊規格乳膠氣球',
         active: true,
         productCount: 0,
       },
@@ -464,7 +485,7 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 25,
-        name: '四泡結手環系列',
+        name: '手環系列',
         description: '四泡結工法製作的氣球手環',
         active: true,
         productCount: 0,
@@ -492,11 +513,11 @@ export const mockCategories: ShopCategory[] = [
   },
 
   // ─────────────────────────────────────────────
-  // 7. 工具 / 配件類（id=65）
+  // 7. 工具配件（id=65）
   // ─────────────────────────────────────────────
   {
     id: 65,
-    name: '工具 / 配件類',
+    name: '工具配件',
     description: '充氣工具、固定配件與氦氣罐出租',
     parentId: null,
     parentName: null,
@@ -517,14 +538,14 @@ export const mockCategories: ShopCategory[] = [
       },
       {
         id: 53,
-        name: '氣球棒 / 底座 / 緞帶',
-        description: '固定配件耗材，佈置必備',
+        name: '配件耗材',
+        description: '氣球棒、底座、緞帶等固定配件',
         active: true,
         productCount: 0,
       },
       {
         id: 67,
-        name: '氦氣罐出租（小型罐）',
+        name: '氦氣罐出租',
         description: '含氦氣，可充約 20–50 顆 11 吋乳膠氣球',
         active: true,
         productCount: 0,
@@ -549,21 +570,21 @@ export const mockCategories: ShopCategory[] = [
     children: [
       {
         id: 69,
-        name: '一般現場折氣球（小型）',
+        name: '現場折氣球',
         description: '生日派對、家庭日，新手達人',
         active: true,
         productCount: 0,
       },
       {
         id: 70,
-        name: '全職氣球達人（企業 / 婚禮）',
+        name: '氣球達人',
         description: '基本出場費，之後每小時加價',
         active: true,
         productCount: 0,
       },
       {
         id: 71,
-        name: '氣球表演秀（含互動 / 舞台）',
+        name: '氣球表演秀',
         description: '整場活動，含動態表演',
         active: true,
         productCount: 0,
@@ -588,14 +609,14 @@ export const mockCategories: ShopCategory[] = [
     children: [
       {
         id: 73,
-        name: '折氣球入門課程',
+        name: '折氣球入門',
         description: '基礎造型，適合親子、個人',
         active: true,
         productCount: 0,
       },
       {
         id: 74,
-        name: '氣球佈置教學（工作坊）',
+        name: '佈置工作坊',
         description: '拱門、氣球柱 DIY 課程',
         active: true,
         productCount: 0,
@@ -609,25 +630,25 @@ export const mockCategories: ShopCategory[] = [
   },
 
   // ─────────────────────────────────────────────
-  // 10. 客製 / 廣告印刷（id=75）
+  // 10. 客製印刷（id=75）
   // ─────────────────────────────────────────────
   {
     id: 75,
-    name: '客製 / 廣告印刷',
+    name: '客製印刷',
     description: '企業品牌乳膠氣球印刷及大型廣告氣球造型',
     parentId: null,
     parentName: null,
     children: [
       {
         id: 76,
-        name: '乳膠氣球 Logo 印刷',
+        name: '氣球印刷',
         description: '最低訂量 100–500 顆起，批量優惠',
         active: true,
         productCount: 0,
       },
       {
         id: 77,
-        name: '大型廣告氣球 / 吉祥造型',
+        name: '廣告氣球',
         description: '開幕、展覽、活動大型充氣物，詢價',
         active: true,
         productCount: 0,

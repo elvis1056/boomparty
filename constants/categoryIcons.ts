@@ -110,9 +110,12 @@ export const CATEGORY_ICONS: Record<number, LucideIcon> = {
   64: CircleDot, // 水晶 / 泡泡氣球（Bobo Ball）
 
   // ── 乳膠氣球素材子分類（parent_id = 7）──────────────
-  51: Circle, // 圓形 / 心型乳膠氣球
-  50: Circle, // 長條造型氣球（260Q）
-  61: Shapes, // 巨型乳膠氣球（36 吋以上）
+  51: Circle, // 圓型
+  84: Heart, // 心型
+  85: Feather, // 長條160
+  50: Circle, // 長條260
+  86: Feather, // 長條350
+  61: Shapes, // 特殊形狀
 
   // ── 造型氣球子分類（parent_id = 2）──────────────────
   19: Smile, // 動物造型
