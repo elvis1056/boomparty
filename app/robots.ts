@@ -5,7 +5,17 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/cart', '/checkout', '/orders', '/login', '/register'],
+      disallow: [
+        '/cart',
+        '/checkout',
+        '/orders',
+        '/login',
+        '/register',
+        '/booking/confirm',
+        '/booking/success',
+        '/booking/status',
+        '/booking/form',
+      ],
     },
     sitemap: 'https://boomparty.tw/sitemap.xml',
   };
