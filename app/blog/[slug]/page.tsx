@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { fetchBlogPostBySlug, fetchBlogPosts } from '@/lib/api/blog';
@@ -17,6 +18,29 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const post = await fetchBlogPostBySlug(slug);
+    return {
+      title: post.title,
+      description: post.excerpt,
+      openGraph: {
+        type: 'article',
+        title: post.title,
+        description: post.excerpt,
+        images: post.imageUrl ? [{ url: post.imageUrl }] : [],
+        authors: [post.author],
+      },
+    };
+  } catch {
+    return {};
+  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
