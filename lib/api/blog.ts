@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import type { BlogPost } from '@/types';
 
 // 從 Markdown 檔案中移除 Front Matter，只保留內容
@@ -478,7 +480,7 @@ const postsMetadata = [
 ];
 
 // 🔥 動態載入文章內容
-export async function fetchBlogPosts(): Promise<BlogPost[]> {
+export const fetchBlogPosts = cache(async (): Promise<BlogPost[]> => {
   // 模擬網路延遲
   await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -491,7 +493,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
   );
 
   return postsWithContent;
-}
+});
 
 export async function fetchBlogPostById(id: number): Promise<BlogPost> {
   const posts = await fetchBlogPosts();
