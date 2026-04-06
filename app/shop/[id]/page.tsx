@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { mockProducts } from '@/constants/mockProducts';
 import { fetchProductById, fetchProductsByCategory } from '@/lib/api/products';
 import type { Product } from '@/types';
 
@@ -10,6 +11,14 @@ interface ProductPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+// 用 mock 資料預先靜態生成已知商品頁面
+// 等 fetchProducts() 串接真實 API 後，將 mockProducts 替換為 await fetchProducts()
+export function generateStaticParams() {
+  return mockProducts.map((product) => ({
+    id: String(product.id),
+  }));
 }
 
 export async function generateMetadata({

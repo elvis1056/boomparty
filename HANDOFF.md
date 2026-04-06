@@ -34,16 +34,16 @@
 ### 斷點 6：Layout 地區關鍵字 ✅
 - `app/layout.tsx`：title 加入「活動公關」，keywords 補充台北/台灣在地關鍵字
 
-### 斷點 4：商品個別頁面 `/shop/[id]`（部分完成）✅
-已完成：
-- `hooks/useProductCart.ts`（新增，option C：只給 ProductDetailContent 使用，ProductCard 不動）
-- `app/shop/[id]/page.tsx`（Server Component + generateMetadata）
+### 斷點 4：商品個別頁面 `/shop/[id]` ✅
+- `hooks/useProductCart.ts`（新增，只給 ProductDetailContent 使用，ProductCard 不動）
+- `app/shop/[id]/page.tsx`（Server Component + generateMetadata + generateStaticParams）
 - `app/shop/[id]/ProductDetailContent/index.tsx`（Client Component）
 - `app/shop/[id]/ProductDetailContent/style.ts`
-
-尚未完成（下一個 agent 繼續）：
-- `app/shop/ShopContent/index.tsx`：ProductGrid 商品卡片加 Link 連到 `/shop/${id}`
+- `features/shop/ProductGrid/index.tsx`：每張卡片加 Link 連至 `/shop/${id}`
 - `app/sitemap.ts`：加入商品個別頁 URL
+
+**`generateStaticParams` 說明：**
+目前用 `mockProducts` 預先靜態生成已知商品頁面。`dynamicParams = true`（Next.js 預設），mock 沒有的 ID 自動動態渲染，不會 404。等 `fetchProducts()` 串接真實 API 後，將 `mockProducts` 替換為 `await fetchProducts()` 即可，一行修改。
 
 ### 斷點 9：Zustand re-render 優化 ✅
 - `stores/authStore.ts`：`setAuth` 加 `isSameUser` 比較，token refresh 不換 user reference
@@ -167,7 +167,7 @@ Agent 不需要動程式碼，提醒用戶補充即可。
 | 項目 | 說明 |
 |------|------|
 | 購物車 store | `stores/cartStore.ts`，`addItem(productId, quantity)` |
-| 商品 API | `lib/api/products.ts`，`fetchProductById(id)` 打真實 API，`fetchProducts()` 是 mock |
+| 商品 API | `lib/api/products.ts`，`fetchProductById(id)` 打真實 API，`fetchProducts()` 是 mock。`generateStaticParams` 目前用 mock，換成真實 API 只需改一行 |
 | 商品型別 | `types/product.ts`，有 `id`, `name`, `description`, `price`, `stock`, `imageUrl`, `categoryId`, `categoryName` |
 | 認證狀態 | `stores/authStore.ts`，只需 auth 判斷時用 `state.user !== null`（boolean），避免訂閱整個 user 物件 |
 | Commit 規範 | 參考 `CLAUDE.md`，禁止 Co-Authored-By，需附中英文說明與 Revert 說明 |
