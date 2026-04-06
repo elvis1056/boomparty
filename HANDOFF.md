@@ -56,50 +56,31 @@
 
 ## 待執行斷點（按優先順序）
 
-### 🔴 斷點 4 剩餘任務（最優先）
+### 🔴 斷點 4.1：修正 `/shop/[id]` 404 問題（最優先）
 
-**1. `app/shop/ShopContent/index.tsx`（或 `features/shop/ProductGrid/index.tsx`）**
+**問題：** `fetchProductById(id)` 打真實 API，API 連不上或商品不存在時 `notFound()` → 404。`generateStaticParams` 用 mock 產生路徑，但頁面渲染沒有對齊，兩邊不一致。
 
-在商品卡片加上連結到詳細頁，給 Google 內部連結信號：
+**修法：** `app/shop/[id]/page.tsx` 的 `generateMetadata` 和 `ProductPage` 加 mock fallback：
 
 ```tsx
-// ProductGrid/index.tsx 的 map 改成：
-import Link from 'next/link';
+import { mockProducts } from '@/constants/mockProducts';
 
-{products.map((product) => (
-  <Link href={`/shop/${product.id}`} key={product.id} style={{ display: 'contents' }}>
-    <ProductCard product={product} />
-  </Link>
-))}
-```
-
-⚠️ `display: contents` 讓 Link 的 `<a>` 不影響 grid layout。  
-⚠️ ProductCard 內部的按鈕（加入購物車、立即購買）需加 `e.stopPropagation()` 阻止冒泡到 Link。  
-→ 這點要先確認 ProductCard 按鈕是否已有 stopPropagation（目前已有 ✅）
-
-**2. `app/sitemap.ts`**
-
-```ts
-import { fetchProducts } from '@/lib/api/products';
-
-// 在 staticPages 後加：
-let productPages: MetadataRoute.Sitemap = [];
-try {
-  const products = await fetchProducts();
-  productPages = products.map((product) => ({
-    url: `${BASE_URL}/shop/${product.id}`,
-    lastModified: new Date(product.updatedAt),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-} catch {
-  // mock 資料或 API 不可用時略過
+// API 失敗時 fallback 到 mock
+let product = await fetchProductById(numId).catch(() => null);
+if (!product) {
+  product = mockProducts.find((p) => p.id === numId) || null;
 }
-
-return [...staticPages, ...blogPages, ...productPages];
 ```
+
+兩個 function（`generateMetadata` 和 `ProductPage`）都要加。
+
+**未來切換真實 API 時的改動（共 4 行）：**
+1. 刪除 `generateMetadata` 的 fallback 3 行
+2. 刪除 `ProductPage` 的 fallback 3 行
+3. `generateStaticParams` 改成 `await fetchProducts()`
 
 ---
+
 
 ### 🔴 斷點 4.5：useProductCart hook 整合 ProductCard（路線 2）
 
