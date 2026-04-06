@@ -32,7 +32,8 @@ interface PaymentData {
 
 function CheckoutPageContent({ className }: CheckoutPageContentProps) {
   const router = useRouter();
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
+  const userEmail = useAuthStore((state) => state.user?.email);
   const { cart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [couponCode, setCouponCode] = useState('');
@@ -41,7 +42,7 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
   // 使用 useRef 儲存表單值（不觸發 re-render）
   const recipientNameRef = useRef('');
   const recipientPhoneRef = useRef('');
-  const recipientEmailRef = useRef(user?.email || '');
+  const recipientEmailRef = useRef(userEmail || '');
   const cityRef = useRef('');
   const districtRef = useRef('');
   const postalCodeRef = useRef('');
@@ -189,7 +190,7 @@ function CheckoutPageContent({ className }: CheckoutPageContentProps) {
   // 送出訂單
   const onSubmit = async () => {
     // 檢查登入
-    if (!user) {
+    if (!isLoggedIn) {
       alert('請先登入');
       router.push('/login');
       return;

@@ -15,15 +15,15 @@ interface CartPageContentProps {
 }
 
 function CartPageContent({ className }: CartPageContentProps) {
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const { cart, isLoading, loadCart, clearAllItems } = useCartStore();
 
   // 載入購物車
   useEffect(() => {
-    if (user) {
+    if (isLoggedIn) {
       loadCart();
     }
-  }, [user, loadCart]);
+  }, [isLoggedIn, loadCart]);
 
   // 清空購物車
   const clearCart = async () => {
@@ -38,7 +38,7 @@ function CartPageContent({ className }: CartPageContentProps) {
   };
 
   // 未登入
-  if (!user) {
+  if (!isLoggedIn) {
     return (
       <div className={className}>
         <div className="container">

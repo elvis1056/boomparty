@@ -14,16 +14,16 @@ interface CartButtonProps {
 }
 
 function CartButton({ className }: CartButtonProps) {
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const { loadCart, getTotalItems } = useCartStore();
   const totalItems = getTotalItems();
 
   // 只在已登入時載入購物車
   useEffect(() => {
-    if (user) {
+    if (isLoggedIn) {
       loadCart();
     }
-  }, [user, loadCart]);
+  }, [isLoggedIn, loadCart]);
 
   return (
     <Link className={className} href="/cart">

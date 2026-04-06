@@ -20,7 +20,8 @@ function Navbar({ className }: { className?: string }) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
+  const username = useAuthStore((state) => state.user?.username);
   const clearAuth = useAuthStore((state) => state.clearAuth);
 
   useEffect(() => {
@@ -97,13 +98,13 @@ function Navbar({ className }: { className?: string }) {
             <div className="auth-section">
               {mounted && (
                 <>
-                  {user ? (
+                  {isLoggedIn ? (
                     <div className="user-menu-wrapper">
                       <button
                         className="user-menu-button"
                         onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                       >
-                        <span className="user-name">{user.username}</span>
+                        <span className="user-name">{username}</span>
                         <span className="dropdown-icon">▼</span>
                       </button>
 
@@ -188,12 +189,10 @@ function Navbar({ className }: { className?: string }) {
               <div className="mobile-auth-section">
                 {mounted && (
                   <>
-                    {user ? (
+                    {isLoggedIn ? (
                       <>
                         <div className="mobile-user-info">
-                          <span className="mobile-user-name">
-                            {user.username}
-                          </span>
+                          <span className="mobile-user-name">{username}</span>
                         </div>
                         <Link
                           className="mobile-menu-link"

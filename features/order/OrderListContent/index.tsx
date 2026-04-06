@@ -27,14 +27,14 @@ const ORDER_STATUS_MAP: Record<OrderStatus, { label: string; color: string }> =
   };
 
 function OrderListContent({ className }: OrderListContentProps) {
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // 載入訂單列表
   useEffect(() => {
-    if (!user) return;
+    if (!isLoggedIn) return;
 
     const loadOrders = async () => {
       try {
@@ -51,10 +51,10 @@ function OrderListContent({ className }: OrderListContentProps) {
     };
 
     loadOrders();
-  }, [user]);
+  }, [isLoggedIn]);
 
   // 未登入
-  if (!user) {
+  if (!isLoggedIn) {
     return (
       <div className={className}>
         <div className="container">

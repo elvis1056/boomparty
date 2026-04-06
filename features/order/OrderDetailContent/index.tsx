@@ -40,7 +40,7 @@ const PAYMENT_METHOD_MAP: Record<PaymentMethod, string> = {
 function OrderDetailContent({ className }: OrderDetailContentProps) {
   const params = useParams();
   const orderId = Number(params.id);
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -67,7 +67,7 @@ function OrderDetailContent({ className }: OrderDetailContentProps) {
         }
 
         // 動態模式：未登入時不載入資料（讓組件顯示「請先登入」）
-        if (!user) {
+        if (!isLoggedIn) {
           setIsLoading(false);
           return;
         }
@@ -84,7 +84,7 @@ function OrderDetailContent({ className }: OrderDetailContentProps) {
     };
 
     loadOrder();
-  }, [user, orderId]);
+  }, [isLoggedIn, orderId]);
 
   // 取消訂單
   const doCancelOrder = async () => {
@@ -110,7 +110,7 @@ function OrderDetailContent({ className }: OrderDetailContentProps) {
     (order.status === 'ORDER_PENDING' || order.status === 'ORDER_PAID');
 
   // 未登入
-  if (!user) {
+  if (!isLoggedIn) {
     return (
       <div className={className}>
         <div className="container">

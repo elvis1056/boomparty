@@ -14,20 +14,29 @@ interface AuthState {
   clearAuth: () => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
   accessToken: null,
   user: null,
 
   setAuth: (response: AuthResponse) => {
+    const currentUser = get().user;
+    const isSameUser =
+      currentUser !== null &&
+      currentUser.username === response.username &&
+      currentUser.email === response.email;
+
     // Access Token 存在記憶體 (Zustand)
     // Refresh Token 由後端存在 HttpOnly Cookie，前端不需要處理
+    // isSameUser：token refresh 時不重建 user 物件，避免觸發不必要的 re-render
     set({
       accessToken: response.token,
-      user: {
-        id: response.username, // 後端沒有 id，暫時用 username
-        username: response.username,
-        email: response.email,
-      },
+      user: isSameUser
+        ? currentUser
+        : {
+            id: response.username, // 後端沒有 id，暫時用 username
+            username: response.username,
+            email: response.email,
+          },
     });
   },
 

@@ -19,7 +19,7 @@ interface ProductCardProps {
 
 function ProductCard({ product, className }: ProductCardProps) {
   const router = useRouter();
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
@@ -90,7 +90,7 @@ function ProductCard({ product, className }: ProductCardProps) {
   const addToCart = async (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    if (!user) {
+    if (!isLoggedIn) {
       router.push('/login');
       return;
     }
@@ -117,7 +117,7 @@ function ProductCard({ product, className }: ProductCardProps) {
   const buyNowGotoCart = async (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    if (!user) {
+    if (!isLoggedIn) {
       router.push('/login');
       return;
     }

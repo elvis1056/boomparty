@@ -10,7 +10,7 @@ import CheckoutContent from './CheckoutContent';
 import CheckoutEmpty from './CheckoutEmpty';
 
 export default function CheckoutPage() {
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.user !== null);
   const { cart } = useCartStore();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
   }, []);
 
   // 未登入
-  if (!user) {
+  if (!isLoggedIn) {
     return <CheckoutEmpty type="not-logged-in" />;
   }
 
