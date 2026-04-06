@@ -177,30 +177,9 @@ Agent 不需要動程式碼，提醒用戶補充即可。
 
 ## Git 狀態
 
-斷點 1/2/3/6 已 commit。  
-斷點 4（部分）+ 斷點 9 已完成但尚未 commit，下一個 agent 接手後先 commit 再繼續。
+所有斷點均已 commit，working tree 乾淨。
 
-**待 commit 清單：**
-
-```
-Commit 1 - feat: add product detail page /shop/[id]
-  hooks/useProductCart.ts
-  app/shop/[id]/page.tsx
-  app/shop/[id]/ProductDetailContent/index.tsx
-  app/shop/[id]/ProductDetailContent/style.ts
-
-Commit 2 - perf: fix Zustand re-render on token refresh
-  stores/authStore.ts
-  features/shop/ProductCard/index.tsx
-  components/CartButton/index.tsx
-  components/Navbar/index.tsx
-  app/checkout/CheckoutContent/index.tsx
-  app/checkout/page.tsx
-  features/cart/CartPageContent/index.tsx
-  features/order/OrderListContent/index.tsx
-  features/order/OrderDetailContent/index.tsx
-
-Commit 3 - docs: update HANDOFF and SEO plan
-  HANDOFF.md
-  SEO_FIX_PLAN.md
-```
+已完成 commit：
+- 斷點 1/2/3/6
+- 斷點 9：Zustand re-render 優化
+- 斷點 4：商品個別頁面（含 generateStaticParams）
