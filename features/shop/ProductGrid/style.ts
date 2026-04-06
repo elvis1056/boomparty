@@ -5,6 +5,10 @@ import { theme } from '@/constants/theme';
 export default css`
   width: 100%;
 
+  .product-link {
+    display: contents;
+  }
+
   .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

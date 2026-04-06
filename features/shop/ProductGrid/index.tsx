@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import type { Product } from '@/types';
@@ -28,7 +29,13 @@ function ProductGrid({ products, className }: ProductGridProps) {
     <div className={className}>
       <div className="product-grid">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <Link
+            className="product-link"
+            href={`/shop/${product.id}`}
+            key={product.id}
+          >
+            <ProductCard product={product} />
+          </Link>
         ))}
       </div>
     </div>

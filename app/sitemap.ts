@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { fetchBlogPosts } from '@/lib/api/blog';
+import { fetchProducts } from '@/lib/api/products';
 
 const BASE_URL = 'https://boomparty.tw';
 
@@ -46,5 +47,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 後端不可用時略過動態文章，靜態頁面仍正常輸出
   }
 
-  return [...staticPages, ...blogPages];
+  // 動態載入所有商品頁
+  let productPages: MetadataRoute.Sitemap = [];
+  try {
+    const products = await fetchProducts();
+    productPages = products.map((product) => ({
+      url: `${BASE_URL}/shop/${product.id}`,
+      lastModified: new Date(product.updatedAt),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // API 不可用時略過，靜態頁面仍正常輸出
+  }
+
+  return [...staticPages, ...blogPages, ...productPages];
 }
