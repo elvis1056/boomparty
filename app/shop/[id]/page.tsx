@@ -26,7 +26,10 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
 
-  const product = await fetchProductById(Number(id)).catch(() => null);
+  const fetched = await fetchProductById(Number(id)).catch(() => null);
+  const product = fetched
+    ? fetched
+    : mockProducts.find((p) => p.id === Number(id));
 
   if (!product) {
     return {};
@@ -34,10 +37,10 @@ export async function generateMetadata({
 
   return {
     title: `${product.name} | 台灣氣球佈置 蹦娛樂 BoomParty`,
-    description: product.description,
+    description: `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`,
     openGraph: {
       title: `${product.name} | 台灣氣球佈置 蹦娛樂 BoomParty`,
-      description: product.description,
+      description: `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`,
       images: product.imageUrl ? [{ url: product.imageUrl }] : [],
     },
   };
@@ -46,7 +49,10 @@ export async function generateMetadata({
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
 
-  const product = await fetchProductById(Number(id)).catch(() => null);
+  const fetched = await fetchProductById(Number(id)).catch(() => null);
+  const product = fetched
+    ? fetched
+    : mockProducts.find((p) => p.id === Number(id));
 
   if (!product) {
     notFound();
