@@ -12,12 +12,14 @@ export default css`
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     .home-banner {
+      min-width: 0;
       padding: 1.5rem;
     }
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
     .home-banner {
+      min-width: 0;
       padding: 1rem 1rem 0rem;
     }
   }
