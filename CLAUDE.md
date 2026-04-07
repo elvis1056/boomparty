@@ -454,6 +454,11 @@ English details:
 - Body 先寫英文說明，再附上中文翻譯
 - 標題和 body 中間空一行
 
+**❌ Commit message 內容規範**
+
+- **禁止使用只有當前對話才看得懂的術語**（如「option C」、「路線 2」、「斷點 4」等內部討論用語）。Commit message 要讓任何人在沒有上下文的情況下也能理解改了什麼、為什麼改。
+- **【Revert 說明】只寫 revert 這個 commit 本身的影響**，不要夾帶 todo list、未完成項目提醒或其他與 revert 無關的資訊。
+
 **❌ 重要：不要添加 Co-Authored-By**
 ```
 # ❌ 錯誤：不要加入 Co-Authored-By
