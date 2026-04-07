@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import 'github-markdown-css/github-markdown-light.css';
 
 import { AuthInit } from '@/components/AuthInit';
-import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
 import { QueryProvider } from './query-provider';
@@ -98,7 +97,6 @@ export default function RootLayout({
             <AuthInit />
             <Navbar />
             {children}
-            <Footer />
           </QueryProvider>
         </GoogleOAuthProvider>
       </body>
