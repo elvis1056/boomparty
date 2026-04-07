@@ -2,10 +2,13 @@
 
 import classnames from 'classnames';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import ProductCard from '@/features/shop/ProductCard';
 import { useProductCart } from '@/hooks/useProductCart';
+import { useCartStore } from '@/stores/cartStore';
 import type { Product } from '@/types';
 
 import style from './style';
@@ -21,6 +24,10 @@ function ProductDetailContent({
   product,
   relatedProducts,
 }: ProductDetailContentProps) {
+  const router = useRouter();
+  const getTotalItems = useCartStore((state) => state.getTotalItems);
+  const totalCartItems = getTotalItems();
+
   const {
     quantity,
     isAdding,
@@ -37,6 +44,15 @@ function ProductDetailContent({
 
   return (
     <div className={className}>
+      {/* 麵包屑 */}
+      <Breadcrumb
+        items={[
+          { label: '首頁', href: '/' },
+          { label: '商品', href: '/shop' },
+          { label: product.name },
+        ]}
+      />
+
       <section className="product-section">
         {/* 左欄：商品圖片 */}
         <div className="product-image-wrapper">
@@ -112,7 +128,7 @@ function ProductDetailContent({
             </div>
           </div>
 
-          {/* 按鈕區 */}
+          {/* 按鈕區（桌機顯示） */}
           <div className="product-actions">
             <button
               className={classnames('add-to-cart', { added: justAdded })}
@@ -133,6 +149,77 @@ function ProductDetailContent({
           </div>
         </div>
       </section>
+
+      {/* 固定底部購買列（手機顯示） */}
+      <div className="fixed-bottom-bar">
+        {/* 左側 icon 群 */}
+        <div className="bar-icons">
+          <button className="bar-icon-btn" type="button">
+            <svg
+              fill="none"
+              height="22"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.8"
+              viewBox="0 0 24 24"
+              width="22"
+            >
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span>追蹤</span>
+          </button>
+
+          <button
+            className="bar-icon-btn cart-btn"
+            onClick={() => router.push('/cart')}
+            type="button"
+          >
+            <div className="cart-icon-wrap">
+              <svg
+                fill="none"
+                height="22"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+                viewBox="0 0 24 24"
+                width="22"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              {totalCartItems > 0 && (
+                <span className="cart-badge">
+                  {totalCartItems > 99 ? '99+' : totalCartItems}
+                </span>
+              )}
+            </div>
+            <span>購物車</span>
+          </button>
+        </div>
+
+        {/* 右側行動按鈕 */}
+        <div className="bar-actions">
+          <button
+            className={classnames('fixed-add-to-cart', { added: justAdded })}
+            disabled={isAdding || justAdded || isOutOfStock}
+            onClick={addToCart}
+            type="button"
+          >
+            {isAdding ? '加入中...' : justAdded ? '✓ 已加入' : '加入購物車'}
+          </button>
+          <button
+            className="fixed-buy-now"
+            disabled={isOutOfStock}
+            onClick={buyNowGotoCart}
+            type="button"
+          >
+            立即購買
+          </button>
+        </div>
+      </div>
 
       {/* 你可能也喜歡 */}
       {relatedProducts.length > 0 && (

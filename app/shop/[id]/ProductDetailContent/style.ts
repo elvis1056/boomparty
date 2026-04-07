@@ -253,9 +253,14 @@ export default css`
     }
   }
 
+  /* ── 固定底部購買列 ── */
+  .fixed-bottom-bar {
+    display: none;
+  }
+
   /* ── Mobile ── */
   @media (max-width: ${theme.breakpoints.tablet}) {
-    padding: 1.25rem 1rem 3rem;
+    padding: 1.25rem 1rem 5.5rem;
 
     .product-section {
       flex-direction: column;
@@ -285,6 +290,143 @@ export default css`
       .related-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.875rem;
+      }
+    }
+
+    .product-info .product-actions {
+      display: none;
+    }
+
+    .fixed-bottom-bar {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 56px;
+      padding: 0 0.5rem;
+      gap: 0;
+      background: ${theme.colors.neutral.white};
+      border-top: 1px solid ${theme.colors.neutral.gray200};
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+
+      /* 左側 icon 群 */
+      .bar-icons {
+        display: flex;
+        align-items: stretch;
+        flex-shrink: 0;
+
+        .bar-icon-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2px;
+          width: 52px;
+          height: 56px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: ${theme.colors.neutral.gray600};
+          padding: 0;
+          position: relative;
+          border-right: 1px solid ${theme.colors.neutral.gray200};
+
+          &:active {
+            background: ${theme.colors.neutral.gray100};
+          }
+
+          svg {
+            flex-shrink: 0;
+          }
+
+          span {
+            font-size: 10px;
+            line-height: 1;
+            white-space: nowrap;
+          }
+
+          /* 購物車 icon + badge */
+          .cart-icon-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .cart-badge {
+              position: absolute;
+              top: -6px;
+              right: -8px;
+              min-width: 16px;
+              height: 16px;
+              padding: 0 3px;
+              background: ${theme.colors.error};
+              color: ${theme.colors.neutral.white};
+              border-radius: 8px;
+              font-size: 10px;
+              font-weight: ${theme.typography.fontWeight.bold};
+              line-height: 16px;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      /* 右側行動按鈕 */
+      .bar-actions {
+        display: flex;
+        flex: 1;
+        align-items: stretch;
+        gap: 0;
+        height: 100%;
+        padding: 0.5rem 0.375rem 0.5rem 0.5rem;
+
+        .fixed-add-to-cart,
+        .fixed-buy-now {
+          flex: 1;
+          height: 100%;
+          border-radius: ${theme.borderRadius.md};
+          font-size: ${theme.typography.fontSize.sm};
+          font-weight: ${theme.typography.fontWeight.semibold};
+          cursor: pointer;
+          border: none;
+          white-space: nowrap;
+          transition: all 0.15s ease;
+
+          &:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+          }
+        }
+
+        .fixed-add-to-cart {
+          background: ${theme.colors.neutral.white};
+          color: ${theme.colors.primary.main};
+          border: 1.5px solid ${theme.colors.primary.main};
+          margin-right: 0.375rem;
+
+          &:active:not(:disabled) {
+            background: ${theme.colors.primary.light};
+            color: ${theme.colors.neutral.white};
+          }
+
+          &.added {
+            background: ${theme.colors.success};
+            color: ${theme.colors.neutral.white};
+            border-color: ${theme.colors.success};
+          }
+        }
+
+        .fixed-buy-now {
+          background: ${theme.colors.primary.main};
+          color: ${theme.colors.neutral.white};
+
+          &:active:not(:disabled) {
+            background: ${theme.colors.primary.dark};
+          }
+        }
       }
     }
   }
