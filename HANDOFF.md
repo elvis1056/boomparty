@@ -1,7 +1,7 @@
 # Agent 交接文件
 
 > 建立日期：2026-04-04  
-> 更新日期：2026-04-06  
+> 更新日期：2026-04-07  
 > 專案：boomparty（Next.js 電商前台）  
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -45,6 +45,21 @@
 **`generateStaticParams` 說明：**
 目前用 `mockProducts` 預先靜態生成已知商品頁面。`dynamicParams = true`（Next.js 預設），mock 沒有的 ID 自動動態渲染，不會 404。等 `fetchProducts()` 串接真實 API 後，將 `mockProducts` 替換為 `await fetchProducts()` 即可，一行修改。
 
+### 斷點 4.1：`/shop/[id]` API 失敗時 404 修正 ✅
+- `app/shop/[id]/page.tsx`：`generateMetadata` 和 `ProductPage` 都加 mock fallback，API 失敗時自動用 `mockProducts.find()` 渲染
+
+### 斷點 4.2：麵包屑 + metadata description 補完 ✅（未 commit）
+- `components/Breadcrumb/index.tsx`（新增，可複用）
+- `components/Breadcrumb/style.ts`（手機版 `max-width: 140px` truncate）
+- `app/shop/[id]/ProductDetailContent/index.tsx`：引入 `<Breadcrumb>` 取代 inline nav
+- `app/shop/[id]/page.tsx`：description 格式改為 `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`
+
+### 手機版固定底部購買列（未 commit）
+- `app/shop/[id]/ProductDetailContent/index.tsx`：新增 fixed bottom bar（高度 56px）
+  - 左側 icon 群：追蹤（heart SVG）、購物車（cart SVG + 紅色 badge 數量，點擊跳 `/cart`）
+  - 右側：加入購物車、立即購買
+- 手機版隱藏右欄 `.product-actions`，改用 fixed bar；桌機不顯示 fixed bar
+
 ### 斷點 9：Zustand re-render 優化 ✅
 - `stores/authStore.ts`：`setAuth` 加 `isSameUser` 比較，token refresh 不換 user reference
 - 8 個元件的 `useAuthStore` selector 從 `state.user`（物件）改為 scalar：
@@ -55,32 +70,6 @@
 ---
 
 ## 待執行斷點（按優先順序）
-
-### 🔴 斷點 4.1：修正 `/shop/[id]` 404 問題（最優先）
-
-**問題：** `fetchProductById(id)` 打真實 API，API 連不上或商品不存在時 `notFound()` → 404。`generateStaticParams` 用 mock 產生路徑，但頁面渲染沒有對齊，兩邊不一致。
-
-**修法：** `app/shop/[id]/page.tsx` 的 `generateMetadata` 和 `ProductPage` 加 mock fallback：
-
-```tsx
-import { mockProducts } from '@/constants/mockProducts';
-
-// API 失敗時 fallback 到 mock
-let product = await fetchProductById(numId).catch(() => null);
-if (!product) {
-  product = mockProducts.find((p) => p.id === numId) || null;
-}
-```
-
-兩個 function（`generateMetadata` 和 `ProductPage`）都要加。
-
-**未來切換真實 API 時的改動（共 4 行）：**
-1. 刪除 `generateMetadata` 的 fallback 3 行
-2. 刪除 `ProductPage` 的 fallback 3 行
-3. `generateStaticParams` 改成 `await fetchProducts()`
-
----
-
 
 ### 🔴 斷點 4.5：useProductCart hook 整合 ProductCard（路線 2）
 
@@ -158,9 +147,15 @@ Agent 不需要動程式碼，提醒用戶補充即可。
 
 ## Git 狀態
 
-所有斷點均已 commit，working tree 乾淨。
-
-已完成 commit：
+**已 commit：**
 - 斷點 1/2/3/6
 - 斷點 9：Zustand re-render 優化
 - 斷點 4：商品個別頁面（含 generateStaticParams）
+- 斷點 4.1：mock fallback 修正 404
+- Footer 移至 `(home)` layout（首頁限定）
+- 首頁 Banner 手機版 `min-width` 破版修正
+
+**未 commit（本次對話改動）：**
+- 斷點 4.2：`components/Breadcrumb/`（新增）、`ProductDetailContent` 引入麵包屑、metadata description 格式
+- 手機版固定底部購買列（`ProductDetailContent` index + style）
+- `CLAUDE.md` commit message 規範補充
