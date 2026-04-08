@@ -48,8 +48,11 @@ function ProductDetailContent({
       <Breadcrumb
         items={[
           { label: '首頁', href: '/' },
-          { label: '商品', href: '/shop' },
-          { label: product.name },
+          { label: '商城', href: '/shop' },
+          ...(product.parentCategoryName
+            ? [{ label: product.parentCategoryName }]
+            : []),
+          ...(product.categoryName ? [{ label: product.categoryName }] : []),
         ]}
       />
 

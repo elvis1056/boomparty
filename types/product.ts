@@ -8,6 +8,8 @@ export interface Product {
   active: boolean;
   categoryId: number | null;
   categoryName: string;
+  parentCategoryId: number | null;
+  parentCategoryName: string | null;
   featured: boolean;
   createdAt: string;
   updatedAt: string;
