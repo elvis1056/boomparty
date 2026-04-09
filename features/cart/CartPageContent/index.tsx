@@ -8,6 +8,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { useCartStore } from '@/stores/cartStore';
 
 import CartItem from './CartItem';
+import GuestCartItem from './GuestCartItem';
 import style from './style';
 
 interface CartPageContentProps {
@@ -16,7 +17,8 @@ interface CartPageContentProps {
 
 function CartPageContent({ className }: CartPageContentProps) {
   const isLoggedIn = useAuthStore((state) => state.user !== null);
-  const { cart, isLoading, loadCart, clearAllItems } = useCartStore();
+  const { cart, isLoading, loadCart, clearAllItems, guestItems } =
+    useCartStore();
 
   // 載入購物車
   useEffect(() => {
@@ -37,17 +39,87 @@ function CartPageContent({ className }: CartPageContentProps) {
     }
   };
 
-  // 未登入
+  // 未登入：顯示 guest cart
   if (!isLoggedIn) {
+    const guestTotal = guestItems.reduce(
+      (sum, item) => sum + item.productPrice * item.quantity,
+      0
+    );
+
+    if (guestItems.length === 0) {
+      return (
+        <div className={className}>
+          <div className="container">
+            <div className="empty-cart">
+              <div className="empty-icon">🛒</div>
+              <h2 className="empty-title">購物車是空的</h2>
+              <p className="empty-description">快去挑選喜歡的商品吧！</p>
+              <Link className="continue-shopping-btn" href="/shop">
+                前往商城
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className={className}>
         <div className="container">
-          <div className="empty-cart">
-            <div className="empty-icon">🔒</div>
-            <h2 className="empty-title">請先登入</h2>
-            <p className="empty-description">登入後即可查看購物車內容</p>
-            <Link className="continue-shopping-btn" href="/login">
-              前往登入
+          <div className="cart-header">
+            <h1 className="cart-title">購物車</h1>
+          </div>
+
+          <div className="guest-banner">
+            💡 登入後即可結帳，目前商品已暫存於本機。
+            <Link className="login-link" href="/login">
+              立即登入
+            </Link>
+          </div>
+
+          <div className="cart-layout">
+            <div className="cart-items">
+              {guestItems.map((item) => (
+                <GuestCartItem item={item} key={item.productId} />
+              ))}
+            </div>
+
+            <div className="cart-summary">
+              <h2 className="summary-title">訂單摘要</h2>
+
+              <div className="summary-row">
+                <span className="summary-label">商品種類</span>
+                <span className="summary-value">{guestItems.length} 項</span>
+              </div>
+
+              <div className="summary-divider" />
+
+              <div className="summary-row total">
+                <span className="summary-label">總計</span>
+                <span className="summary-value">
+                  NT$ {guestTotal.toLocaleString()}
+                </span>
+              </div>
+
+              <Link className="checkout-btn" href="/login">
+                登入後結帳
+              </Link>
+
+              <Link className="continue-shopping-link" href="/shop">
+                繼續購物
+              </Link>
+            </div>
+          </div>
+
+          <div className="mobile-checkout-bar">
+            <div className="mobile-checkout-total">
+              <span className="mobile-total-label">總計</span>
+              <span className="mobile-total-value">
+                NT$ {guestTotal.toLocaleString()}
+              </span>
+            </div>
+            <Link className="mobile-checkout-btn" href="/login">
+              登入後結帳
             </Link>
           </div>
         </div>
