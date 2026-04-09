@@ -28,6 +28,7 @@ export function useProductCart(product: Product): UseProductCartReturn {
   const [isAdding, setIsAdding] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
+  const addGuestItem = useCartStore((state) => state.addGuestItem);
 
   const maxStock = product.stock ? product.stock : 99;
   const isOutOfStock = maxStock === 0;
@@ -78,12 +79,22 @@ export function useProductCart(product: Product): UseProductCartReturn {
   };
 
   const addToCart = async () => {
+    if (isAdding || justAdded || isOutOfStock) return;
+
     if (!isLoggedIn) {
-      router.push('/login');
+      addGuestItem({
+        productId: product.id,
+        productName: product.name,
+        productPrice: product.price,
+        productImageUrl: product.imageUrl,
+        quantity,
+      });
+      setJustAdded(true);
+      setTimeout(() => {
+        setJustAdded(false);
+      }, 1500);
       return;
     }
-
-    if (isAdding || justAdded || isOutOfStock) return;
 
     setIsAdding(true);
     try {
@@ -101,12 +112,19 @@ export function useProductCart(product: Product): UseProductCartReturn {
   };
 
   const buyNowGotoCart = async () => {
+    if (isOutOfStock) return;
+
     if (!isLoggedIn) {
-      router.push('/login');
+      addGuestItem({
+        productId: product.id,
+        productName: product.name,
+        productPrice: product.price,
+        productImageUrl: product.imageUrl,
+        quantity,
+      });
+      router.push('/cart');
       return;
     }
-
-    if (isOutOfStock) return;
 
     try {
       await addItem(product.id, quantity);
