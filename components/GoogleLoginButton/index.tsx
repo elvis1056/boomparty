@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 import { useAuthStore } from '@/stores/authStore';
+import { useCartStore } from '@/stores/cartStore';
 
 import style from './style';
 
@@ -15,6 +16,7 @@ interface GoogleLoginButtonProps {
 function GoogleLoginButton({ className }: GoogleLoginButtonProps) {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const syncGuestCart = useCartStore((state) => state.syncGuestCart);
 
   const loginWithGoogle = async (credentialResponse: CredentialResponse) => {
     try {
@@ -46,8 +48,7 @@ function GoogleLoginButton({ className }: GoogleLoginButtonProps) {
 
       // 儲存 token 和用戶資訊
       setAuth(data);
-
-      // 導向首頁
+      await syncGuestCart();
       router.push('/');
     } catch (error) {
       console.error('Google login error:', error);

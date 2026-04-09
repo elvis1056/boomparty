@@ -15,8 +15,8 @@ interface CartButtonProps {
 
 function CartButton({ className }: CartButtonProps) {
   const isLoggedIn = useAuthStore((state) => state.user !== null);
-  const { loadCart, getTotalItems } = useCartStore();
-  const totalItems = getTotalItems();
+  const { loadCart, getTotalItems, getTotalGuestItems } = useCartStore();
+  const totalItems = isLoggedIn ? getTotalItems() : getTotalGuestItems();
 
   // 只在已登入時載入購物車
   useEffect(() => {

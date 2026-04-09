@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { login, loginWithFacebook } from '@/lib/api/auth';
 import { useAuthStore } from '@/stores/authStore';
+import { useCartStore } from '@/stores/cartStore';
 
 import style from './style';
 
@@ -18,6 +19,7 @@ interface LoginContentProps {
 function LoginContent({ className }: LoginContentProps) {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const syncGuestCart = useCartStore((state) => state.syncGuestCart);
 
   const [formData, setFormData] = useState({
     username: '',
@@ -34,6 +36,7 @@ function LoginContent({ className }: LoginContentProps) {
     try {
       const response = await login(formData);
       setAuth(response);
+      await syncGuestCart();
       router.push('/');
     } catch (err) {
       setError(err instanceof Error ? err.message : '登入失敗');

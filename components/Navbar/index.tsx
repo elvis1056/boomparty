@@ -10,6 +10,7 @@ import { Logo } from '@/components/Logo';
 import { logout as logoutApi } from '@/lib/api/auth';
 import { csrfManager } from '@/lib/security/csrfManager';
 import { useAuthStore } from '@/stores/authStore';
+import { useCartStore } from '@/stores/cartStore';
 
 import style from './style';
 
@@ -23,6 +24,7 @@ function Navbar({ className }: { className?: string }) {
   const isLoggedIn = useAuthStore((state) => state.user !== null);
   const username = useAuthStore((state) => state.user?.username);
   const clearAuth = useAuthStore((state) => state.clearAuth);
+  const clearGuestItems = useCartStore((state) => state.clearGuestItems);
 
   useEffect(() => {
     setMounted(true);
@@ -43,6 +45,7 @@ function Navbar({ className }: { className?: string }) {
       console.error('Logout failed:', error);
     } finally {
       clearAuth();
+      clearGuestItems();
       csrfManager.clearToken();
       router.push('/');
     }
