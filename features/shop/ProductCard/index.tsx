@@ -2,6 +2,7 @@
 
 import classnames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import { useProductCart } from '@/hooks/useProductCart';
@@ -32,25 +33,29 @@ function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <article className={className}>
-      <div className="card-image-wrapper">
-        <div className="card-image">
-          {product.imageUrl ? (
-            <Image
-              alt={`${product.name} 氣球佈置 蹦娛樂 BoomParty`}
-              fill
-              src={product.imageUrl}
-              style={{ objectFit: 'contain' }}
-            />
-          ) : (
-            <span className="image-placeholder">🎈</span>
-          )}
+      <Link className="card-image-link" href={`/shop/${product.id}`}>
+        <div className="card-image-wrapper">
+          <div className="card-image">
+            {product.imageUrl ? (
+              <Image
+                alt={`${product.name} 氣球佈置 蹦娛樂 BoomParty`}
+                fill
+                src={product.imageUrl}
+                style={{ objectFit: 'contain' }}
+              />
+            ) : (
+              <span className="image-placeholder">🎈</span>
+            )}
+          </div>
+          {product.featured && <span className="badge">熱門</span>}
+          {isOutOfStock && <span className="badge out-of-stock">缺貨</span>}
         </div>
-        {product.featured && <span className="badge">熱門</span>}
-        {isOutOfStock && <span className="badge out-of-stock">缺貨</span>}
-      </div>
+      </Link>
 
       <div className="card-info">
-        <h3 className="card-name">{product.name}</h3>
+        <Link className="card-name-link" href={`/shop/${product.id}`}>
+          <h3 className="card-name">{product.name}</h3>
+        </Link>
         <p className="card-description">{product.description}</p>
 
         <div className="card-price">
@@ -65,10 +70,7 @@ function ProductCard({ product, className }: ProductCardProps) {
             <button
               className="quantity-decrease"
               disabled={quantity <= 1 || isOutOfStock}
-              onClick={(e) => {
-                e.stopPropagation();
-                decreaseQuantity();
-              }}
+              onClick={decreaseQuantity}
               type="button"
             >
               −
@@ -78,10 +80,7 @@ function ProductCard({ product, className }: ProductCardProps) {
               disabled={isOutOfStock}
               onBlur={blurQuantity}
               onChange={changeQuantity}
-              onClick={(e) => {
-                e.stopPropagation();
-                clickQuantityInput(e);
-              }}
+              onClick={clickQuantityInput}
               pattern="[0-9]*"
               type="number"
               value={quantity === 0 ? '' : quantity}
@@ -89,10 +88,7 @@ function ProductCard({ product, className }: ProductCardProps) {
             <button
               className="quantity-increase"
               disabled={quantity >= maxStock || isOutOfStock}
-              onClick={(e) => {
-                e.stopPropagation();
-                increaseQuantity();
-              }}
+              onClick={increaseQuantity}
               type="button"
             >
               +
@@ -105,10 +101,7 @@ function ProductCard({ product, className }: ProductCardProps) {
           <button
             className={classnames('add-to-cart', { added: justAdded })}
             disabled={isAdding || justAdded || isOutOfStock}
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart();
-            }}
+            onClick={addToCart}
             type="button"
           >
             {isAdding ? '加入中...' : justAdded ? '✓ 已加入' : '加入購物車'}
@@ -116,10 +109,7 @@ function ProductCard({ product, className }: ProductCardProps) {
           <button
             className="buy-now"
             disabled={isOutOfStock}
-            onClick={(e) => {
-              e.stopPropagation();
-              buyNowGotoCart();
-            }}
+            onClick={buyNowGotoCart}
             type="button"
           >
             立即購買

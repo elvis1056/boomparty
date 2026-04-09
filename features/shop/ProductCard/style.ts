@@ -19,6 +19,16 @@ export default css`
     display: block;
   }
 
+  .card-name-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover .card-name {
+      color: ${theme.colors.primary.main};
+    }
+  }
+
   .card-image-wrapper {
     position: relative;
     width: 100%;

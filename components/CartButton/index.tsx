@@ -18,8 +18,10 @@ function CartButton({ className }: CartButtonProps) {
   const { loadCart, getTotalItems, getTotalGuestItems } = useCartStore();
   const totalItems = isLoggedIn ? getTotalItems() : getTotalGuestItems();
 
-  // 只在已登入時載入購物車
   useEffect(() => {
+    // 從 localStorage rehydrate guest cart（skipHydration: true 防止 SSR mismatch）
+    useCartStore.persist.rehydrate();
+
     if (isLoggedIn) {
       loadCart();
     }

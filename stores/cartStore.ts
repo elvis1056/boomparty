@@ -244,6 +244,7 @@ export const useCartStore = create<CartStore>()(
         }
         return ttlStorage;
       }),
+      skipHydration: true,
     }
   )
 );
