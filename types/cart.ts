@@ -29,6 +29,17 @@ export interface Cart {
 }
 
 /**
+ * 未登入時的本地購物車項目（存於 localStorage）
+ */
+export interface GuestCartItem {
+  productId: number;
+  productName: string;
+  productPrice: number;
+  productImageUrl: string | null;
+  quantity: number;
+}
+
+/**
  * 加入購物車的請求 Body
  */
 export interface AddToCartRequest {

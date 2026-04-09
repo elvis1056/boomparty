@@ -23,6 +23,7 @@ export type {
 export type {
   Cart,
   CartItem,
+  GuestCartItem,
   AddToCartRequest,
   UpdateCartItemRequest,
 } from './cart';
