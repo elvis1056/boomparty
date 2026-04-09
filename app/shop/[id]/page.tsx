@@ -66,7 +66,62 @@ export default async function ProductPage({ params }: ProductPageProps) {
     relatedProducts = all.filter((p) => p.id !== product.id).slice(0, 4);
   }
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.imageUrl,
+    description: `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`,
+    offers: {
+      '@type': 'Offer',
+      price: String(product.price),
+      priceCurrency: 'TWD',
+      availability:
+        product.stock === 0
+          ? 'https://schema.org/OutOfStock'
+          : 'https://schema.org/InStock',
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: '首頁',
+        item: 'https://boomparty.tw',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '商品',
+        item: 'https://boomparty.tw/shop',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.name,
+        item: `https://boomparty.tw/shop/${product.id}`,
+      },
+    ],
+  };
+
   return (
-    <ProductDetailContent product={product} relatedProducts={relatedProducts} />
+    <>
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        type="application/ld+json"
+      />
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        type="application/ld+json"
+      />
+      <ProductDetailContent
+        product={product}
+        relatedProducts={relatedProducts}
+      />
+    </>
   );
 }
