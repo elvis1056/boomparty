@@ -15,6 +15,10 @@ export default css`
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
+  .card-image-link {
+    display: block;
+  }
+
   .card-image-wrapper {
     position: relative;
     width: 100%;

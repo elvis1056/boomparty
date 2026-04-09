@@ -12,13 +12,13 @@ interface UseProductCartReturn {
   maxStock: number;
   isOutOfStock: boolean;
   isLoggedIn: boolean;
-  decreaseQuantity: (e: React.MouseEvent) => void;
-  increaseQuantity: (e: React.MouseEvent) => void;
+  decreaseQuantity: () => void;
+  increaseQuantity: () => void;
   changeQuantity: (e: React.ChangeEvent<HTMLInputElement>) => void;
   blurQuantity: () => void;
   clickQuantityInput: (e: React.MouseEvent<HTMLInputElement>) => void;
-  addToCart: (e: React.MouseEvent) => Promise<void>;
-  buyNowGotoCart: (e: React.MouseEvent) => Promise<void>;
+  addToCart: () => Promise<void>;
+  buyNowGotoCart: () => Promise<void>;
 }
 
 export function useProductCart(product: Product): UseProductCartReturn {
@@ -32,15 +32,13 @@ export function useProductCart(product: Product): UseProductCartReturn {
   const maxStock = product.stock ? product.stock : 99;
   const isOutOfStock = maxStock === 0;
 
-  const decreaseQuantity = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
 
-  const increaseQuantity = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const increaseQuantity = () => {
     if (quantity < maxStock) {
       setQuantity(quantity + 1);
     }
@@ -75,14 +73,11 @@ export function useProductCart(product: Product): UseProductCartReturn {
   };
 
   const clickQuantityInput = (e: React.MouseEvent<HTMLInputElement>) => {
-    e.stopPropagation();
     const target = e.target as HTMLInputElement;
     target.select();
   };
 
-  const addToCart = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-
+  const addToCart = async () => {
     if (!isLoggedIn) {
       router.push('/login');
       return;
@@ -105,9 +100,7 @@ export function useProductCart(product: Product): UseProductCartReturn {
     }
   };
 
-  const buyNowGotoCart = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-
+  const buyNowGotoCart = async () => {
     if (!isLoggedIn) {
       router.push('/login');
       return;

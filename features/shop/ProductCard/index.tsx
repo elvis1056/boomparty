@@ -2,12 +2,9 @@
 
 import classnames from 'classnames';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import styled from 'styled-components';
 
-import { useAuthStore } from '@/stores/authStore';
-import { useCartStore } from '@/stores/cartStore';
+import { useProductCart } from '@/hooks/useProductCart';
 import type { Product } from '@/types';
 
 import style from './style';
@@ -18,120 +15,20 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product, className }: ProductCardProps) {
-  const router = useRouter();
-  const isLoggedIn = useAuthStore((state) => state.user !== null);
-  const [quantity, setQuantity] = useState(1);
-  const [isAdding, setIsAdding] = useState(false);
-  const [justAdded, setJustAdded] = useState(false);
-  const addItem = useCartStore((state) => state.addItem);
-
-  // 檢查庫存
-  const maxStock = product.stock ? product.stock : 99;
-  const isOutOfStock = maxStock === 0;
-
-  // 數量減少
-  const decreaseQuantity = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  // 數量增加
-  const increaseQuantity = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (quantity < maxStock) {
-      setQuantity(quantity + 1);
-    }
-  };
-
-  // 數量輸入變化
-  const changeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    // 允許空字串（使用者清空準備輸入）
-    if (value === '') {
-      setQuantity(0);
-      return;
-    }
-
-    // 只允許數字
-    if (!/^[0-9]+$/.test(value)) {
-      return;
-    }
-
-    const numValue = Number(value);
-
-    // 不能超過庫存
-    if (numValue > maxStock) {
-      setQuantity(maxStock);
-      return;
-    }
-
-    setQuantity(numValue);
-  };
-
-  // 失焦時驗證
-  const blurQuantity = () => {
-    // 如果是 0 或空，設回 1
-    if (quantity < 1) {
-      setQuantity(1);
-    }
-  };
-
-  // 點擊輸入框時全選
-  const clickQuantityInput = (e: React.MouseEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-    const target = e.target as HTMLInputElement;
-    target.select();
-  };
-
-  // 加入購物車
-  const addToCart = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-
-    if (!isLoggedIn) {
-      router.push('/login');
-      return;
-    }
-
-    if (isAdding || justAdded || isOutOfStock) return;
-
-    setIsAdding(true);
-    try {
-      await addItem(product.id, quantity);
-
-      setJustAdded(true);
-      setTimeout(() => {
-        setJustAdded(false);
-      }, 1500);
-    } catch (error) {
-      console.error('Failed to add to cart:', error);
-      alert('加入購物車失敗，請稍後再試');
-    } finally {
-      setIsAdding(false);
-    }
-  };
-
-  // 立即購買：加入購物車後跳轉
-  const buyNowGotoCart = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-
-    if (!isLoggedIn) {
-      router.push('/login');
-      return;
-    }
-
-    if (isOutOfStock) return;
-
-    try {
-      await addItem(product.id, quantity);
-      router.push('/cart');
-    } catch (error) {
-      console.error('Failed to add to cart:', error);
-      alert('操作失敗，請稍後再試');
-    }
-  };
+  const {
+    quantity,
+    isAdding,
+    justAdded,
+    maxStock,
+    isOutOfStock,
+    decreaseQuantity,
+    increaseQuantity,
+    changeQuantity,
+    blurQuantity,
+    clickQuantityInput,
+    addToCart,
+    buyNowGotoCart,
+  } = useProductCart(product);
 
   return (
     <article className={className}>
@@ -139,7 +36,7 @@ function ProductCard({ product, className }: ProductCardProps) {
         <div className="card-image">
           {product.imageUrl ? (
             <Image
-              alt={product.name}
+              alt={`${product.name} 氣球佈置 蹦娛樂 BoomParty`}
               fill
               src={product.imageUrl}
               style={{ objectFit: 'contain' }}
@@ -168,7 +65,10 @@ function ProductCard({ product, className }: ProductCardProps) {
             <button
               className="quantity-decrease"
               disabled={quantity <= 1 || isOutOfStock}
-              onClick={decreaseQuantity}
+              onClick={(e) => {
+                e.stopPropagation();
+                decreaseQuantity();
+              }}
               type="button"
             >
               −
@@ -178,7 +78,10 @@ function ProductCard({ product, className }: ProductCardProps) {
               disabled={isOutOfStock}
               onBlur={blurQuantity}
               onChange={changeQuantity}
-              onClick={clickQuantityInput}
+              onClick={(e) => {
+                e.stopPropagation();
+                clickQuantityInput(e);
+              }}
               pattern="[0-9]*"
               type="number"
               value={quantity === 0 ? '' : quantity}
@@ -186,7 +89,10 @@ function ProductCard({ product, className }: ProductCardProps) {
             <button
               className="quantity-increase"
               disabled={quantity >= maxStock || isOutOfStock}
-              onClick={increaseQuantity}
+              onClick={(e) => {
+                e.stopPropagation();
+                increaseQuantity();
+              }}
               type="button"
             >
               +
@@ -199,7 +105,10 @@ function ProductCard({ product, className }: ProductCardProps) {
           <button
             className={classnames('add-to-cart', { added: justAdded })}
             disabled={isAdding || justAdded || isOutOfStock}
-            onClick={addToCart}
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart();
+            }}
             type="button"
           >
             {isAdding ? '加入中...' : justAdded ? '✓ 已加入' : '加入購物車'}
@@ -207,7 +116,10 @@ function ProductCard({ product, className }: ProductCardProps) {
           <button
             className="buy-now"
             disabled={isOutOfStock}
-            onClick={buyNowGotoCart}
+            onClick={(e) => {
+              e.stopPropagation();
+              buyNowGotoCart();
+            }}
             type="button"
           >
             立即購買
