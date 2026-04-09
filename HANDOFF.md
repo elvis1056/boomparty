@@ -92,6 +92,25 @@
 
 ---
 
+### Guest Cart（未登入購物車）✅（⚠️ lint 尚未確認）
+
+完整計畫：`GUEST_CART_PLAN.md`
+
+**架構：**
+- 未登入 → `addGuestItem` 存進 Zustand（persist 到 `localStorage` key: `boomparty-guest-cart`）
+- 登入後 → `syncGuestCart()` 逐一呼叫 `addItem` API，同步完成後 `clearGuestItems()`
+- 登出 → `clearGuestItems()`（防止不同帳號看到前一個人的 guest cart）
+
+**注意事項：**
+- `cartStore` 使用 `zustand/middleware` 的 `persist`，`partialize` 只持久化 `guestItems`，server `cart` 不存 localStorage
+- SSR 防護：storage 用 `typeof window === 'undefined'` 判斷，SSR 時回傳 no-op storage
+- `syncGuestCart` 逐一 try/catch，單筆失敗不中斷，同步後一定 `clearGuestItems()`
+- `CartButton` 未登入時顯示 `getTotalGuestItems()`，已登入顯示 `getTotalItems()`
+
+**Facebook OAuth：** 計畫見 `FACEBOOK_OAUTH_PLAN.md`，需等後端 `POST /api/auth/facebook/login` + Facebook App ID，前端完成後在登入 callback 加 `syncGuestCart()`
+
+---
+
 ## 待執行（你手動）
 
 ### 🟡 斷點 5：商品描述內容優化
@@ -138,10 +157,25 @@
 - Footer 移至 `(home)` layout（首頁限定）
 - 首頁 Banner 手機版 `min-width` 破版修正
 
-**未 commit（待處理）：**
-- 斷點 4.2：`components/Breadcrumb/`、ProductDetailContent 引入麵包屑、metadata description 格式
-- 手機版固定底部購買列
-- `CLAUDE.md` commit message 規範補充
+**已 commit（上次對話）：**
 - 斷點 4.5：useProductCart 整合 ProductCard
 - 斷點 8：JSON-LD（shop + blog）
 - 斷點 7：服務場景落地頁（四頁 + sitemap）
+- HANDOFF.md / SEO_FIX_PLAN.md 文件更新
+- SEO_FIX_PLAN.md 搬至 `docs/archive/`
+
+**未 commit（本次對話改動，⚠️ lint 尚未確認）：**
+- Guest Cart 全部斷點（1-5）：
+  - `types/cart.ts`：新增 `GuestCartItem` interface
+  - `types/index.ts`：export `GuestCartItem`
+  - `stores/cartStore.ts`：加入 guest cart state + persist（`boomparty-guest-cart`）
+  - `hooks/useProductCart.ts`：未登入走 `addGuestItem` 路徑
+  - `app/login/LoginContent/index.tsx`：登入後 `syncGuestCart()`
+  - `components/GoogleLoginButton/index.tsx`：登入後 `syncGuestCart()`
+  - `components/Navbar/index.tsx`：登出時 `clearGuestItems()`
+  - `components/CartButton/index.tsx`：未登入顯示 `getTotalGuestItems()`
+  - `features/cart/CartPageContent/index.tsx`：未登入顯示 guest cart
+  - `features/cart/CartPageContent/GuestCartItem/index.tsx`（新增）
+  - `features/cart/CartPageContent/GuestCartItem/style.ts`（新增）
+  - `GUEST_CART_PLAN.md`（新增）
+  - `FACEBOOK_OAUTH_PLAN.md`（新增）
