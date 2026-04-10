@@ -1,16 +1,9 @@
 'use client';
 
-import classnames from 'classnames';
+import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-import 'swiper/css';
-
-import Arrow from '@/components/Icons/Arrow';
-
-import ProductCard from './ProductCard';
 import style from './style';
 
 interface Product {
@@ -24,85 +17,61 @@ interface Product {
 
 interface ProductCarouselProps {
   className?: string;
-  title?: string;
   products: Product[];
 }
 
-const SLIDES_PER_VIEW_COUNT = 2.1;
+function ProductCarousel({ className, products }: ProductCarouselProps) {
+  const [current, setCurrent] = useState(0);
 
-function ProductCarousel({ className, title, products }: ProductCarouselProps) {
-  const [process, setProcess] = useState(0);
+  if (!products || products.length === 0) return <></>;
 
-  if (!products || !Array.isArray(products) || products.length === 0) {
-    return <></>;
-  }
+  const prev = () =>
+    setCurrent((c) => (c - 1 + products.length) % products.length);
+  const next = () => setCurrent((c) => (c + 1) % products.length);
+
+  const product = products[current];
 
   return (
-    <div className={className}>
-      <div className="carousel-container">
-        {title && (
-          <div className="carousel-header">
-            <h2 className="carousel-title">{title}</h2>
+    <section className={className}>
+      <div className="showcase">
+        <div className="showcase-text">
+          {product.tags && product.tags.length > 0 && (
+            <div className="showcase-tags">
+              {product.tags.map((tag) => (
+                <span className="tag" key={tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          <h3 className="showcase-name">{product.title}</h3>
+          {product.subtitle && (
+            <p className="showcase-subtitle">{product.subtitle}</p>
+          )}
+          <div className="showcase-nav">
+            <button aria-label="上一張" className="nav-btn" onClick={prev}>
+              ←
+            </button>
+            <span className="nav-count">
+              {current + 1} / {products.length}
+            </span>
+            <button aria-label="下一張" className="nav-btn" onClick={next}>
+              →
+            </button>
           </div>
-        )}
-
-        <Swiper
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 12,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 16,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 24,
-            },
-          }}
-          className="product-swiper"
-          loop={true}
-          modules={[Navigation]}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          onProgress={(swiper, progress) => {
-            setProcess(progress);
-          }}
-          slidesPerView={3}
-          spaceBetween={24}
-        >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductCard {...product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div
-          className={classnames(
-            'swiper-button pointer left swiper-button-prev',
-            {
-              'swiper-button-hide': process <= 0,
-            }
-          )}
-        >
-          <Arrow color="#000" direction="left" size={32} />
         </div>
-        <div
-          className={classnames(
-            'swiper-button pointer right swiper-button-next',
-            {
-              'swiper-button-hide':
-                process >= 1 || products.length < SLIDES_PER_VIEW_COUNT,
-            }
-          )}
-        >
-          <Arrow color="#000" direction="right" size={32} />
+        <div className="showcase-image">
+          <Image
+            alt={product.title}
+            fill
+            key={product.id}
+            sizes="(max-width: 768px) 100vw, 55vw"
+            src={product.image}
+            style={{ objectFit: 'cover' }}
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

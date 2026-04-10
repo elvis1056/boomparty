@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import BannerCarousel from '@/app/(home)/HomeContent/BannerCarousel';
 import ProductCarousel from '@/app/home/ProductCarousel';
+import ServicesSection from '@/app/home/ServicesSection';
 import { bannerImages } from '@/constants/bannerImages';
 import { assetPath } from '@/lib/utils/asset-path';
 
@@ -64,7 +65,13 @@ const sampleProducts = [
 function HomeContent({ className }: { className?: string }) {
   return (
     <main className={className}>
-      <div className="home-banner">
+      <div className="section-wrapper">
+        <ServicesSection />
+      </div>
+      <div className="section-wrapper">
+        <ProductCarousel products={sampleProducts} />
+      </div>
+      <div className="section-wrapper">
         <BannerCarousel
           content={{
             title: '活動',
@@ -78,7 +85,6 @@ function HomeContent({ className }: { className?: string }) {
           showOverlay={true}
         />
       </div>
-      <ProductCarousel products={sampleProducts} />
     </main>
   );
 }

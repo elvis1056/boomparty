@@ -12,14 +12,14 @@ export default css`
   .banner-swiper {
     width: 100%;
     height: 100%;
-    min-height: 328px;
+    min-height: 220px;
   }
 
   .banner-slide {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 328px;
+    min-height: 220px;
   }
 
   .banner-image-wrapper {
@@ -54,7 +54,7 @@ export default css`
     z-index: 3;
     width: 100%;
     height: 100%;
-    min-height: 328px;
+    min-height: 220px;
     display: flex;
     align-items: center;
     padding: ${theme.spacing['2xl']} ${theme.spacing.xl};

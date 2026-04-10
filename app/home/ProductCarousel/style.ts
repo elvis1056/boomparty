@@ -3,89 +3,121 @@ import { css } from 'styled-components';
 import { theme } from '@/constants/theme';
 
 const style = css`
-  width: 100%;
-  padding-top: 1rem;
-  background-color: ${theme.colors.background.paper};
-
-  .carousel-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
-    padding: 0 1rem;
+  .showcase {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    height: 420px;
+    border-radius: ${theme.borderRadius.lg};
+    overflow: hidden;
   }
 
-  .carousel-header {
-    margin-bottom: 1.5rem;
-    position: relative;
+  .showcase-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: ${theme.spacing['2xl']} ${theme.spacing['2xl']};
+    gap: ${theme.spacing.md};
   }
 
-  .carousel-title {
+  .showcase-tags {
+    display: flex;
+    gap: ${theme.spacing.sm};
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: ${theme.typography.fontSize.xs};
+    font-weight: ${theme.typography.fontWeight.medium};
+    color: ${theme.colors.primary.dark};
+    background: ${theme.colors.primary[50]};
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .showcase-name {
     font-size: ${theme.typography.fontSize['3xl']};
-    font-weight: ${theme.typography.fontWeight.semibold};
-    color: ${theme.colors.neutral.gray900};
+    font-weight: ${theme.typography.fontWeight.bold};
+    color: ${theme.colors.text.primary};
     margin: 0;
-    display: inline;
+    line-height: 1.3;
   }
 
-  .product-swiper {
-    padding: 4px 0;
-
-    .swiper-wrapper {
-      padding: 4px 0;
-    }
-
-    .swiper-slide {
-      height: auto;
-      box-sizing: border-box;
-    }
-
-    .swiper-button-prev,
-    .swiper-button-next {
-      display: none;
-    }
+  .showcase-subtitle {
+    font-size: ${theme.typography.fontSize.base};
+    color: ${theme.colors.text.secondary};
+    margin: 0;
+    line-height: 1.6;
   }
 
-  .swiper-button {
-    position: absolute;
-    opacity: 0.2;
-    z-index: 10;
+  .showcase-nav {
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacing.md};
+    margin-top: auto;
+    padding-top: ${theme.spacing.lg};
+  }
+
+  .nav-btn {
+    background: none;
+    border: 1px solid ${theme.colors.border.main};
+    color: ${theme.colors.primary.main};
+    font-size: ${theme.typography.fontSize.lg};
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: ${theme.colors.primary.main};
     cursor: pointer;
-
-    &.left {
-      top: 50%;
-      left: 12px;
-    }
-
-    &.right {
-      top: 50%;
-      right: 12px;
-    }
-
-    &:after {
-      display: none;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 
     &:hover {
-      opacity: 0.4;
+      background: ${theme.colors.primary.main};
+      color: ${theme.colors.neutral.white};
     }
   }
 
+  .nav-count {
+    font-size: ${theme.typography.fontSize.sm};
+    color: ${theme.colors.text.secondary};
+  }
+
+  .showcase-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 手機：圖上文下 */
   @media (max-width: ${theme.breakpoints.tablet}) {
-    .carousel-container {
-      padding: 0 1.5rem;
+    .showcase {
+      grid-template-columns: 1fr;
+      grid-template-rows: 260px auto;
+      height: auto;
+    }
+
+    .showcase-image {
+      order: -1;
+      height: 260px;
+    }
+
+    .showcase-text {
+      padding: ${theme.spacing.lg};
+    }
+
+    .showcase-name {
+      font-size: ${theme.typography.fontSize['2xl']};
     }
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.5rem 0;
+    padding: ${theme.spacing['2xl']} 0;
 
-    .carousel-container {
+    .container {
       padding: 0 1rem;
     }
 
-    .carousel-title {
+    .showcase-name {
       font-size: ${theme.typography.fontSize.xl};
     }
   }
