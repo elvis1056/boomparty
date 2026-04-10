@@ -37,22 +37,27 @@ const jsonLd = {
 
 const services = [
   {
+    icon: '✂️',
     title: '開幕剪綵活動企劃',
     description: '開幕典禮全程統籌，氣球拱門、剪綵道具、現場佈置一手包辦。',
   },
   {
+    icon: '🥂',
     title: '企業尾牙活動策劃',
     description: '尾牙春酒氛圍佈置，搭配品牌主色設計，展現企業形象。',
   },
   {
+    icon: '🚀',
     title: '啟動儀式佈置規劃',
     description: '產品發布、啟動球等儀式道具規劃，為品牌重要時刻加分。',
   },
   {
+    icon: '📸',
     title: '企業氣球背板設計',
     description: '融入企業 LOGO 與品牌色的客製化背板，適合記者會與媒體拍攝。',
   },
   {
+    icon: '📊',
     title: '活動整合行銷統籌',
     description: '整合場佈、流程、道具，讓企業活動順暢進行，留下完美紀錄。',
   },

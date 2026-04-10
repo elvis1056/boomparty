@@ -37,22 +37,27 @@ const jsonLd = {
 
 const services = [
   {
+    icon: '🎨',
     title: '主題氣球佈置設計',
     description: '依派對主題設計配色與造型，從童話風到韓系簡約，一應俱全。',
   },
   {
+    icon: '🎂',
     title: '生日背板氣球造型',
     description: '客製化生日主視覺背板，可加入姓名、年齡、主題角色等元素。',
   },
   {
+    icon: '🚗',
     title: '到府專人佈置服務',
     description: '專業團隊到場佈置，準時完成，讓你專心當壽星。',
   },
   {
+    icon: '👶',
     title: '抓周周歲佈置',
     description: '抓周專屬佈置，可愛風格搭配名字客製，記錄寶寶成長里程碑。',
   },
   {
+    icon: '🎊',
     title: '性別揭曉派對佈置',
     description: '粉藍主題氣球驚喜佈置，和家人朋友一起迎接新生命的到來。',
   },

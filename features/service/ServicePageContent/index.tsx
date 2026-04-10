@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import style from './style';
 
 export interface ServiceItem {
+  icon: string;
   title: string;
   description: string;
 }
@@ -96,7 +97,7 @@ function ServicePageContent({
           <div className="services-grid">
             {services.map((service, index) => (
               <div className="service-card" key={index}>
-                <div className="service-icon">🎈</div>
+                <div className="service-icon">{service.icon}</div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
               </div>

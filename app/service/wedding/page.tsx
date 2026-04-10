@@ -37,22 +37,27 @@ const jsonLd = {
 
 const services = [
   {
+    icon: '💒',
     title: '婚禮氣球背板',
     description: '客製化婚禮主視覺背板，結合花卉與氣球，打造浪漫儀式感。',
   },
   {
+    icon: '🌟',
     title: '氣球拱門',
     description: '迎賓入口氣球拱門，色系依婚禮主題訂製，讓賓客留下深刻印象。',
   },
   {
+    icon: '🌸',
     title: '桌面氣球佈置',
     description: '婚宴桌面氣球花束，與整體風格呼應，細節決定婚禮質感。',
   },
   {
+    icon: '🎈',
     title: '手持空飄氣球',
     description: '手持空飄氣球拍照道具，為婚禮添加童趣與活潑感。',
   },
   {
+    icon: '📋',
     title: '活動公關統籌',
     description: '整合氣球佈置與活動流程，讓婚禮現場運作順暢無虞。',
   },

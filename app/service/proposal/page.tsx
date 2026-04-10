@@ -37,22 +37,27 @@ const jsonLd = {
 
 const services = [
   {
+    icon: '💍',
     title: '客製化求婚氣球佈置',
     description: '依求婚場景量身設計，玫瑰紅、香檳金、純白等色系任你選配。',
   },
   {
+    icon: '🏨',
     title: '飯店包廂驚喜佈置',
     description: '事先進場佈置，讓另一半推開門的瞬間，成為最難忘的畫面。',
   },
   {
+    icon: '🚗',
     title: '後車廂告白佈置',
     description: '浪漫後車廂氣球佈置，簡單卻令人心動的告白方式。',
   },
   {
+    icon: '🌿',
     title: '戶外求婚場景設計',
     description: '公園、天台、海邊等戶外場地，打造夢幻求婚佈置。',
   },
   {
+    icon: '💌',
     title: '客製化文字氣球',
     description: '「嫁給我好嗎」、名字縮寫等文字氣球，說出你最想說的話。',
   },
