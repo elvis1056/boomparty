@@ -139,7 +139,6 @@ export default css`
     &.total {
       margin-top: 1rem;
       padding-top: 1rem;
-      border-top: 2px solid ${theme.colors.neutral.gray200};
 
       .summary-label {
         font-size: 1.125rem;

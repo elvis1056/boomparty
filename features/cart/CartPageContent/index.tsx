@@ -71,7 +71,7 @@ function CartPageContent({ className }: CartPageContentProps) {
           </div>
 
           <div className="guest-banner">
-            💡 登入後即可結帳，目前商品已暫存於本機。
+            登入後即可結帳，快速查閱目前商品。
             <Link className="login-link" href="/login">
               立即登入
             </Link>
