@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+
+import ServicePageContent from '@/features/service/ServicePageContent';
 
 export const metadata: Metadata = {
   title: '求婚佈置｜告白氣球 台北 蹦娛樂 BoomParty',
@@ -34,6 +35,29 @@ const jsonLd = {
   areaServed: '台灣',
 };
 
+const services = [
+  {
+    title: '客製化求婚氣球佈置',
+    description: '依求婚場景量身設計，玫瑰紅、香檳金、純白等色系任你選配。',
+  },
+  {
+    title: '飯店包廂驚喜佈置',
+    description: '事先進場佈置，讓另一半推開門的瞬間，成為最難忘的畫面。',
+  },
+  {
+    title: '後車廂告白佈置',
+    description: '浪漫後車廂氣球佈置，簡單卻令人心動的告白方式。',
+  },
+  {
+    title: '戶外求婚場景設計',
+    description: '公園、天台、海邊等戶外場地，打造夢幻求婚佈置。',
+  },
+  {
+    title: '客製化文字氣球',
+    description: '「嫁給我好嗎」、名字縮寫等文字氣球，說出你最想說的話。',
+  },
+];
+
 export default function ProposalServicePage() {
   return (
     <>
@@ -41,35 +65,22 @@ export default function ProposalServicePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         type="application/ld+json"
       />
-      <main>
-        <section>
-          <h1>求婚佈置｜客製化告白驚喜氣球</h1>
-          <p>
-            {/* TODO: 補充求婚告白情境描述，建議 100-150 字，自然帶入：求婚佈置、告白氣球、後車廂、飯店包廂、極致浪漫、客製化 */}
-          </p>
-        </section>
-
-        <section>
-          <h2>求婚佈置服務項目</h2>
-          <ul>
-            <li>客製化求婚氣球佈置</li>
-            <li>飯店包廂驚喜佈置</li>
-            <li>後車廂告白佈置</li>
-            <li>戶外求婚場景設計</li>
-            <li>空飄氣球告白造型</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>求婚佈置作品案例</h2>
-          {/* TODO: 放入求婚佈置案例圖片 */}
-        </section>
-
-        <section>
-          <Link href="/booking">立即預約求婚諮詢</Link>
-          <Link href="/shop">瀏覽求婚佈置商品</Link>
-        </section>
-      </main>
+      <ServicePageContent
+        description={[
+          '求婚只有一次，你值得一個不留遺憾的浪漫瞬間。',
+          '蹦娛樂專注求婚佈置多年，從飯店包廂驚喜佈置、後車廂告白場景到戶外求婚氣球造型，每個方案保密規劃、準時到場。',
+          '我們了解求婚的緊張與期待，提供完整諮詢陪你設計那一刻，讓對方推開門的瞬間，成為你們一生最美的記憶。',
+        ]}
+        images={[
+          {
+            src: '/images/service-picture/proposal-room.jpg',
+            alt: '房間求婚驚喜氣球佈置',
+          },
+        ]}
+        services={services}
+        subtitle="用最浪漫的氣球佈置，說出你的心意"
+        title="求婚佈置｜客製化告白驚喜氣球"
+      />
     </>
   );
 }
