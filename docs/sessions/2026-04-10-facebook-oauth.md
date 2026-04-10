@@ -1,6 +1,7 @@
 # Facebook OAuth 登入計畫
 
-> 建立日期：2026-04-10
+> 建立日期：2026-04-10  
+> 狀態：🟡 進行中（等待後端 POST /api/auth/facebook/login + Facebook App ID）  
 > 目標：實作 Facebook 登入，對齊現有 Google OAuth 架構
 
 ---
