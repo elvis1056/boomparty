@@ -9,9 +9,9 @@
 ## 🔧 工作流程（新 agent 請先看這裡）
 
 ```
-/plan <功能名稱>   ← 開始新功能，在 docs/sessions/ 建計畫檔
+/new-plan <功能名稱>   ← 開始新功能，在 docs/sessions/ 建計畫檔
 （做事）
-/handoff           ← 結束，commit + 更新此文件 + 輸出摘要
+/handoff               ← 結束，commit + 更新此文件 + 輸出摘要
 ```
 
 計畫檔位置：`docs/sessions/`  
