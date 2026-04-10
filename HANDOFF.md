@@ -124,43 +124,22 @@
 - [ ] 企業尾牙 / 開幕類商品
 - [ ] 生日 / 派對類商品
 
-### 🟡 斷點 7 內容補完（進行中，未 commit）
+### 斷點 7 全部完成 ✅
 
-四個落地頁已完成：
-- ✅ 共用元件 `features/service/ServicePageContent/`（index.tsx + style.ts）
-- ✅ 情境描述文字（三段式分段，SEO 友好）
-- ✅ 服務項目內容（各頁 5 項）
-- ✅ 案例圖片接入（真實照片，9 張已重新命名至 `public/images/service-picture/`）
-- ✅ Hero、描述區、服務項目、Gallery、CTA 版型完成
+- ✅ 共用元件 `features/service/ServicePageContent/`
+- ✅ 四個落地頁內容、照片、JSON-LD
+- ✅ **斷點 7-A**：`ServiceItem` 加 `icon: string`，各頁傳入 emoji
+- ✅ **斷點 7-B**：取消（不做 Navbar dropdown，服務入口透過首頁卡片導流）
+- ✅ **斷點 7-C**：首頁 `ServicesSection`（4 張服務卡片，圖片覆蓋風格，連到落地頁）
 
-**尚未完成（下一個 agent 接手）：**
-- [ ] **斷點 7-A：service-icon 對應**
-  - `ServiceItem` 介面加 `icon: string` 欄位
-  - 各 page.tsx 傳入對應 emoji（見下方對照表）
-  - 元件改用 `{service.icon}` 取代寫死的 🎈
+### 首頁版型重設計 ✅（2026-04-10）
 
-  ```
-  婚禮：💒 背板 / 🌟 拱門 / 🌸 桌花 / 🎈 空飄 / 📋 公關統籌
-  生日：🎨 主題設計 / 🎂 背板 / 🚗 到府佈置 / 👶 抓周 / 🎊 性別揭曉
-  企業：✂️ 開幕剪綵 / 🥂 尾牙 / 🚀 啟動儀式 / 📸 媒體背板 / 📊 整合行銷
-  求婚：💍 客製佈置 / 🏨 飯店包廂 / 🚗 後車廂 / 🌿 戶外場景 / 💌 文字氣球
-  ```
+**區塊順序：** ServicesSection → ProductCarousel → Banner → Footer
 
-- [ ] **斷點 7-B：Navbar 服務 dropdown**
-  - `navLinks` 加入「服務」項目，帶 dropdown 展開四個子頁
-  - 參考現有 `user-menu-dropdown` 實作（Navbar 第 121-138 行）
-  - 子連結：`/service/wedding`、`/service/birthday`、`/service/corporate`、`/service/proposal`
-
-- [ ] **斷點 7-C：首頁服務區塊**
-  - 在首頁加「我們的服務」section，四個卡片連到四個落地頁
-  - 位置：ProductCarousel 下方
-  - 風格參考：`features/shop/ProductCard/style.ts`
-
-- [ ] **斷點 7-D：commit 所有未 commit 的改動**
-  - `features/service/ServicePageContent/`（新增）
-  - `app/service/*/page.tsx`（四頁更新）
-  - `public/images/service-picture/`（9 張照片重新命名）
-  - `HANDOFF.md`
+- `app/home/ServicesSection/`（新增）：4 張服務卡片，桌機 1x4 / 手機 2x2，高度 240px
+- `app/home/ProductCarousel/`（重設計）：左文字 45% + 右大圖 55%，單張切換，無標題
+- `app/(home)/HomeContent/style.ts`：新增 `.section-wrapper` 統一三區塊寬度（max-width: 1400px）
+- Banner 高度壓縮：328px → 220px
 
 ---
 
@@ -192,16 +171,11 @@
 - 斷點 8：JSON-LD（shop + blog）
 - 斷點 7：服務場景落地頁（四頁 + sitemap）
 - SEO_FIX_PLAN.md 搬至 `docs/archive/`
-- Guest Cart 全部斷點：`GuestCartItem` 型別、cartStore persist + 7 天 TTL、useProductCart、LoginContent/GoogleLoginButton/Navbar/CartButton 整合、CartPageContent guest 顯示
-- fix: Zustand persist hydration error（`skipHydration: true` + `CartButton` 手動 rehydrate）
-- fix: /shop 頁按鈕點擊跳轉問題（Link 移進 ProductCard，只包圖片和商品名稱）
+- Guest Cart 全部斷點
+- fix: Zustand persist hydration error
+- fix: /shop 頁按鈕點擊跳轉問題
+- 斷點 7-A：ServiceItem icon 欄位
+- feat: ServicePageContent 共用元件 + 四落地頁內容與照片
+- feat: 首頁版型重設計（ServicesSection + ProductCarousel 重設計 + section-wrapper 統一寬度）
 
-**未 commit（本次對話，下一個 agent 需先 lint 再 commit）：**
-- `features/service/ServicePageContent/index.tsx`（新增）
-- `features/service/ServicePageContent/style.ts`（新增）
-- `app/service/wedding/page.tsx`（更新）
-- `app/service/birthday/page.tsx`（更新）
-- `app/service/corporate/page.tsx`（更新）
-- `app/service/proposal/page.tsx`（更新）
-- `public/images/service-picture/`（9 張照片重新命名，untracked）
-- `HANDOFF.md`（本文件）
+**未 commit：** 無（全部已 commit）
