@@ -124,11 +124,43 @@
 - [ ] 企業尾牙 / 開幕類商品
 - [ ] 生日 / 派對類商品
 
-### 🟡 斷點 7 內容補完
+### 🟡 斷點 7 內容補完（進行中，未 commit）
 
-四個落地頁的 `{/* TODO */}` 區塊待填入：
-- 各頁 100-150 字情境描述（自然帶入 2-3 個關鍵字）
-- 案例圖片（可從 `/images/shop/` 取用對應分類圖片）
+四個落地頁已完成：
+- ✅ 共用元件 `features/service/ServicePageContent/`（index.tsx + style.ts）
+- ✅ 情境描述文字（三段式分段，SEO 友好）
+- ✅ 服務項目內容（各頁 5 項）
+- ✅ 案例圖片接入（真實照片，9 張已重新命名至 `public/images/service-picture/`）
+- ✅ Hero、描述區、服務項目、Gallery、CTA 版型完成
+
+**尚未完成（下一個 agent 接手）：**
+- [ ] **斷點 7-A：service-icon 對應**
+  - `ServiceItem` 介面加 `icon: string` 欄位
+  - 各 page.tsx 傳入對應 emoji（見下方對照表）
+  - 元件改用 `{service.icon}` 取代寫死的 🎈
+
+  ```
+  婚禮：💒 背板 / 🌟 拱門 / 🌸 桌花 / 🎈 空飄 / 📋 公關統籌
+  生日：🎨 主題設計 / 🎂 背板 / 🚗 到府佈置 / 👶 抓周 / 🎊 性別揭曉
+  企業：✂️ 開幕剪綵 / 🥂 尾牙 / 🚀 啟動儀式 / 📸 媒體背板 / 📊 整合行銷
+  求婚：💍 客製佈置 / 🏨 飯店包廂 / 🚗 後車廂 / 🌿 戶外場景 / 💌 文字氣球
+  ```
+
+- [ ] **斷點 7-B：Navbar 服務 dropdown**
+  - `navLinks` 加入「服務」項目，帶 dropdown 展開四個子頁
+  - 參考現有 `user-menu-dropdown` 實作（Navbar 第 121-138 行）
+  - 子連結：`/service/wedding`、`/service/birthday`、`/service/corporate`、`/service/proposal`
+
+- [ ] **斷點 7-C：首頁服務區塊**
+  - 在首頁加「我們的服務」section，四個卡片連到四個落地頁
+  - 位置：ProductCarousel 下方
+  - 風格參考：`features/shop/ProductCard/style.ts`
+
+- [ ] **斷點 7-D：commit 所有未 commit 的改動**
+  - `features/service/ServicePageContent/`（新增）
+  - `app/service/*/page.tsx`（四頁更新）
+  - `public/images/service-picture/`（9 張照片重新命名）
+  - `HANDOFF.md`
 
 ---
 
@@ -149,33 +181,27 @@
 
 ## Git 狀態
 
-**已 commit：**
+**全部已 commit（截至 2026-04-10）：**
 - 斷點 1/2/3/6
 - 斷點 9：Zustand re-render 優化
 - 斷點 4：商品個別頁面（含 generateStaticParams）
 - 斷點 4.1：mock fallback 修正 404
 - Footer 移至 `(home)` layout（首頁限定）
 - 首頁 Banner 手機版 `min-width` 破版修正
-
-**已 commit（上次對話）：**
 - 斷點 4.5：useProductCart 整合 ProductCard
 - 斷點 8：JSON-LD（shop + blog）
 - 斷點 7：服務場景落地頁（四頁 + sitemap）
-- HANDOFF.md / SEO_FIX_PLAN.md 文件更新
 - SEO_FIX_PLAN.md 搬至 `docs/archive/`
+- Guest Cart 全部斷點：`GuestCartItem` 型別、cartStore persist + 7 天 TTL、useProductCart、LoginContent/GoogleLoginButton/Navbar/CartButton 整合、CartPageContent guest 顯示
+- fix: Zustand persist hydration error（`skipHydration: true` + `CartButton` 手動 rehydrate）
+- fix: /shop 頁按鈕點擊跳轉問題（Link 移進 ProductCard，只包圖片和商品名稱）
 
-**未 commit（本次對話改動，⚠️ lint 尚未確認）：**
-- Guest Cart 全部斷點（1-5）：
-  - `types/cart.ts`：新增 `GuestCartItem` interface
-  - `types/index.ts`：export `GuestCartItem`
-  - `stores/cartStore.ts`：加入 guest cart state + persist（`boomparty-guest-cart`）
-  - `hooks/useProductCart.ts`：未登入走 `addGuestItem` 路徑
-  - `app/login/LoginContent/index.tsx`：登入後 `syncGuestCart()`
-  - `components/GoogleLoginButton/index.tsx`：登入後 `syncGuestCart()`
-  - `components/Navbar/index.tsx`：登出時 `clearGuestItems()`
-  - `components/CartButton/index.tsx`：未登入顯示 `getTotalGuestItems()`
-  - `features/cart/CartPageContent/index.tsx`：未登入顯示 guest cart
-  - `features/cart/CartPageContent/GuestCartItem/index.tsx`（新增）
-  - `features/cart/CartPageContent/GuestCartItem/style.ts`（新增）
-  - `GUEST_CART_PLAN.md`（新增）
-  - `FACEBOOK_OAUTH_PLAN.md`（新增）
+**未 commit（本次對話，下一個 agent 需先 lint 再 commit）：**
+- `features/service/ServicePageContent/index.tsx`（新增）
+- `features/service/ServicePageContent/style.ts`（新增）
+- `app/service/wedding/page.tsx`（更新）
+- `app/service/birthday/page.tsx`（更新）
+- `app/service/corporate/page.tsx`（更新）
+- `app/service/proposal/page.tsx`（更新）
+- `public/images/service-picture/`（9 張照片重新命名，untracked）
+- `HANDOFF.md`（本文件）
