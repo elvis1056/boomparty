@@ -1,5 +1,9 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import {
+  createJSONStorage,
+  persist,
+  type StateStorage,
+} from 'zustand/middleware';
 
 import {
   addToCart,
@@ -240,7 +244,7 @@ export const useCartStore = create<CartStore>()(
             getItem: () => null,
             setItem: () => {},
             removeItem: () => {},
-          } as Storage;
+          } satisfies StateStorage;
         }
         return ttlStorage;
       }),
