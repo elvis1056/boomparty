@@ -86,39 +86,51 @@ const style = css`
     position: relative;
     width: 100%;
     height: 100%;
+
+    img {
+      border-radius: ${theme.borderRadius.lg};
+    }
   }
 
   /* 手機：圖上文下 */
   @media (max-width: ${theme.breakpoints.tablet}) {
     .showcase {
-      grid-template-columns: 1fr;
-      grid-template-rows: 260px auto;
+      grid-template-columns: 50% 50%;
       height: auto;
+      gap: ${theme.spacing.sm};
     }
 
     .showcase-image {
       order: -1;
-      height: 260px;
+      height: 140px;
     }
 
     .showcase-text {
-      padding: ${theme.spacing.lg};
+      padding: ${theme.spacing.xs};
+      gap: 4px;
     }
 
     .showcase-name {
-      font-size: ${theme.typography.fontSize['2xl']};
+      font-size: ${theme.typography.fontSize['xl']};
+    }
+
+    .showcase-subtitle {
+      font-size: ${theme.typography.fontSize.xs};
     }
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: ${theme.spacing['2xl']} 0;
-
     .container {
       padding: 0 1rem;
     }
 
     .showcase-name {
-      font-size: ${theme.typography.fontSize.xl};
+      font-size: ${theme.typography.fontSize['sm']};
+    }
+
+    .showcase-nav {
+      justify-content: center;
+      padding-top: 0;
     }
   }
 `;

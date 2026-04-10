@@ -21,6 +21,11 @@ export default css`
     .section-wrapper {
       min-width: 0;
       padding: 1rem;
+
+      &.section-wrapper-service,
+      &.section-wrapper-productcarousel {
+        padding: 0 1rem;
+      }
     }
   }
 `;

@@ -65,10 +65,10 @@ const sampleProducts = [
 function HomeContent({ className }: { className?: string }) {
   return (
     <main className={className}>
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper-service">
         <ServicesSection />
       </div>
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper-productcarousel">
         <ProductCarousel products={sampleProducts} />
       </div>
       <div className="section-wrapper">
