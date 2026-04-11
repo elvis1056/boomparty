@@ -1,4 +1,4 @@
-# /plan — 建立新功能計畫
+# /new-plan — 建立新功能計畫
 
 在 `docs/sessions/` 建立一個固定格式的計畫檔，並在 HANDOFF.md 的「進行中計畫」新增對應 section。
 
