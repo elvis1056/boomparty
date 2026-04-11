@@ -8,11 +8,13 @@ import type { BannerContent, BannerImage } from '@/types/banner';
 
 // Dynamic import for code splitting (static export compatible)
 const DesktopBanner = dynamic(
-  () => import('@/app/(home)/HomeContent/BannerCarousel/DesktopBanner')
+  () => import('@/app/(home)/HomeContent/BannerCarousel/DesktopBanner'),
+  { ssr: false }
 );
 
 const MobileBanner = dynamic(
-  () => import('@/app/(home)/HomeContent/BannerCarousel/MobileBanner')
+  () => import('@/app/(home)/HomeContent/BannerCarousel/MobileBanner'),
+  { ssr: false }
 );
 
 interface BannerCarouselProps {

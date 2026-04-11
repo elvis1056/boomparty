@@ -14,12 +14,34 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <Suspense
-      fallback={
-        <div style={{ padding: '2rem', textAlign: 'center' }}>載入中...</div>
-      }
-    >
-      <HomeContent />
-    </Suspense>
+    <>
+      <link
+        as="image"
+        href="/images/service-picture/wedding-balloon.jpg"
+        rel="preload"
+      />
+      <link
+        as="image"
+        href="/images/service-picture/birthday-party-columns.jpg"
+        rel="preload"
+      />
+      <link
+        as="image"
+        href="/images/service-picture/corporate-gamania.jpg"
+        rel="preload"
+      />
+      <link
+        as="image"
+        href="/images/service-picture/proposal-room.jpg"
+        rel="preload"
+      />
+      <Suspense
+        fallback={
+          <div style={{ padding: '2rem', textAlign: 'center' }}>載入中...</div>
+        }
+      >
+        <HomeContent />
+      </Suspense>
+    </>
   );
 }
