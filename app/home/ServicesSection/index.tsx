@@ -43,6 +43,7 @@ function ServicesSection({ className }: { className?: string }) {
               <Image
                 alt={service.title}
                 fill
+                priority
                 sizes="(max-width: 640px) 50vw, 25vw"
                 src={service.image}
                 style={{ objectFit: 'cover' }}
