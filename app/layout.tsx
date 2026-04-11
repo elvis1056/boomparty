@@ -5,6 +5,7 @@ import 'github-markdown-css/github-markdown-light.css';
 
 import { AuthInit } from '@/components/AuthInit';
 import Navbar from '@/components/Navbar';
+import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry';
 
 import { QueryProvider } from './query-provider';
 import './globals.css';
@@ -68,15 +69,17 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GoogleOAuthProvider
-          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
-        >
-          <QueryProvider>
-            <AuthInit />
-            <Navbar />
-            {children}
-          </QueryProvider>
-        </GoogleOAuthProvider>
+        <StyledComponentsRegistry>
+          <GoogleOAuthProvider
+            clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+          >
+            <QueryProvider>
+              <AuthInit />
+              <Navbar />
+              {children}
+            </QueryProvider>
+          </GoogleOAuthProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
