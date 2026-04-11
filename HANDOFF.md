@@ -21,6 +21,17 @@
 
 ## 進行中計畫
 
+### 🟡 首頁 LCP 改善（進行中）
+
+計畫文件：[`docs/sessions/2026-04-11-homepage-lcp.md`](docs/sessions/2026-04-11-homepage-lcp.md)
+
+- [ ] 斷點 1：移除 body opacity fade-in（`app/layout.tsx`）
+- [ ] 斷點 2：ServicesSection 圖片加 `priority`
+- [ ] 斷點 3：BannerCarousel 移除不必要的 dynamic import
+- [ ] 斷點 4：Preload 關鍵圖片（選做）
+
+---
+
 ### 🟡 Facebook OAuth
 計畫文件：[`docs/sessions/2026-04-10-facebook-oauth.md`](docs/sessions/2026-04-10-facebook-oauth.md)
 
