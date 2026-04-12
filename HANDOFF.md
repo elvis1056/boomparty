@@ -21,6 +21,18 @@
 
 ## 進行中計畫
 
+### 🟡 LINE_ALBUM 圖片整理 + 造型氣球商品補齊（進行中）
+
+計畫文件：[`docs/sessions/2026-04-12-line-album-organize.md`](docs/sessions/2026-04-12-line-album-organize.md)
+（整合自 `2026-04-11-balloon-shapes-50.md`，舊計畫已廢棄）
+
+- [x] 斷點 1：逐張讀取圖片，建立分類對照表（以實際檔案結構取代）
+- [x] 斷點 2：批次搬移 + 重命名至 `造型氣球/` 子資料夾（完成，根目錄 4 張廣告圖忽略）
+- [x] 斷點 3：ProductCard `imageUrl` 為空時改用 `<Shimmer />`
+- [x] 斷點 4：以實際圖片重建商品清單（動物造型 5 筆上架，卡通 IP 52 筆暫放 `copyrightProducts`）
+
+---
+
 ### 🟡 首頁 LCP 改善（進行中）
 
 計畫文件：[`docs/sessions/2026-04-11-homepage-lcp.md`](docs/sessions/2026-04-11-homepage-lcp.md)
