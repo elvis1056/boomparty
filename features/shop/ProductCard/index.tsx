@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import Shimmer from '@/components/Shimmer';
 import { useProductCart } from '@/hooks/useProductCart';
 import type { Product } from '@/types';
 
@@ -44,7 +45,7 @@ function ProductCard({ product, className }: ProductCardProps) {
                 style={{ objectFit: 'contain' }}
               />
             ) : (
-              <span className="image-placeholder">🎈</span>
+              <Shimmer />
             )}
           </div>
           {product.featured && <span className="badge">熱門</span>}

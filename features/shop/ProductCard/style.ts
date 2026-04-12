@@ -46,11 +46,6 @@ export default css`
       align-items: center;
       justify-content: center;
       background-color: ${theme.colors.neutral.white};
-
-      .image-placeholder {
-        font-size: 4rem;
-        opacity: 0.6;
-      }
     }
 
     .badge {
@@ -284,14 +279,6 @@ export default css`
         .buy-now {
           padding: 4px;
           font-size: 0.75rem;
-        }
-      }
-    }
-
-    .card-image-wrapper {
-      .card-image {
-        .image-placeholder {
-          font-size: 3rem;
         }
       }
     }
