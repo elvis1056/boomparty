@@ -21,7 +21,7 @@
 
 ## 進行中計畫
 
-### 🟡 LINE_ALBUM 圖片整理 + 造型氣球商品補齊（進行中）
+### ✅ LINE_ALBUM 圖片整理 + 造型氣球商品補齊（完成）
 
 計畫文件：[`docs/sessions/2026-04-12-line-album-organize.md`](docs/sessions/2026-04-12-line-album-organize.md)
 （整合自 `2026-04-11-balloon-shapes-50.md`，舊計畫已廢棄）
@@ -33,14 +33,14 @@
 
 ---
 
-### 🟡 首頁 LCP 改善（進行中）
+### ✅ 首頁 LCP 改善（完成）
 
 計畫文件：[`docs/sessions/2026-04-11-homepage-lcp.md`](docs/sessions/2026-04-11-homepage-lcp.md)
 
-- [ ] 斷點 1：移除 body opacity fade-in（`app/layout.tsx`）
-- [ ] 斷點 2：ServicesSection 圖片加 `priority`
-- [ ] 斷點 3：BannerCarousel 移除不必要的 dynamic import
-- [ ] 斷點 4：Preload 關鍵圖片（選做）
+- [x] 斷點 1：移除 body opacity fade-in（`app/layout.tsx`）
+- [x] 斷點 2：ServicesSection 圖片加 `priority`
+- [x] 斷點 3：BannerCarousel 移除不必要的 dynamic import
+- [ ] 斷點 4：Preload 關鍵圖片（選做，略過）
 
 ---
 
@@ -88,6 +88,9 @@
 | Guest Cart | 未登入購物車 persist（localStorage 7天TTL）+ 登入後 syncGuestCart |
 | 服務落地頁 | `/service/wedding\|birthday\|corporate\|proposal`，含 Hero/描述/服務項目/Gallery/CTA |
 | 首頁版型重設計 | ServicesSection（4卡片）+ ProductCarousel（左文右圖）+ section-wrapper 統一寬度 |
+| 首頁 LCP 改善 | 移除 body fade-in、ServicesSection 圖片加 priority、BannerCarousel 移除 dynamic import |
+| 造型氣球商品 | 動物造型 5 筆上架（附真實圖片），卡通 IP 52 筆暫放 copyrightProducts 待授權 |
+| ProductCard Shimmer | imageUrl 為 null 時改顯示 Shimmer，移除 emoji 佔位 |
 
 ---
 
