@@ -6,15 +6,16 @@ import { theme } from '@/constants/theme';
 import { useMediaQuery } from '@/hooks';
 import type { BannerContent, BannerImage } from '@/types/banner';
 
-// Dynamic import for code splitting (static export compatible)
+import BannerSkeleton from './BannerSkeleton';
+
 const DesktopBanner = dynamic(
   () => import('@/app/(home)/HomeContent/BannerCarousel/DesktopBanner'),
-  { ssr: false }
+  { ssr: false, loading: () => <BannerSkeleton /> }
 );
 
 const MobileBanner = dynamic(
   () => import('@/app/(home)/HomeContent/BannerCarousel/MobileBanner'),
-  { ssr: false }
+  { ssr: false, loading: () => <BannerSkeleton /> }
 );
 
 interface BannerCarouselProps {
@@ -30,10 +31,7 @@ export default function BannerCarousel({
   showOverlay = false,
   autoplayDelay = 4000,
 }: BannerCarouselProps) {
-  // For static export: use initializeWithValue: false to avoid hydration mismatch
-  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.tablet})`, {
-    initializeWithValue: false,
-  });
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.tablet})`);
 
   return isMobile ? (
     <MobileBanner
