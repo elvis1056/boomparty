@@ -44,6 +44,27 @@
 
 ---
 
+### ✅ BannerCarousel 延遲顯示修正（完成）
+
+計畫文件：[`docs/sessions/2026-04-16-banner-ssr-delay.md`](docs/sessions/2026-04-16-banner-ssr-delay.md)
+
+- [x] 斷點 1：加 loading skeleton 消除空白閃爍（消除版面跳動）
+- [x] 斷點 2：移除不必要的 `initializeWithValue: false`（減少 re-render）
+- [ ] 斷點 3：確認 Banner 第一張圖 `priority` 效果（選做，由 LCP+SEO 計畫的斷點 1 覆蓋）
+
+---
+
+### ✅ LCP 修正 + SEO 補完（完成）
+
+計畫文件：[`docs/sessions/2026-04-16-lcp-seo-fix.md`](docs/sessions/2026-04-16-lcp-seo-fix.md)
+
+- [x] 斷點 1：preload Banner 第一張圖（`/images/banner/000.jpg`）
+- [x] 斷點 2：刪除 `public/sitemap.xml`（Java/Docker 內容，覆蓋動態 sitemap）
+- [x] 斷點 3：新增 `public/robots.txt`
+- [x] 斷點 4：補全 `og:image` / `twitter:image`（根 layout）
+
+---
+
 ### 🟡 Facebook OAuth
 計畫文件：[`docs/sessions/2026-04-10-facebook-oauth.md`](docs/sessions/2026-04-10-facebook-oauth.md)
 
