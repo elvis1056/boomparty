@@ -46,12 +46,19 @@ export const metadata: Metadata = {
     title: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
     description:
       '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務，提供造型氣球、空飄充氣、客製印刷一站式解決方案。',
+    images: [
+      {
+        url: 'https://boomparty.tw/boomparty-logo.jpg',
+        alt: '蹦娛樂 BoomParty',
+      },
+    ],
   },
   twitter: {
     card: 'summary',
     title: '蹦娛樂 BoomParty | 台灣專業氣球佈置品牌',
     description:
       '蹦娛樂 BoomParty，台灣專業氣球佈置品牌。生日、婚禮、求婚、開幕等各式場合氣球佈置服務。',
+    images: ['https://boomparty.tw/boomparty-logo.jpg'],
   },
 };
 

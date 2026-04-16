@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
+import { assetPath } from '@/lib/utils/asset-path';
+
 import HomeContent from './HomeContent';
 
 export const metadata: Metadata = {
@@ -15,6 +17,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <link
+        as="image"
+        href={assetPath('/images/banner/000.jpg')}
+        rel="preload"
+      />
       <link
         as="image"
         href="/images/service-picture/wedding-balloon.jpg"
