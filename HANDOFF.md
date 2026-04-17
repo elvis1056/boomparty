@@ -68,6 +68,7 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 
 | 功能 | 說明 |
 |------|------|
+| 首頁 section-wrapper 間距統一 | desktop/tablet 1.5rem、mobile 1rem，移除 ServicesSection 內部 padding，間距全部由 wrapper 控制 |
 | BannerCarousel 首頁移至最上方 | BannerCarousel 為首頁第一區塊，ServicesSection、ProductCarousel 依序排後 |
 | BannerCarousel 視覺體驗 | 加 BannerSkeleton（shimmer 骨架），移除多餘 initializeWithValue: false |
 | LCP 改善 | 移除 body fade-in、ServicesSection 圖片加 priority、Banner 第一張圖加 preload |
