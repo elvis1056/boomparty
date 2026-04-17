@@ -7,7 +7,7 @@ export default css`
     max-width: 1400px;
     min-width: 1024px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
   }
 
   @media (max-width: ${theme.breakpoints.tablet}) {
@@ -21,11 +21,6 @@ export default css`
     .section-wrapper {
       min-width: 0;
       padding: 1rem;
-
-      &.section-wrapper-service,
-      &.section-wrapper-productcarousel {
-        padding: 0 1rem;
-      }
     }
   }
 `;

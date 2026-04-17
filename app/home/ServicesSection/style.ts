@@ -3,8 +3,6 @@ import { css } from 'styled-components';
 import { theme } from '@/constants/theme';
 
 export default css`
-  padding: ${theme.spacing.lg} 0;
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -87,8 +85,6 @@ export default css`
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: ${theme.spacing.md} 0;
-
     .services-grid {
       height: 280px;
       gap: ${theme.spacing.sm};
