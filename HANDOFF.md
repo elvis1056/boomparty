@@ -27,11 +27,27 @@
 
 **執行順序：boomparty（清理）→ myprojectbackend → boomparty-pure-admin → boomparty（功能）**
 
+**完成後得到的功能：**
+
+| 面向 | 功能 |
+|------|------|
+| 後台 - 圖庫 | 拖曳上傳多張圖（存 NAS，UUID 檔名）；Grid 瀏覽；點圖編輯 alt text / 加減 tag / 刪除 |
+| 後台 - Tag | 新增/刪除 tag（CONTENT / STYLE / OCCASION 三類），用於圖片標記與搜尋 |
+| 後台 - 商品 | 商品編輯頁加多張圖、拖曳排序、設主圖、移除圖（取代原本單一 imageUrl 欄位） |
+| 後台 - 分類 | 分類編輯頁可從圖庫選一張封面圖 |
+| 前台 - 商品卡片 | 自動顯示主圖，無主圖 fallback 舊 imageUrl，再無則 Shimmer |
+| 前台 - 商品詳細頁 | 大圖 + 下方縮圖列，點縮圖切換（只有多圖才顯示縮圖列） |
+| 前台 - 分類篩選 | 有封面圖的分類在 Filter 旁顯示小縮圖 |
+
+**注意：**
+- 新上傳圖片 URL 為 `https://api.boomparty.tw/media/{uuid}.jpg`；現有 shop/ 靜態圖需透過後台重新上傳才會轉換
+- Dev seed（Commit 1-L）會把現有商品圖以靜態路徑寫入 `media_asset` 表，讓開發環境可正常顯示
+
 **下一步：**
 
-- [x] Commit 0-A（boomparty）：刪除無用圖片資料夾（`products/`、`*-backup/`、`resume/`），並將 products/ 中被引用的 9 張圖搬至 shop/ 對應子目錄，新建 shop/折氣球表演/現場折氣球/
-- [ ] Commit 1-A（myprojectbackend）：新增 `MediaAsset` entity + repository
-- [ ] Commit 1-B 到 1-M：後端完整媒體庫 API
+- [x] Commit 0-A（boomparty）：刪除無用圖片資料夾，將 products/ 中被引用的 9 張圖搬至 shop/ 對應子目錄
+- [x] Commit 1-A 到 1-J（myprojectbackend）：entity / repo / DTO / service / controller 全完成
+- [ ] Commit 1-K 到 1-M（myprojectbackend）：ProductResponse 加 images、dev-seed、SecurityConfig
 - [ ] Commit 2-A 到 2-I：後台媒體庫管理 UI
 - [ ] Commit 3-A 到 3-E：前台多圖顯示 + 分類封面圖
 
