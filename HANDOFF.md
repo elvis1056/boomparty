@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-17
+> 更新日期：2026-04-21
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -20,6 +20,22 @@
 ---
 
 ## 進行中計畫
+
+### 🟡 媒體庫系統（三專案）
+
+計畫文件：[`docs/sessions/2026-04-17-media-library.md`](docs/sessions/2026-04-17-media-library.md)
+
+**執行順序：boomparty（清理）→ myprojectbackend → boomparty-pure-admin → boomparty（功能）**
+
+**下一步：**
+
+- [x] Commit 0-A（boomparty）：刪除無用圖片資料夾（`products/`、`*-backup/`、`resume/`），並將 products/ 中被引用的 9 張圖搬至 shop/ 對應子目錄，新建 shop/折氣球表演/現場折氣球/
+- [ ] Commit 1-A（myprojectbackend）：新增 `MediaAsset` entity + repository
+- [ ] Commit 1-B 到 1-M：後端完整媒體庫 API
+- [ ] Commit 2-A 到 2-I：後台媒體庫管理 UI
+- [ ] Commit 3-A 到 3-E：前台多圖顯示 + 分類封面圖
+
+---
 
 ### 🟡 Facebook OAuth
 

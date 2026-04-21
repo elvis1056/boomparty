@@ -685,7 +685,9 @@ export const mockProducts: Product[] = [
     description: '金屬質感星星與月亮造型氣球生日佈置，時尚高貴',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/202010 金屬星星月亮造型生日佈置.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/主題佈置/生日佈置/202010 金屬星星月亮造型生日佈置.jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 9,
@@ -701,7 +703,9 @@ export const mockProducts: Product[] = [
     description: '91 歲壽星生日慶典氣球佈置，溫馨感人，彰顯對長輩的愛與尊重',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/202103 - 91歲生日佈置.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/依年齡佈置/19+歲佈置/202103 - 91歲生日佈置.jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 40,
@@ -718,7 +722,9 @@ export const mockProducts: Product[] = [
       '室內臥室浪漫求婚氣球佈置暗場版，燭光氛圍搭配氣球，製造難忘驚喜',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/202103 求婚房間佈置(暗).jpg'),
+    imageUrl: assetPath(
+      '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置(暗).jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 42,
@@ -734,7 +740,9 @@ export const mockProducts: Product[] = [
     description: '室內臥室浪漫求婚氣球佈置，玫瑰花瓣搭配氣球，製造難忘驚喜',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/202103 求婚房間佈置.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置.jpg'
+    ),
     active: true,
     featured: true,
     categoryId: 42,
@@ -750,7 +758,9 @@ export const mockProducts: Product[] = [
     description: '現場折氣球表演，師傅即興製作可愛豆腐造型氣球，互動有趣',
     price: 5000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/2024 現場折氣球 - 豆腐.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/折氣球表演/現場折氣球/2024 現場折氣球 - 豆腐.jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 69,
@@ -766,7 +776,9 @@ export const mockProducts: Product[] = [
     description: '現場折氣球表演，師傅即興製作可愛豆腐造型氣球，另一角度紀錄',
     price: 5000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/2024 現場摺氣球 - 豆腐.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/折氣球表演/現場折氣球/2024 現場摺氣球 - 豆腐.jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 69,
@@ -782,7 +794,7 @@ export const mockProducts: Product[] = [
     description: '新店開幕空飄氣球群佈置，繽紛熱鬧，吸引人潮目光',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/2024 開幕空飄氣球.jpg'),
+    imageUrl: assetPath('/images/shop/主題佈置/開幕佈置/2024 開幕空飄氣球.jpg'),
     active: true,
     featured: false,
     categoryId: 10,
@@ -799,7 +811,9 @@ export const mockProducts: Product[] = [
       '開幕活動空飄氣球搭配主題背板整合佈置，視覺吸睛，完整呈現品牌形象',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/2024 開幕空飄與背板.jpg'),
+    imageUrl: assetPath(
+      '/images/shop/主題佈置/開幕佈置/2024 開幕空飄與背板.jpg'
+    ),
     active: true,
     featured: false,
     categoryId: 10,
@@ -816,7 +830,7 @@ export const mockProducts: Product[] = [
       '星星鋁箔球搭配流蘇裝飾的精緻造型氣球柱，適合派對、展覽入口點綴',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath('/images/products/星星流蘇氣球柱.jpg'),
+    imageUrl: assetPath('/images/shop/企業商用/氣球柱/星星流蘇氣球柱.jpg'),
     active: true,
     featured: false,
     categoryId: 46,
