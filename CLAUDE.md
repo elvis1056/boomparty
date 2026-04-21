@@ -573,3 +573,20 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 - ✅ Edit 前先 Read
 - ✅ 完成功能後立即 Lint
 - ✅ Lint 後再 commit
+
+---
+
+## Checkpoint 規則
+
+任何 agent 在以下情況必須主動更新 `HANDOFF.md`，不等使用者提醒：
+
+**觸發時機：**
+- Context 使用量達到 60%（不等 95% auto-compact）
+- 完成一個完整功能或重要決策後
+- 要做大操作之前（重構、多檔案修改、刪除）
+- 對話超過 20–30 個來回 → 提醒使用者開新對話
+
+**要更新的內容：**
+- `HANDOFF.md` 頂部的「更新日期」
+- 「進行中計畫」的當前狀態與卡住原因
+- 把完成的項目移入「已完成」
