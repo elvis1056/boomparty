@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.boomparty.tw',
+        pathname: '/media/**',
+      },
+    ],
   },
   turbopack: {},
   webpack: (config) => {
