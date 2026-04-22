@@ -3,13 +3,14 @@
 import classnames from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import ProductCard from '@/features/shop/ProductCard';
 import { useProductCart } from '@/hooks/useProductCart';
 import { useCartStore } from '@/stores/cartStore';
-import type { Product } from '@/types';
+import type { Product, ProductImage } from '@/types';
 
 import style from './style';
 
@@ -19,12 +20,22 @@ interface ProductDetailContentProps {
   relatedProducts: Product[];
 }
 
+function getInitialImage(product: Product): ProductImage | null {
+  if (!product.images || product.images.length === 0) return null;
+  const primary = product.images.find((img) => img.isPrimary);
+  return primary ? primary : product.images[0];
+}
+
 function ProductDetailContent({
   className,
   product,
   relatedProducts,
 }: ProductDetailContentProps) {
   const router = useRouter();
+  const [activeImage, setActiveImage] = useState<ProductImage | null>(
+    getInitialImage(product)
+  );
+  const hasMultipleImages = product.images && product.images.length > 1;
   const getTotalItems = useCartStore((state) => state.getTotalItems);
   const totalCartItems = getTotalItems();
 
@@ -60,9 +71,20 @@ function ProductDetailContent({
         {/* 左欄：商品圖片 */}
         <div className="product-image-wrapper">
           <div className="image-square">
-            {product.imageUrl ? (
+            {activeImage ? (
               <Image
-                alt={`${product.name} 氣球佈置 蹦娛樂 BoomParty`}
+                alt={
+                  activeImage.altText ? activeImage.altText : `${product.name}`
+                }
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                src={activeImage.url}
+                style={{ objectFit: 'contain' }}
+              />
+            ) : product.imageUrl ? (
+              <Image
+                alt={`${product.name}`}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -75,6 +97,30 @@ function ProductDetailContent({
             {product.featured && <span className="badge">熱門</span>}
             {isOutOfStock && <span className="badge out-of-stock">缺貨</span>}
           </div>
+
+          {/* 縮圖列（多張圖片才顯示） */}
+          {hasMultipleImages && (
+            <div className="thumbnail-list">
+              {product.images.map((img) => (
+                <button
+                  className={classnames('thumbnail-btn', {
+                    active: activeImage && activeImage.id === img.id,
+                  })}
+                  key={img.id}
+                  onClick={() => setActiveImage(img)}
+                  type="button"
+                >
+                  <Image
+                    alt={img.altText ? img.altText : `${product.name} 縮圖`}
+                    fill
+                    sizes="80px"
+                    src={img.url}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* 右欄：商品資訊 */}

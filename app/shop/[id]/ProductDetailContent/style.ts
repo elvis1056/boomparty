@@ -26,6 +26,34 @@ export default css`
       overflow: hidden;
     }
 
+    .thumbnail-list {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+
+      .thumbnail-btn {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        border-radius: ${theme.borderRadius.md};
+        overflow: hidden;
+        border: 2px solid transparent;
+        cursor: pointer;
+        padding: 0;
+        background: none;
+        flex-shrink: 0;
+
+        &.active {
+          border-color: ${theme.colors.primary.main};
+        }
+
+        &:not(.active):hover {
+          border-color: ${theme.colors.neutral.gray300};
+        }
+      }
+    }
+
     .image-placeholder {
       position: absolute;
       inset: 0;
