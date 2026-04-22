@@ -1,5 +1,5 @@
 import { mockProducts } from '@/constants/mockProducts';
-import type { Product } from '@/types';
+import type { Product, ProductImage } from '@/types';
 
 import { apiClient } from './client';
 
@@ -121,6 +121,10 @@ export async function fetchProducts(): Promise<Product[]> {
 
 export async function fetchProductById(id: number): Promise<Product> {
   return apiClient.get<Product>(`/api/products/${id}`);
+}
+
+export async function fetchProductImages(id: number): Promise<ProductImage[]> {
+  return apiClient.get<ProductImage[]>(`/api/products/${id}/images`);
 }
 
 /**

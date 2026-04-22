@@ -82,7 +82,7 @@ function DesktopFilter({
                     title={category.name}
                   >
                     {(() => {
-                      const Icon = CATEGORY_ICONS[category.id];
+                      const Icon = CATEGORY_ICONS[category.name];
                       return Icon ? (
                         <Icon className="category-icon" size={18} />
                       ) : null;
@@ -116,7 +116,7 @@ function DesktopFilter({
                           title={child.name}
                         >
                           {(() => {
-                            const Icon = CATEGORY_ICONS[child.id];
+                            const Icon = CATEGORY_ICONS[child.name];
                             return Icon ? (
                               <Icon className="category-icon" size={14} />
                             ) : null;

@@ -1,4 +1,4 @@
-export type { Product } from './product';
+export type { Product, ProductImage } from './product';
 export type { BlogPost, Series, SeriesInfo } from './blog';
 export type {
   Tag,
