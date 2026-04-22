@@ -37,16 +37,34 @@ function ProductCard({ product, className }: ProductCardProps) {
       <Link className="card-image-link" href={`/shop/${product.id}`}>
         <div className="card-image-wrapper">
           <div className="card-image">
-            {product.imageUrl ? (
-              <Image
-                alt={`${product.name} 氣球佈置 蹦娛樂 BoomParty`}
-                fill
-                src={product.imageUrl}
-                style={{ objectFit: 'contain' }}
-              />
-            ) : (
-              <Shimmer />
-            )}
+            {(() => {
+              const primaryImage = product.images
+                ? product.images.find((img) => img.isPrimary)
+                : null;
+              const firstImage =
+                product.images && product.images.length > 0
+                  ? product.images[0]
+                  : null;
+              const src = primaryImage
+                ? primaryImage.url
+                : firstImage
+                  ? firstImage.url
+                  : product.imageUrl;
+              const alt =
+                primaryImage && primaryImage.altText
+                  ? primaryImage.altText
+                  : `${product.name}`;
+              return src ? (
+                <Image
+                  alt={alt}
+                  fill
+                  src={src}
+                  style={{ objectFit: 'contain' }}
+                />
+              ) : (
+                <Shimmer />
+              );
+            })()}
           </div>
           {product.featured && <span className="badge">熱門</span>}
           {isOutOfStock && <span className="badge out-of-stock">缺貨</span>}
