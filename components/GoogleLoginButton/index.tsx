@@ -20,8 +20,6 @@ function GoogleLoginButton({ className }: GoogleLoginButtonProps) {
 
   const loginWithGoogle = async (credentialResponse: CredentialResponse) => {
     try {
-      console.log('Google login success, sending to backend...');
-
       // 發送 ID Token 到後端驗證
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/google/login`,
@@ -38,26 +36,20 @@ function GoogleLoginButton({ className }: GoogleLoginButtonProps) {
       );
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Backend response error:', errorText);
         throw new Error('Google 登入失敗');
       }
 
-      const data = await response.json();
-      console.log('Backend response:', data);
-
       // 儲存 token 和用戶資訊
+      const data = await response.json();
       setAuth(data);
       await syncGuestCart();
       router.push('/');
-    } catch (error) {
-      console.error('Google login error:', error);
+    } catch {
       alert('Google 登入失敗，請稍後再試');
     }
   };
 
   const showError = () => {
-    console.error('Google login failed');
     alert('Google 登入失敗');
   };
 

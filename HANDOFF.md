@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-21
+> 更新日期：2026-04-23
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -20,38 +20,6 @@
 ---
 
 ## 進行中計畫
-
-### 🟡 媒體庫系統（三專案）
-
-計畫文件：[`docs/sessions/2026-04-17-media-library.md`](docs/sessions/2026-04-17-media-library.md)
-
-**執行順序：boomparty（清理）→ myprojectbackend → boomparty-pure-admin → boomparty（功能）**
-
-**完成後得到的功能：**
-
-| 面向 | 功能 |
-|------|------|
-| 後台 - 圖庫 | 拖曳上傳多張圖（存 NAS，UUID 檔名）；Grid 瀏覽；點圖編輯 alt text / 加減 tag / 刪除 |
-| 後台 - Tag | 新增/刪除 tag（CONTENT / STYLE / OCCASION 三類），用於圖片標記與搜尋 |
-| 後台 - 商品 | 商品編輯頁加多張圖、拖曳排序、設主圖、移除圖（取代原本單一 imageUrl 欄位） |
-| 後台 - 分類 | 分類編輯頁可從圖庫選一張封面圖 |
-| 前台 - 商品卡片 | 自動顯示主圖，無主圖 fallback 舊 imageUrl，再無則 Shimmer |
-| 前台 - 商品詳細頁 | 大圖 + 下方縮圖列，點縮圖切換（只有多圖才顯示縮圖列） |
-| 前台 - 分類篩選 | 有封面圖的分類在 Filter 旁顯示小縮圖 |
-
-**注意：**
-- 新上傳圖片 URL 為 `https://api.boomparty.tw/media/{uuid}.jpg`；現有 shop/ 靜態圖需透過後台重新上傳才會轉換
-- Dev seed（Commit 1-L）會把現有商品圖以靜態路徑寫入 `media_asset` 表，讓開發環境可正常顯示
-
-**下一步：**
-
-- [x] Commit 0-A（boomparty）：刪除無用圖片資料夾，將 products/ 中被引用的 9 張圖搬至 shop/ 對應子目錄
-- [x] Commit 1-A 到 1-J（myprojectbackend）：entity / repo / DTO / service / controller 全完成
-- [ ] Commit 1-K 到 1-M（myprojectbackend）：ProductResponse 加 images、dev-seed、SecurityConfig
-- [ ] Commit 2-A 到 2-I：後台媒體庫管理 UI
-- [ ] Commit 3-A 到 3-E：前台多圖顯示 + 分類封面圖
-
----
 
 ### 🟡 Facebook OAuth
 
@@ -100,6 +68,8 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 
 | 功能 | 說明 |
 |------|------|
+| 媒體庫系統（三專案） | backend entity/repo/service/controller 全完成；admin 媒體庫、Tag 管理、商品多圖、分類封面圖 UI 全完成；前台商品卡片主圖 fallback、商品詳細頁圖片 gallery 全完成 |
+| Google OAuth | `GoogleLoginButton` 元件、`GoogleOAuthProvider` root layout、登入頁整合，全部完成 |
 | 首頁 section-wrapper 間距統一 | desktop/tablet 1.5rem、mobile 1rem，移除 ServicesSection 內部 padding，間距全部由 wrapper 控制 |
 | BannerCarousel 首頁移至最上方 | BannerCarousel 為首頁第一區塊，ServicesSection、ProductCarousel 依序排後 |
 | BannerCarousel 視覺體驗 | 加 BannerSkeleton（shimmer 骨架），移除多餘 initializeWithValue: false |
