@@ -11,9 +11,17 @@ export const mockProducts: Product[] = [
     description: '亮眼花瓣顏色',
     price: 40.0,
     stock: 100,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/花朵系列/balloon-flower-removebg-preview.png'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/花朵系列/balloon-flower-removebg-preview.png'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 54,
@@ -29,9 +37,17 @@ export const mockProducts: Product[] = [
     description: '主題背板佈置，兩側玫瑰金與白色有機氣球柱',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/背板佈置/2024-03-02-team-taiwan.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/背板佈置/2024-03-02-team-taiwan.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 12,
@@ -48,9 +64,17 @@ export const mockProducts: Product[] = [
       '大型透明圓弧拱門橫跨婚宴廳走道，搭配裸粉色圓形氣球柱，典雅簡約，完美襯托婚禮氛圍',
     price: 8000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/婚禮求婚/婚禮佈置/2024-03-02-婚禮簡約拱門.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/婚禮求婚/婚禮佈置/2024-03-02-婚禮簡約拱門.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 60,
@@ -67,9 +91,17 @@ export const mockProducts: Product[] = [
       '繽紛童話風格大型 WELCOME 氣球拱門，含笑臉雛菊花朵、彩虹、大樹與動物造型，為孩子打造充滿驚喜的開學場景',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/童話系佈置/2024-03-02-幼兒園開學.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/童話系佈置/2024-03-02-幼兒園開學.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 15,
@@ -86,9 +118,17 @@ export const mockProducts: Product[] = [
       '深藍海洋主題大型背板佈置，搭配龍蝦、海魚、章魚等海洋生物造型氣球與客製化姓名文字，適合海洋風生日派對',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/海洋系佈置/2024-03-02-生日海洋造型.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/海洋系佈置/2024-03-02-生日海洋造型.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 14,
@@ -104,9 +144,17 @@ export const mockProducts: Product[] = [
     description: '品牌字母鋁箔氣球桌面佈置，搭配星形與圓形氣球點綴',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/其他企業商用佈置/2024-03-02-TPAC-正面-手機橫向.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/其他企業商用佈置/2024-03-02-TPAC-正面-手機橫向.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 18,
@@ -123,9 +171,17 @@ export const mockProducts: Product[] = [
       '銀藍色系企業品牌字母鋁箔氣球桌面佈置全景視角，呈現整體氣球層次與規模',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/其他企業商用佈置/2024-03-02-TPAC-正面-手機直立.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/其他企業商用佈置/2024-03-02-TPAC-正面-手機直立.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 18,
@@ -142,9 +198,17 @@ export const mockProducts: Product[] = [
       '兩根高聳玫瑰金金屬光澤大圓球氣球柱，頂端大型圓球搭配花朵裝飾與紗帶蝴蝶結，典雅高貴，適合婚宴、企業發布會等正式場合',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球柱/2024-03-02-圓形金屬氣球柱.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球柱/2024-03-02-圓形金屬氣球柱.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 46,
@@ -161,9 +225,17 @@ export const mockProducts: Product[] = [
       '畢業典禮現場，CONGRATS 字母鋁箔氣球搭配金黑星形氣球，兩側繽紛彩色氣球矮柱群，歡樂熱鬧，留下難忘的畢業記憶',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球柱/2024-06-永春高中第28屆畢業氣球矮柱.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球柱/2024-06-永春高中第28屆畢業氣球矮柱.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 8,
@@ -180,9 +252,17 @@ export const mockProducts: Product[] = [
       '校園舞台兩側繽紛彩色氣球矮柱群，搭配動物與交通工具造型氣球點綴，活潑熱鬧，為學生競賽活動注入歡樂氛圍',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/其他佈置/2024-113年度國中特教班學生體育競賽.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/其他佈置/2024-113年度國中特教班學生體育競賽.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 18,
@@ -199,9 +279,17 @@ export const mockProducts: Product[] = [
       '頒獎典禮主舞台前大面積金銀白色系氣球地面鋪展佈置，氣勢恢宏，完美烘托頒獎儀式的隆重氛圍',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/背板佈置/2024-新北市14屆金采獎頒獎典禮.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/背板佈置/2024-新北市14屆金采獎頒獎典禮.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 11,
@@ -218,9 +306,17 @@ export const mockProducts: Product[] = [
       '蔬食餐廳入口蔬果主題氣球拱門，以蔬菜造型氣球組成，清新活潑，為餐廳開幕賦予獨特個性',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/開幕佈置/2024-餐廳優樂疏食開幕佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/開幕佈置/2024-餐廳優樂疏食開幕佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 10,
@@ -237,9 +333,17 @@ export const mockProducts: Product[] = [
       '活動舞台愛心造型氣球背景佈置，粉紅與綠色系搭配，溫馨感人，適合公益、捐贈、感謝儀式等暖心場合',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/其他佈置/2024-土地銀行公益信託捐贈儀式活動佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/其他佈置/2024-土地銀行公益信託捐贈儀式活動佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 18,
@@ -256,9 +360,17 @@ export const mockProducts: Product[] = [
       'Boy or Girl 性別派對主題佈置，粉藍兩色氣球柱搭配大型黑色揭示氣球，充滿驚喜感，為寶寶性別揭示派對留下難忘一刻',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/依年齡佈置/0歲佈置/2024-03-02-性別派對.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/依年齡佈置/0歲佈置/2024-03-02-性別派對.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 82,
@@ -275,7 +387,15 @@ export const mockProducts: Product[] = [
       '校園走廊兩側大型繽紛氣球牆，色彩豐富活潑，左右分別嵌入金色數字「56」與「30」鋁箔氣球，點綴 LED 燈串',
     price: 20000.0,
     stock: 99,
-    imageUrl: assetPath('/images/shop/企業商用/氣球牆/2024-03-02-56.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/企業商用/氣球牆/2024-03-02-56.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 47,
@@ -292,9 +412,17 @@ export const mockProducts: Product[] = [
       '透明泡泡球內含玫瑰金金屬色乳膠球，搭配白色乳膠球群組，低調奢華',
     price: 1500.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/空飄系列/泡泡球/2024-03-02-泡泡球搭配乳膠球.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/空飄系列/泡泡球/2024-03-02-泡泡球搭配乳膠球.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 58,
@@ -311,9 +439,17 @@ export const mockProducts: Product[] = [
       '粉藕色系 Orbz 圓球頂端印製活動資訊，搭配紙花裝飾，多組陳列於廣場',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球柱/2024-信義A13遠東百貨週年慶氣球柱.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球柱/2024-信義A13遠東百貨週年慶氣球柱.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 46,
@@ -330,9 +466,17 @@ export const mockProducts: Product[] = [
       '藍白銀三色有機造型氣球牆，搭配珍珠貝殼裝飾與空飄泡泡球，海洋珍珠主題意象鮮明',
     price: 20000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球牆/2024-新光人壽-珍珠計畫.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球牆/2024-新光人壽-珍珠計畫.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 47,
@@ -349,9 +493,17 @@ export const mockProducts: Product[] = [
       '企業活動入口兩側海洋風格氣球柱，頂端大型透明泡泡球內含銀藍氣球，藍白銀配色，典雅專業',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球柱/2024-新光人壽-海洋風格氣球柱.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球柱/2024-新光人壽-海洋風格氣球柱.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 46,
@@ -368,7 +520,15 @@ export const mockProducts: Product[] = [
       '畢業典禮入口彩虹色系氣球柱一對，搭配男女畢業生造型鋁箔氣球與星星裝飾，頂端接成半弧形',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath('/images/shop/企業商用/氣球柱/2024-畢業氣球柱.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/企業商用/氣球柱/2024-畢業氣球柱.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 46,
@@ -385,7 +545,15 @@ export const mockProducts: Product[] = [
       '活動入口綠白銀三色有機氣球柱一對，搭配白色羽球造型氣球點綴，活力清新',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath('/images/shop/企業商用/氣球柱/2024-羽球賽事氣球柱.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/企業商用/氣球柱/2024-羽球賽事氣球柱.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 46,
@@ -402,9 +570,17 @@ export const mockProducts: Product[] = [
       'NIA & TNUA 校友歸巢活動，紫色水彩主題背板兩側以藍綠金色系有機氣球柱點綴，清新典雅',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/背板佈置/2024-NIA&TNUA-78級&99級校友.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/背板佈置/2024-NIA&TNUA-78級&99級校友.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 12,
@@ -420,9 +596,17 @@ export const mockProducts: Product[] = [
     description: '粉紫莫蘭迪色系氣球圍繞拱形主視覺背板，粉嫩時尚',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/背板佈置/2024-信義A13遠東百貨週年慶.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/背板佈置/2024-信義A13遠東百貨週年慶.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 12,
@@ -439,9 +623,17 @@ export const mockProducts: Product[] = [
       '彩虹色系 WELCOME 氣球拱門，頂端金色字母搭配笑臉太陽鋁箔氣球，兩側彩虹氣球柱，明亮活潑',
     price: 8000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球拱門/2024-新北市政府-彩虹拱門.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球拱門/2024-新北市政府-彩虹拱門.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 60,
@@ -458,9 +650,17 @@ export const mockProducts: Product[] = [
       '舞台後方彩色熱氣球造型搭配「畢業快樂」文字，舞台前方鋪設馬卡龍彩虹長氣球串，兩側 Congrats 獎盃造型氣球柱',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/畢業佈置/2024-萬芳附設幼兒園-熱氣球與彩虹.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/畢業佈置/2024-萬芳附設幼兒園-熱氣球與彩虹.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 8,
@@ -477,9 +677,17 @@ export const mockProducts: Product[] = [
       '禮堂走道馬卡龍彩虹連續大型拱門，多色漸層氣球串接成氣勢壯觀的通道，天花板另有空飄氣球點綴',
     price: 8000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球拱門/2024-萬芳附設幼兒園-畢業彩虹連續拱門.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球拱門/2024-萬芳附設幼兒園-畢業彩虹連續拱門.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 60,
@@ -496,9 +704,17 @@ export const mockProducts: Product[] = [
       '室內小空間求婚佈置，MARRY ME 鋁箔字母搭配玫瑰金氣球半弧與大量鮮花，前方 LOVE U LED 燈箱字，燭光氛圍溫馨動人',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/婚禮求婚/求婚佈置/2024-小空間求婚佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/婚禮求婚/求婚佈置/2024-小空間求婚佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 42,
@@ -515,9 +731,17 @@ export const mockProducts: Product[] = [
       '馬卡龍粉嫩色系螺旋氣球拱門，搭配多色星形鋁箔氣球，頂端畢業帽裝飾，歡樂活潑',
     price: 8000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球拱門/2024-星星彩色螺旋拱門.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球拱門/2024-星星彩色螺旋拱門.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 60,
@@ -534,9 +758,17 @@ export const mockProducts: Product[] = [
       '金黃白色系大型氣球拱門，兩側 Starburst 爆炸星鋁箔氣球點綴，氣派奢華',
     price: 8000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/企業商用/氣球拱門/2024-金黃兩色星星拱門.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/企業商用/氣球拱門/2024-金黃兩色星星拱門.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 60,
@@ -553,9 +785,17 @@ export const mockProducts: Product[] = [
       '森林卡通插畫主題背板，兩側以粉嫩雛菊花朵氣球柱與長頸鹿、小熊造型氣球點綴，童趣滿滿',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/森林系佈置/2024-113年-新北市政府警察局-親子活動.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/森林系佈置/2024-113年-新北市政府警察局-親子活動.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 13,
@@ -572,9 +812,17 @@ export const mockProducts: Product[] = [
       '夏日海灘主題背板搭配棕櫚樹氣球柱，周邊散落馬卡龍色系氣球與甜點造型鋁箔球，清爽活潑',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/海洋系佈置/2024-富邦人壽-我最夏趴.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/海洋系佈置/2024-富邦人壽-我最夏趴.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 14,
@@ -591,9 +839,17 @@ export const mockProducts: Product[] = [
       '舞台前沿整排海洋主題氣球布景，馬卡龍色系氣球串搭配冰淇淋、甜甜圈、章魚等造型鋁箔球，舞台上方雲朵造型，一側配棕櫚樹氣球柱',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/海洋系佈置/2024-舞台前海洋造型.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/海洋系佈置/2024-舞台前海洋造型.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 14,
@@ -610,9 +866,17 @@ export const mockProducts: Product[] = [
       '居家一歲生日抓周佈置，粉金圓點「1」主題背板搭配數字 1 金冠鋁箔氣球，地板鋪設抓周物品，含粉色球池',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置-1.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置-1.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 35,
@@ -629,9 +893,17 @@ export const mockProducts: Product[] = [
       '飯店宴廳一歲生日佈置，米白粉色系有機氣球串靠主背板半側鋪展，搭配大型數字 1 鋁箔氣球、嬰兒帳篷與月份成長照片牆',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置-2.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置-2.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 36,
@@ -648,9 +920,17 @@ export const mockProducts: Product[] = [
       '粉橘黃三色有機氣球半弧圍繞客製化名字背板，搭配金冠數字 1 氣球、LOVE 透明積木方塊與兔子鋁箔球',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/依年齡佈置/1歲佈置/2024-03-02-1歲生日佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 36,
@@ -666,9 +946,17 @@ export const mockProducts: Product[] = [
     description: '狗狗',
     price: 20.0,
     stock: 100,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/動物造型/balloondog-blue-removebg-preview.png'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/動物造型/balloondog-blue-removebg-preview.png'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -685,9 +973,17 @@ export const mockProducts: Product[] = [
     description: '金屬質感星星與月亮造型氣球生日佈置，時尚高貴',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/生日佈置/202010 金屬星星月亮造型生日佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/生日佈置/202010 金屬星星月亮造型生日佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 9,
@@ -703,9 +999,17 @@ export const mockProducts: Product[] = [
     description: '91 歲壽星生日慶典氣球佈置，溫馨感人，彰顯對長輩的愛與尊重',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/依年齡佈置/19+歲佈置/202103 - 91歲生日佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/依年齡佈置/19+歲佈置/202103 - 91歲生日佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 40,
@@ -722,9 +1026,17 @@ export const mockProducts: Product[] = [
       '室內臥室浪漫求婚氣球佈置暗場版，燭光氛圍搭配氣球，製造難忘驚喜',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置(暗).jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置(暗).jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 42,
@@ -740,9 +1052,17 @@ export const mockProducts: Product[] = [
     description: '室內臥室浪漫求婚氣球佈置，玫瑰花瓣搭配氣球，製造難忘驚喜',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/婚禮求婚/求婚佈置/202103 求婚房間佈置.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: true,
     categoryId: 42,
@@ -758,9 +1078,17 @@ export const mockProducts: Product[] = [
     description: '現場折氣球表演，師傅即興製作可愛豆腐造型氣球，互動有趣',
     price: 5000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/折氣球表演/現場折氣球/2024 現場折氣球 - 豆腐.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/折氣球表演/現場折氣球/2024 現場折氣球 - 豆腐.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 69,
@@ -776,9 +1104,17 @@ export const mockProducts: Product[] = [
     description: '現場折氣球表演，師傅即興製作可愛豆腐造型氣球，另一角度紀錄',
     price: 5000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/折氣球表演/現場折氣球/2024 現場摺氣球 - 豆腐.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/折氣球表演/現場折氣球/2024 現場摺氣球 - 豆腐.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 69,
@@ -794,7 +1130,15 @@ export const mockProducts: Product[] = [
     description: '新店開幕空飄氣球群佈置，繽紛熱鬧，吸引人潮目光',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath('/images/shop/主題佈置/開幕佈置/2024 開幕空飄氣球.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/主題佈置/開幕佈置/2024 開幕空飄氣球.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 10,
@@ -811,9 +1155,17 @@ export const mockProducts: Product[] = [
       '開幕活動空飄氣球搭配主題背板整合佈置，視覺吸睛，完整呈現品牌形象',
     price: 10000.0,
     stock: 99,
-    imageUrl: assetPath(
-      '/images/shop/主題佈置/開幕佈置/2024 開幕空飄與背板.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/主題佈置/開幕佈置/2024 開幕空飄與背板.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 10,
@@ -830,7 +1182,15 @@ export const mockProducts: Product[] = [
       '星星鋁箔球搭配流蘇裝飾的精緻造型氣球柱，適合派對、展覽入口點綴',
     price: 3000.0,
     stock: 99,
-    imageUrl: assetPath('/images/shop/企業商用/氣球柱/星星流蘇氣球柱.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/企業商用/氣球柱/星星流蘇氣球柱.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 46,
@@ -846,7 +1206,7 @@ export const mockProducts: Product[] = [
   //   description: '40吋玫瑰金數字氣球，適合生日派對年齡標示',
   //   price: 350.0,
   //   stock: 100,
-  //   imageUrl: assetPath('/images/banner/1070727 生日抓週派對4.1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070727 生日抓週派對4.1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 10,
@@ -860,7 +1220,7 @@ export const mockProducts: Product[] = [
   //   description: '32吋彩虹漸層色數字氣球，含充氣吸管',
   //   price: 280.0,
   //   stock: 80,
-  //   imageUrl: assetPath('/images/banner/佈置其它_180109_0002.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/佈置其它_180109_0002.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 10,
@@ -874,7 +1234,7 @@ export const mockProducts: Product[] = [
   //   description: '60吋超大金色數字氣球，適合大型活動',
   //   price: 580.0,
   //   stock: 50,
-  //   imageUrl: assetPath('/images/banner/001.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/001.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 10,
@@ -904,7 +1264,7 @@ export const mockProducts: Product[] = [
   //   description: '皮卡丘造型鋁箔氣球 + 黃色乳膠球 15 顆',
   //   price: 520.0,
   //   stock: 70,
-  //   imageUrl: assetPath('/images/banner/1070824 賽車餐廳PTC家庭日 2.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070824 賽車餐廳PTC家庭日 2.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 11,
@@ -918,7 +1278,7 @@ export const mockProducts: Product[] = [
   //   description: '汪汪隊角色氣球套裝，含阿奇毛毛天天',
   //   price: 590.0,
   //   stock: 55,
-  //   imageUrl: assetPath('/images/banner/1070727 生日抓週派對4.1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070727 生日抓週派對4.1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 11,
@@ -932,7 +1292,7 @@ export const mockProducts: Product[] = [
   //   description: '白金色 MARRY ME 字母氣球 + 愛心球 20 顆',
   //   price: 1280.0,
   //   stock: 40,
-  //   imageUrl: assetPath('/images/banner/1070704 求婚佈置 1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070704 求婚佈置 1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 15,
@@ -946,7 +1306,7 @@ export const mockProducts: Product[] = [
   //   description: '玫瑰金愛心氣球 + I LOVE YOU 字樣 + LED燈串',
   //   price: 1580.0,
   //   stock: 30,
-  //   imageUrl: assetPath('/images/banner/1070408婚禮6.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070408婚禮6.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 15,
@@ -960,7 +1320,7 @@ export const mockProducts: Product[] = [
   //   description: '超大鑽戒造型鋁箔氣球 + 香檳金乳膠球 30 顆',
   //   price: 980.0,
   //   stock: 45,
-  //   imageUrl: assetPath('/images/banner/1070616新店優美勝地婚禮1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070616新店優美勝地婚禮1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 15,
@@ -990,7 +1350,7 @@ export const mockProducts: Product[] = [
   //   description: '落地氣球柱一對，高度 180cm，紅金配色',
   //   price: 2200.0,
   //   stock: 35,
-  //   imageUrl: assetPath('/images/banner/1070627飛牛農協20周年1.1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070627飛牛農協20周年1.1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 22,
@@ -1004,7 +1364,7 @@ export const mockProducts: Product[] = [
   //   description: '開幕誌慶印刷氣球 50 顆 + 氦氣充填服務',
   //   price: 4500.0,
   //   stock: 25,
-  //   imageUrl: assetPath('/images/banner/1070303大直EMBA11.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070303大直EMBA11.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 22,
@@ -1018,7 +1378,7 @@ export const mockProducts: Product[] = [
   //   description: '12吋高品質珠光乳膠氣球，10 色可選',
   //   price: 450.0,
   //   stock: 200,
-  //   imageUrl: assetPath('/images/banner/1070130兆豐國際商銀尾牙1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070130兆豐國際商銀尾牙1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 26,
@@ -1032,7 +1392,7 @@ export const mockProducts: Product[] = [
   //   description: '5吋馬卡龍色系乳膠氣球，適合氣球鏈製作',
   //   price: 380.0,
   //   stock: 150,
-  //   imageUrl: assetPath('/images/banner/1070207 Guerlain 嬌蘭尾牙3.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070207 Guerlain 嬌蘭尾牙3.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 26,
@@ -1046,7 +1406,7 @@ export const mockProducts: Product[] = [
   //   description: '18吋透明水晶氣球，可放亮片或小物',
   //   price: 520.0,
   //   stock: 120,
-  //   imageUrl: assetPath('/images/banner/1070210 PIXNET痞客幫尾牙1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070210 PIXNET痞客幫尾牙1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 26,
@@ -1060,7 +1420,7 @@ export const mockProducts: Product[] = [
   //   description: '白金配色婚禮氣球組 + MR & MRS 字母球',
   //   price: 1880.0,
   //   stock: 35,
-  //   imageUrl: assetPath('/images/banner/1070616新店優美勝地婚禮1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070616新店優美勝地婚禮1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 14,
@@ -1074,7 +1434,7 @@ export const mockProducts: Product[] = [
   //   description: '粉白金三色氣球牆套組，約 300 顆含背板',
   //   price: 5200.0,
   //   stock: 15,
-  //   imageUrl: assetPath('/images/banner/1070408婚禮6.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070408婚禮6.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 14,
@@ -1088,7 +1448,7 @@ export const mockProducts: Product[] = [
   //   description: '專業電動打氣機，雙孔快速充氣',
   //   price: 1280.0,
   //   stock: 60,
-  //   imageUrl: assetPath('/images/banner/1070721 PWC事務所 商會1.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1070721 PWC事務所 商會1.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 27,
@@ -1102,7 +1462,7 @@ export const mockProducts: Product[] = [
   //   description: '拋棄式氦氣罐，可充約 30 顆 12 吋氣球',
   //   price: 850.0,
   //   stock: 80,
-  //   imageUrl: assetPath('/images/banner/1111人力銀行尾牙.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/1111人力銀行尾牙.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 27,
@@ -1116,7 +1476,7 @@ export const mockProducts: Product[] = [
   //   description: '雙向打氣手動筒，適合乳膠球充氣',
   //   price: 180.0,
   //   stock: 100,
-  //   imageUrl: assetPath('/images/banner/001.jpg'),
+  //   images: [{ id: 0, url: assetPath('/images/banner/001.jpg'), altText: null, sortOrder: 0, isPrimary: true }],
   //   active: true,
   //   featured: false,
   //   categoryId: 27,
@@ -1135,7 +1495,15 @@ export const mockProducts: Product[] = [
     description: '雙翅展開，色彩繽紛',
     price: 60,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/動物造型/butterfly-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/動物造型/butterfly-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -1151,9 +1519,17 @@ export const mockProducts: Product[] = [
     description: '長頸鹿造型手拿棒，小朋友人氣款',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/動物造型/giraffe-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/動物造型/giraffe-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -1169,9 +1545,15 @@ export const mockProducts: Product[] = [
     description: '威風獅子頭，派對吸睛道具',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/動物造型/lion-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/動物造型/lion-stick-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -1187,9 +1569,17 @@ export const mockProducts: Product[] = [
     description: '活潑猴子造型，適合兒童派對',
     price: 70,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/動物造型/monkey-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/動物造型/monkey-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -1205,7 +1595,15 @@ export const mockProducts: Product[] = [
     description: '可愛小馬造型，色彩明亮',
     price: 80,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/動物造型/pony-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/動物造型/pony-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 19,
@@ -1229,7 +1627,15 @@ export const copyrightProducts: Product[] = [
     description: '艾麗兒造型，海洋風粉紅配色',
     price: 150,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/公主系列/ariel-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/公主系列/ariel-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1245,9 +1651,15 @@ export const copyrightProducts: Product[] = [
     description: '辛德瑞拉造型，水藍色禮服',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/公主系列/cinderella-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/公主系列/cinderella-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1263,7 +1675,15 @@ export const copyrightProducts: Product[] = [
     description: '冰雪奇緣艾莎，水藍色頭像',
     price: 150,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/公主系列/elsa-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/公主系列/elsa-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1279,9 +1699,17 @@ export const copyrightProducts: Product[] = [
     description: '冰雪奇緣艾莎全身立體版，展現冰雪女王魅力',
     price: 200,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/公主系列/elsa-fullbody-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/公主系列/elsa-fullbody-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1297,9 +1725,17 @@ export const copyrightProducts: Product[] = [
     description: '冰雪奇緣艾莎坐姿版，優雅公主風',
     price: 180,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/公主系列/elsa-sitting-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/公主系列/elsa-sitting-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1315,9 +1751,15 @@ export const copyrightProducts: Product[] = [
     description: '白雪公主造型，經典童話角色',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/公主系列/snow-white-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/公主系列/snow-white-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 20,
@@ -1335,7 +1777,15 @@ export const copyrightProducts: Product[] = [
     description: '圓臉麵包超人，兒童最愛的日本英雄',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/anpanman-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/anpanman-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1351,9 +1801,17 @@ export const copyrightProducts: Product[] = [
     description: '玩具總動員巴斯光年，太空勇士造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/buzz-lightyear-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/buzz-lightyear-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1369,9 +1827,17 @@ export const copyrightProducts: Product[] = [
     description: '漫威美國隊長盾牌造型，英雄主題必備',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/captain-america-shield-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/captain-america-shield-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1387,7 +1853,15 @@ export const copyrightProducts: Product[] = [
     description: '藍色機器貓哆啦A夢，台灣親子最熟悉的卡通',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/doraemon-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/doraemon-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1403,7 +1877,15 @@ export const copyrightProducts: Product[] = [
     description: '懶懶蛋黃哥造型，Sanrio 療癒系',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/gudetama-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/gudetama-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1419,9 +1901,17 @@ export const copyrightProducts: Product[] = [
     description: '蛋黃哥趴臥版，懶系療癒感加倍',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/gudetama-lying-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/gudetama-lying-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1437,9 +1927,17 @@ export const copyrightProducts: Product[] = [
     description: '白貓蝴蝶結，Sanrio 永恆經典',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/hello-kitty-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/hello-kitty-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1455,9 +1953,17 @@ export const copyrightProducts: Product[] = [
     description: 'Hello Kitty 手拿棒款，方便攜帶',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/hello-kitty-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/hello-kitty-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1473,7 +1979,15 @@ export const copyrightProducts: Product[] = [
     description: '妖怪手錶吉胖喵，橘色小貓造型',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/jibanyan-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/jibanyan-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1489,9 +2003,17 @@ export const copyrightProducts: Product[] = [
     description: '卡娜赫拉粉色兔兔，少女系超萌',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/kanahei-usagi-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/kanahei-usagi-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1507,7 +2029,15 @@ export const copyrightProducts: Product[] = [
     description: 'Sanrio 大眼蛙，綠色圓眼超可愛',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/keroppi-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/keroppi-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1523,9 +2053,17 @@ export const copyrightProducts: Product[] = [
     description: '大眼蛙全身立體版，青蛙坐姿更有立體感',
     price: 130,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/keroppi-fullbody-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/keroppi-fullbody-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1541,7 +2079,15 @@ export const copyrightProducts: Product[] = [
     description: '日本熊本縣吉祥物，黑熊紅臉頰',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/kumamon-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/kumamon-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1557,9 +2103,17 @@ export const copyrightProducts: Product[] = [
     description: 'Cars 閃電麥坤，紅色賽車造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/lightning-mcqueen-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/lightning-mcqueen-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1575,9 +2129,17 @@ export const copyrightProducts: Product[] = [
     description: 'Cars 閃電麥坤賽車全車版，速度感十足',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/lightning-mcqueen-car-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/lightning-mcqueen-car-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1593,9 +2155,15 @@ export const copyrightProducts: Product[] = [
     description: 'LINE 熊大頭像，台灣最熟悉的通訊貼圖角色',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/line-brown-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/line-brown-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1611,9 +2179,17 @@ export const copyrightProducts: Product[] = [
     description: 'LINE 熊大手拿棒款，派對自拍必備',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/line-brown-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/line-brown-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1629,9 +2205,17 @@ export const copyrightProducts: Product[] = [
     description: 'LINE 兔兔手拿棒，白兔可愛造型',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/line-cony-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/line-cony-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1647,9 +2231,15 @@ export const copyrightProducts: Product[] = [
     description: 'LINE 小雞莎莉，黃色圓滾滾超療癒',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/line-sally-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/line-sally-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1665,7 +2255,15 @@ export const copyrightProducts: Product[] = [
     description: 'Disney 米奇老鼠，黑色大耳朵經典造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/mickey-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/mickey-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1681,7 +2279,15 @@ export const copyrightProducts: Product[] = [
     description: 'Miffy 米飛兔，荷蘭經典白兔頭像',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/miffy-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/miffy-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1697,9 +2303,17 @@ export const copyrightProducts: Product[] = [
     description: '米飛兔手拿棒款，活動拍照道具',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/miffy-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/miffy-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1715,9 +2329,17 @@ export const copyrightProducts: Product[] = [
     description: '怪獸大學大眼仔 Mike Wazowski，獨眼綠色造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/mike-wazowski-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/mike-wazowski-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1733,7 +2355,15 @@ export const copyrightProducts: Product[] = [
     description: '黃色小小兵頭像，派對必備搞笑角色',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/minion-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/minion-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1749,9 +2379,17 @@ export const copyrightProducts: Product[] = [
     description: '小小兵全身立體版，揹帶褲造型更完整',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/minion-fullbody-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/minion-fullbody-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1767,7 +2405,15 @@ export const copyrightProducts: Product[] = [
     description: 'Disney 米妮，粉紅蝴蝶結甜美造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/minnie-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/minnie-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1783,9 +2429,17 @@ export const copyrightProducts: Product[] = [
     description: '忍者龜 Raphael 紅頭帶款，英雄主題',
     price: 120,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/ninja-turtle-raphael-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/ninja-turtle-raphael-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1801,7 +2455,15 @@ export const copyrightProducts: Product[] = [
     description: '神隱少女無臉男，黑白面具經典造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/no-face-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/no-face-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1817,9 +2479,17 @@ export const copyrightProducts: Product[] = [
     description: '神隱少女無臉男全身立體版，更具神秘感',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/no-face-fullbody-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/no-face-fullbody-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1835,7 +2505,15 @@ export const copyrightProducts: Product[] = [
     description: 'Peppa Pig 粉紅豬小妹，兒童派對熱門角色',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/peppa-pig-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/peppa-pig-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1851,9 +2529,17 @@ export const copyrightProducts: Product[] = [
     description: 'Peppa Pig 手拿棒款，小朋友最愛的活動道具',
     price: 80,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/peppa-pig-stick-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/peppa-pig-stick-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1869,7 +2555,15 @@ export const copyrightProducts: Product[] = [
     description: '神奇寶貝皮卡丘，黃色閃電尾巴經典造型',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/pikachu-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/pikachu-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1885,9 +2579,17 @@ export const copyrightProducts: Product[] = [
     description: '皮卡丘全身立體版，可愛萌樣更完整',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/pikachu-fullbody-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/pikachu-fullbody-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1903,9 +2605,17 @@ export const copyrightProducts: Product[] = [
     description: 'Sanrio 布丁狗，金黃色小狗甜蜜療癒',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/pompompurin-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/pompompurin-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1921,9 +2631,17 @@ export const copyrightProducts: Product[] = [
     description: '救援小英雄波力，藍色警車機器人',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/robocar-poli-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/robocar-poli-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1939,7 +2657,15 @@ export const copyrightProducts: Product[] = [
     description: '巧虎頭像，台灣兒童成長陪伴角色',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/shimajiro-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/shimajiro-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1955,9 +2681,17 @@ export const copyrightProducts: Product[] = [
     description: '巧虎好朋友小花，粉色兔兔造型',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/shimajiro-hana-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/shimajiro-hana-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1973,7 +2707,15 @@ export const copyrightProducts: Product[] = [
     description: '花生漫畫史努比，黑白花斑小狗經典造型',
     price: 100,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/snoopy-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/snoopy-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -1989,9 +2731,15 @@ export const copyrightProducts: Product[] = [
     description: '漫威蜘蛛人，紅藍蜘蛛網造型超帥',
     price: 120,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/spider-man-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/spider-man-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2007,7 +2755,15 @@ export const copyrightProducts: Product[] = [
     description: '怪獸大學毛怪 Sulley，藍色大毛怪立體造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/sulley-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/sulley-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2023,7 +2779,15 @@ export const copyrightProducts: Product[] = [
     description: '宮崎駿龍貓，灰白圓滾滾療癒造型',
     price: 120,
     stock: 50,
-    imageUrl: assetPath('/images/shop/造型氣球/卡通造型/totoro-balloon.jpg'),
+    images: [
+      {
+        id: 0,
+        url: assetPath('/images/shop/造型氣球/卡通造型/totoro-balloon.jpg'),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2039,9 +2803,17 @@ export const copyrightProducts: Product[] = [
     description: '龍貓坐姿立體版，雙手抱肚憨厚可愛',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/totoro-sitting-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/totoro-sitting-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2057,9 +2829,17 @@ export const copyrightProducts: Product[] = [
     description: '玩具總動員三眼外星人，綠色圓眼造型',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/toy-story-alien-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/toy-story-alien-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2075,9 +2855,17 @@ export const copyrightProducts: Product[] = [
     description: '三眼怪全身 3D 立體版，更具存在感',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/toy-story-alien-3d-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/toy-story-alien-3d-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2093,9 +2881,17 @@ export const copyrightProducts: Product[] = [
     description: 'Disney 小熊維尼，黃色胖嘟嘟蜂蜜熊',
     price: 100,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/winnie-the-pooh-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/winnie-the-pooh-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,
@@ -2111,9 +2907,17 @@ export const copyrightProducts: Product[] = [
     description: '小熊維尼坐姿立體版，抱著蜂蜜罐更可愛',
     price: 150,
     stock: 50,
-    imageUrl: assetPath(
-      '/images/shop/造型氣球/卡通造型/winnie-the-pooh-sitting-balloon.jpg'
-    ),
+    images: [
+      {
+        id: 0,
+        url: assetPath(
+          '/images/shop/造型氣球/卡通造型/winnie-the-pooh-sitting-balloon.jpg'
+        ),
+        altText: null,
+        sortOrder: 0,
+        isPrimary: true,
+      },
+    ],
     active: true,
     featured: false,
     categoryId: 24,

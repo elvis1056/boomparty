@@ -86,7 +86,8 @@ export function useProductCart(product: Product): UseProductCartReturn {
         productId: product.id,
         productName: product.name,
         productPrice: product.price,
-        productImageUrl: product.imageUrl,
+        productImageUrl:
+          product.images.length > 0 ? product.images[0].url : null,
         quantity,
       });
       setJustAdded(true);
@@ -119,7 +120,8 @@ export function useProductCart(product: Product): UseProductCartReturn {
         productId: product.id,
         productName: product.name,
         productPrice: product.price,
-        productImageUrl: product.imageUrl,
+        productImageUrl:
+          product.images.length > 0 ? product.images[0].url : null,
         quantity,
       });
       router.push('/cart');

@@ -82,15 +82,6 @@ function ProductDetailContent({
                 src={activeImage.url}
                 style={{ objectFit: 'contain' }}
               />
-            ) : product.imageUrl ? (
-              <Image
-                alt={`${product.name}`}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                src={product.imageUrl}
-                style={{ objectFit: 'contain' }}
-              />
             ) : (
               <span className="image-placeholder">🎈</span>
             )}

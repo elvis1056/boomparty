@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-23（照片整理 + 分類確認）
+> 更新日期：2026-04-24（媒體庫 DB Migration Step 1–4 完成）
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -36,10 +36,10 @@
 **造型氣球最終分類**：動物造型、花朵系列、武器系列、編織系列、配件系列、其他系列（卡通造型、公主系列、手拿棒系列、四泡結手環系列 已刪除）
 
 **執行順序**：
-- [ ] Step 1：產 `category` INSERT SQL（根據 `docs/shop-categories.md`）
-- [ ] Step 2：寫 migration script（複製照片到 media volume + UUID 重命名 + insert `media_asset`）
-- [ ] Step 3：清掉 `Product.imageUrl` 舊欄位（後端 + data.sql）
-- [ ] Step 4：前端 shop 頁面改從 API 拿圖片，不寫死靜態路徑
+- [x] Step 1：產 `category` INSERT SQL → `myprojectbackend/src/main/resources/migration/01-categories.sql`
+- [x] Step 2：寫 migration script → `scripts/migrate-shop-photos.sh`（在 NAS 上執行）
+- [x] Step 3：清掉 `Product.imageUrl` 舊欄位（Product.java、ProductRequest/Response.java、ProductService.java、data.sql、dev-seed.sql）
+- [x] Step 4：前端 shop 頁面改從 `images[]` API 拿圖片（types/product.ts 移除 imageUrl，mock 資料轉換為 images[]，ProductCard/ProductDetailContent/page.tsx 改用 images[]）
 
 **重要技術背景**：
 - 照片目前在：`boomparty/public/images/shop/`（Next.js 靜態，`boomparty.tw` 服務）

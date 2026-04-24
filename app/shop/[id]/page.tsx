@@ -41,7 +41,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${product.name} | 台灣氣球佈置 蹦娛樂 BoomParty`,
       description: `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`,
-      images: product.imageUrl ? [{ url: product.imageUrl }] : [],
+      images: product.images.length > 0 ? [{ url: product.images[0].url }] : [],
     },
   };
 }
@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
-    image: product.imageUrl,
+    image: product.images.length > 0 ? product.images[0].url : null,
     description: `${product.description}，由蹦娛樂 BoomParty 專業氣球佈置團隊執行。`,
     offers: {
       '@type': 'Offer',

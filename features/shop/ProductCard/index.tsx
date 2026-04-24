@@ -49,7 +49,7 @@ function ProductCard({ product, className }: ProductCardProps) {
                 ? primaryImage.url
                 : firstImage
                   ? firstImage.url
-                  : product.imageUrl;
+                  : null;
               const alt =
                 primaryImage && primaryImage.altText
                   ? primaryImage.altText
