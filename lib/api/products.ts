@@ -1,15 +1,20 @@
-import { mockProducts } from '@/constants/mockProducts';
 import type { Product, ProductImage } from '@/types';
 
 import { apiClient } from './client';
 
 export async function fetchProducts(): Promise<Product[]> {
-  // 模擬網路延遲
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  return mockProducts;
-
-  // 真實 API（已註解）
-  // return apiClient.get<Product[]>('/api/products');
+  const products = await apiClient.get<Product[]>('/api/products');
+  const apiBase =
+    process.env.NEXT_PUBLIC_API_BASE_URL !== undefined
+      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      : '';
+  return products.map((product) => ({
+    ...product,
+    images: product.images?.map((image) => ({
+      ...image,
+      url: image.url.startsWith('/') ? `${apiBase}${image.url}` : image.url,
+    })),
+  }));
 }
 
 // 🔥 假資料 - 之後改成真實 API
