@@ -2,19 +2,27 @@ import type { Product, ProductImage } from '@/types';
 
 import { apiClient } from './client';
 
-export async function fetchProducts(): Promise<Product[]> {
-  const products = await apiClient.get<Product[]>('/api/products');
-  const apiBase =
-    process.env.NEXT_PUBLIC_API_BASE_URL !== undefined
-      ? process.env.NEXT_PUBLIC_API_BASE_URL
-      : '';
-  return products.map((product) => ({
+const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL
+  ? process.env.NEXT_PUBLIC_API_BASE_URL
+  : '';
+
+function toAbsoluteImageUrl(url: string): string {
+  return url.startsWith('/') ? `${apiBase}${url}` : url;
+}
+
+function withAbsoluteImageUrls(product: Product): Product {
+  return {
     ...product,
     images: product.images?.map((image) => ({
       ...image,
-      url: image.url.startsWith('/') ? `${apiBase}${image.url}` : image.url,
+      url: toAbsoluteImageUrl(image.url),
     })),
-  }));
+  };
+}
+
+export async function fetchProducts(): Promise<Product[]> {
+  const products = await apiClient.get<Product[]>('/api/products');
+  return products.map(withAbsoluteImageUrls);
 }
 
 // 🔥 假資料 - 之後改成真實 API
@@ -125,7 +133,8 @@ export async function fetchProducts(): Promise<Product[]> {
 // }
 
 export async function fetchProductById(id: number): Promise<Product> {
-  return apiClient.get<Product>(`/api/products/${id}`);
+  const product = await apiClient.get<Product>(`/api/products/${id}`);
+  return withAbsoluteImageUrls(product);
 }
 
 export async function fetchProductImages(id: number): Promise<ProductImage[]> {
