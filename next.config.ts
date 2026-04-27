@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
     styledComponents: true,
   },
   images: {
-    unoptimized: true,
+    // static export 必須關閉最佳化；dynamic (NAS) 模式啟用 Next.js 圖片壓縮
+    unoptimized: isStatic,
     remotePatterns: [
       {
         protocol: 'https',
