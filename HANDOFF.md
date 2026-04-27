@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-24（媒體庫 DB Migration Step 1–4 完成）
+> 更新日期：2026-04-27（媒體庫 DB Migration 全部完成，照片已匯入 NAS volume + DB）
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -21,32 +21,15 @@
 
 ## 進行中計畫
 
-### 🔴 媒體庫 DB Migration（下一步）
+### ✅ 媒體庫 DB Migration（已完成）
 
-**背景**：照片整理已完成，現在要把 `public/images/shop/` 的照片正式匯入 DB，讓前端改從 API 拿圖片。
+所有步驟已完成，照片已從 `public/images/shop/` 匯入 NAS volume + DB。
 
-**分類依據**：`docs/shop-categories.md`（已確認，全部照搬加上部分改名）
-
-**依年齡佈置最終分類**：
-- `0歲佈置` → `0~6歲佈置`
-- `1歲佈置` → `7~18歲佈置`
-- `2~6歲佈置` → `18+佈置`
-- `7~12歲佈置`、`13~18歲佈置`、`19+歲佈置` → 刪除
-
-**造型氣球最終分類**：動物造型、花朵系列、武器系列、編織系列、配件系列、其他系列（卡通造型、公主系列、手拿棒系列、四泡結手環系列 已刪除）
-
-**執行順序**：
 - [x] Step 1：產 `category` INSERT SQL → `myprojectbackend/src/main/resources/migration/01-categories.sql`
 - [x] Step 2：寫 migration script → `scripts/migrate-shop-photos.sh`（在 NAS 上執行）
-- [x] Step 3：清掉 `Product.imageUrl` 舊欄位（Product.java、ProductRequest/Response.java、ProductService.java、data.sql、dev-seed.sql）
-- [x] Step 4：前端 shop 頁面改從 `images[]` API 拿圖片（types/product.ts 移除 imageUrl，mock 資料轉換為 images[]，ProductCard/ProductDetailContent/page.tsx 改用 images[]）
-
-**重要技術背景**：
-- 照片目前在：`boomparty/public/images/shop/`（Next.js 靜態，`boomparty.tw` 服務）
-- 目標位置：`/app/media/`（Docker volume，`api.boomparty.tw/media/` 服務）
-- 不能混用兩個 domain 的 URL，必須全部搬到後端
-- migration script 要在 NAS 上跑（volume 在 NAS）
-- `MediaAssetService` 已完整實作（`myprojectbackend/src/.../MediaAssetService.java`）
+- [x] Step 3：清掉 `Product.imageUrl` 舊欄位
+- [x] Step 4：前端 shop 頁面改從 `images[]` API 拿圖片
+- [x] Step 5：在 NAS 執行 `migrate-shop-photos.sh`，照片複製進 volume（`nasweb_media_data`），DB 記錄寫入完成，`curl` 驗證回傳 200 OK
 
 ---
 
@@ -114,7 +97,7 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 | 造型氣球商品 | 動物造型 5 筆上架（附真實圖片），卡通 IP 52 筆暫放 copyrightProducts 待授權 |
 | ProductCard Shimmer | imageUrl 為 null 時改顯示 Shimmer，移除 emoji 佔位 |
 | LINE_ALBUM 圖片整理 | 批次搬移 + 重命名至 `造型氣球/` 子資料夾 |
-| shop 照片整理 | 刪除無語意檔名、空格改連字號、補地點資訊、刪除卡通/公主系列 46 張；最終 65 張待 migration |
+| shop 照片整理 | 刪除無語意檔名、空格改連字號、補地點資訊、刪除卡通/公主系列 46 張；65 張已 migration 完成 |
 | 分類架構確認 | `docs/shop-categories.md` 記錄最終分類，依年齡 6→3 組，造型氣球刪 4 子分類 |
 
 ---
