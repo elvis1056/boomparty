@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-28（shop API 修補計畫新增）
+> 更新日期：2026-04-28
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -20,15 +20,6 @@
 ---
 
 ## 進行中計畫
-
-### 🟡 Shop API 後續修補
-
-計畫文件：[`docs/sessions/2026-04-28-shop-api-followup-fixes.md`](docs/sessions/2026-04-28-shop-api-followup-fixes.md)
-
-- [x] 斷點 1：`fetchProductById()` 補全圖片 URL（`commit b4f6203`）
-- [x] 斷點 2：後端 `getActiveProducts()` / `getFeaturedProducts()` / `searchProducts()` 批次 JOIN 修 N+1（`commit 96b5ec7`）
-- [ ] 斷點 3：部署後驗證 Next.js 圖片最佳化是否正常，必要時 revert
-- [ ] 斷點 4：更新 HANDOFF.md 問題狀態欄（收尾文件）
 
 ---
 
@@ -79,9 +70,7 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 
 | 功能 | 說明 |
 |------|------|
-| Shop 真實 API 切換 | `lib/api/products.ts` / `category.ts` 從 mock 改為真實 API；`fetchProducts()` 加圖片 URL 補全（相對路徑 → 完整 URL）；`commit fb3ff38` |
-| 後端 N+1 修復 | `getAllProducts()` 批次 JOIN 圖片（46 次 → 2 次 DB 查詢）；抽出 `convertToResponse(Product, List<ProductImage>)` overload；`commit e8bae35` |
-| Next.js 圖片最佳化 | `unoptimized` 從固定 true 改為 `isStatic` 條件式，dynamic 模式啟用壓縮；`commit 1b01fa6` |
+| Shop 真實 API 完整上線 | API 切換、圖片 URL 補全（fetchProducts + fetchProductById）、N+1 全修、部署驗證；Cloudflare Cf-Cache-Status HIT 確認；`commits fb3ff38 e8bae35 1b01fa6 b4f6203 96b5ec7` |
 | 媒體庫系統（三專案） | backend entity/repo/service/controller 全完成；admin 媒體庫、Tag 管理、商品多圖、分類封面圖 UI 全完成；前台商品卡片主圖 fallback、商品詳細頁圖片 gallery 全完成 |
 | Google OAuth | `GoogleLoginButton` 元件、`GoogleOAuthProvider` root layout、登入頁整合，全部完成 |
 | 首頁 section-wrapper 間距統一 | desktop/tablet 1.5rem、mobile 1rem，移除 ServicesSection 內部 padding，間距全部由 wrapper 控制 |
