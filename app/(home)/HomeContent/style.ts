@@ -7,7 +7,11 @@ export default css`
     max-width: 1400px;
     min-width: 1024px;
     margin: 0 auto;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
+
+    &:not(:first-child) {
+      padding: 0 2rem 1rem;
+    }
   }
 
   @media (max-width: ${theme.breakpoints.tablet}) {
