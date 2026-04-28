@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-27（媒體庫 DB Migration 全部完成，照片已匯入 NAS volume + DB）
+> 更新日期：2026-04-28（shop API 修補計畫新增）
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -21,15 +21,14 @@
 
 ## 進行中計畫
 
-### ✅ 媒體庫 DB Migration（已完成）
+### 🟡 Shop API 後續修補
 
-所有步驟已完成，照片已從 `public/images/shop/` 匯入 NAS volume + DB。
+計畫文件：[`docs/sessions/2026-04-28-shop-api-followup-fixes.md`](docs/sessions/2026-04-28-shop-api-followup-fixes.md)
 
-- [x] Step 1：產 `category` INSERT SQL → `myprojectbackend/src/main/resources/migration/01-categories.sql`
-- [x] Step 2：寫 migration script → `scripts/migrate-shop-photos.sh`（在 NAS 上執行）
-- [x] Step 3：清掉 `Product.imageUrl` 舊欄位
-- [x] Step 4：前端 shop 頁面改從 `images[]` API 拿圖片
-- [x] Step 5：在 NAS 執行 `migrate-shop-photos.sh`，照片複製進 volume（`nasweb_media_data`），DB 記錄寫入完成，`curl` 驗證回傳 200 OK
+- [x] 斷點 1：`fetchProductById()` 補全圖片 URL（`commit b4f6203`）
+- [x] 斷點 2：後端 `getActiveProducts()` / `getFeaturedProducts()` / `searchProducts()` 批次 JOIN 修 N+1（`commit 96b5ec7`）
+- [ ] 斷點 3：部署後驗證 Next.js 圖片最佳化是否正常，必要時 revert
+- [ ] 斷點 4：更新 HANDOFF.md 問題狀態欄（收尾文件）
 
 ---
 
@@ -80,6 +79,9 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 
 | 功能 | 說明 |
 |------|------|
+| Shop 真實 API 切換 | `lib/api/products.ts` / `category.ts` 從 mock 改為真實 API；`fetchProducts()` 加圖片 URL 補全（相對路徑 → 完整 URL）；`commit fb3ff38` |
+| 後端 N+1 修復 | `getAllProducts()` 批次 JOIN 圖片（46 次 → 2 次 DB 查詢）；抽出 `convertToResponse(Product, List<ProductImage>)` overload；`commit e8bae35` |
+| Next.js 圖片最佳化 | `unoptimized` 從固定 true 改為 `isStatic` 條件式，dynamic 模式啟用壓縮；`commit 1b01fa6` |
 | 媒體庫系統（三專案） | backend entity/repo/service/controller 全完成；admin 媒體庫、Tag 管理、商品多圖、分類封面圖 UI 全完成；前台商品卡片主圖 fallback、商品詳細頁圖片 gallery 全完成 |
 | Google OAuth | `GoogleLoginButton` 元件、`GoogleOAuthProvider` root layout、登入頁整合，全部完成 |
 | 首頁 section-wrapper 間距統一 | desktop/tablet 1.5rem、mobile 1rem，移除 ServicesSection 內部 padding，間距全部由 wrapper 控制 |
@@ -107,7 +109,7 @@ Blog 文章 sitemap 索引目前關閉（`app/sitemap.ts`）。
 | 項目 | 說明 |
 |------|------|
 | 購物車 store | `stores/cartStore.ts`，`addItem(productId, quantity)` |
-| 商品 API | `lib/api/products.ts`，`fetchProductById(id)` 打真實 API，`fetchProducts()` 是 mock |
+| 商品 API | `lib/api/products.ts`，所有函式已打真實 API；`fetchProducts()` 含 image URL 補全（相對路徑 → 完整 URL） |
 | 認證狀態 | `stores/authStore.ts`，只需 auth 判斷時用 `state.user !== null`（boolean） |
 | Commit 規範 | 參考 `CLAUDE.md`，禁止 Co-Authored-By，需附中英文說明與 Revert 說明 |
 | 樣式系統 | styled-components，主色 `theme.colors.primary.main`，禁止 inline style |
