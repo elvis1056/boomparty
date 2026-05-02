@@ -7,7 +7,7 @@ export default css`
   overflow: hidden;
   position: relative;
   display: block;
-  border-radius: 8px;
+  border-radius: ${theme.borderRadius.lg};
 
   .banner-swiper {
     width: 100%;

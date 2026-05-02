@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -57,7 +58,7 @@ function MobileBanner({
         >
           {images.map((image) => (
             <SwiperSlide key={image.id}>
-              <div className="banner-slide">
+              <Link className="banner-slide" href="/shop">
                 <Image
                   alt={image.alt}
                   className="banner-image"
@@ -67,29 +68,11 @@ function MobileBanner({
                   style={{ objectFit: showOverlay ? 'cover' : 'contain' }}
                 />
                 {showOverlay && <div className="banner-overlay" />}
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-
-      {/* Actions 區塊（圖片下方） */}
-      {content && content.actions && content.actions.length > 0 && (
-        <div className="mobile-banner-actions">
-          {content.actions.map((action, index) => (
-            <a
-              className="banner-link"
-              href={action.href}
-              key={index}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {action.text}
-              <span className="icon-external">↗</span>
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

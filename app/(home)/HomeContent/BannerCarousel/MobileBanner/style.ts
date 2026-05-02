@@ -32,7 +32,7 @@ export default css`
 
   .mobile-banner-image {
     width: 100%;
-    border-radius: 8px;
+    border-radius: ${theme.borderRadius.lg};
     overflow: hidden;
     position: relative;
 
@@ -62,6 +62,7 @@ export default css`
     }
 
     .banner-slide {
+      display: block;
       position: relative;
       width: 100%;
       height: 100%;

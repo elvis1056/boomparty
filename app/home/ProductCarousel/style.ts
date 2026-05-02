@@ -86,10 +86,6 @@ const style = css`
     position: relative;
     width: 100%;
     height: 100%;
-
-    img {
-      border-radius: ${theme.borderRadius.lg};
-    }
   }
 
   /* 手機：圖上文下 */

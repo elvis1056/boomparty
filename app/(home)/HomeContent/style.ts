@@ -25,6 +25,10 @@ export default css`
     .section-wrapper {
       min-width: 0;
       padding: 1rem;
+
+      &:not(:first-child) {
+        padding: 0 1rem 1rem;
+      }
     }
   }
 `;
