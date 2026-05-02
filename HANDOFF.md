@@ -1,6 +1,6 @@
 # Agent 交接文件
 
-> 更新日期：2026-04-28
+> 更新日期：2026-05-02（造型氣球訂購計算機 + 首頁版面調整）
 > 專案：boomparty（Next.js 電商前台）
 > 路徑：`/Users/elvis1056/Desktop/nasweb/boomparty`
 
@@ -20,6 +20,30 @@
 ---
 
 ## 進行中計畫
+
+### 🟡 造型氣球訂購計算機 + 首頁版面調整
+
+計畫文件：[`docs/sessions/2026-04-28-balloon-order-calculator.md`](docs/sessions/2026-04-28-balloon-order-calculator.md)
+
+- [x] 斷點 1：`constants/balloonShapes.ts`、`constants/deliveryOptions.ts` ✅
+- [x] 斷點 2：`features/order/OrderCalculator/`（BalloonCard、DeliverySelector、StickyOrderBar）✅
+- [x] 斷點 3：`app/order-special-package/page.tsx` + Navbar「快速訂購」連結 ✅
+- [x] 斷點 4：`BalloonOrderCta/` 重新設計（Netflix 風格，6款全顯示）✅
+- [x] 斷點 5：全部 6 款商品圖片已用後台 UUID URL 補齊（無 placeholder）✅
+- [x] 斷點 6：MobileBanner 整張圖可點、移除圖片下方「探索商品」連結 ✅
+
+**本次額外完成（首頁版面）：**
+- 新增第 6 款商品：金屬氣球狗 $50
+- 首頁 section-wrapper 間距：桌機 `:not(:first-child)` 移除 top padding，手機同步
+- border-radius 統一：外層 section 12px、內層圖片 wrapper 8px
+- ProductCarousel `.showcase-image img` 移除多餘 border-radius
+- BalloonOrderCta 手機 inner padding 調整為 16px
+
+**待確認 / 下一步：**
+- [ ] commit 所有未提交的修改
+- [ ] 實機 QA：手機版 BalloonOrderCta 橫滑體驗、右側半張露出效果
+- [ ] 實機 QA：`/order-special-package` 計算機頁面確認 6 款商品都顯示正常
+- [ ] `app/(home)/HomeContent/style.ts` tablet breakpoint 的 `:not(:first-child)` 尚未處理（目前只有 mobile 修正）
 
 ---
 
