@@ -288,6 +288,58 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    import Component from './ComponentName/index'
    ```
 
+### 命名規範：禁止縮寫（重要準則）
+
+**原則：所有變數、函式、CSS class name 必須使用完整英文單字，不得縮寫。**
+
+**JavaScript / TypeScript 變數與 callback 參數：**
+
+```typescript
+// ❌ 單字母 callback 參數
+BALLOON_SHAPES.filter((s) => ...)       // s 是什麼？
+DELIVERY_OPTIONS.find((d) => ...)       // d 是什麼？
+items.reduce((sum, i) => ...)           // i 是什麼？
+
+// ✅ 完整名稱
+BALLOON_SHAPES.filter((shape) => ...)
+DELIVERY_OPTIONS.find((option) => ...)
+items.reduce((accumulator, item) => ...)
+```
+
+**CSS class name（styled-components）：**
+
+```css
+/* ❌ 縮寫 class name */
+.btn-copy { }
+.btn-ig { }
+.qty { }
+.img-wrapper { }
+.desc { }
+
+/* ✅ 完整 class name */
+.button-copy { }
+.button-instagram { }
+.quantity { }
+.image-wrapper { }
+.description { }
+```
+
+**常見縮寫對照表：**
+
+| 縮寫 | 完整寫法 |
+|------|---------|
+| `btn` | `button` |
+| `qty` | `quantity` |
+| `img` | `image` |
+| `desc` | `description` |
+| `idx` / `i` | 用語意名稱，如 `index`、`itemIndex` |
+| 單字母 `s` / `d` / `o` | 用型別名稱，如 `shape`、`option`、`delivery` |
+| `e` | `event` |
+
+> 例外：約定俗成的專有縮寫可保留，如 `id`、`url`、`api`、`seo`。品牌名也要用完整名稱，如 `instagram` 而非 `ig`。
+
+---
+
 ### TypeScript
 
 1. **Interface 命名**
