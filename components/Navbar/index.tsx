@@ -36,6 +36,7 @@ function Navbar({ className }: { className?: string }) {
     { href: '/shop', label: '商城' },
     { href: '/blog', label: '部落格' },
     { href: '/booking', label: '預約活動' },
+    { href: '/order-special-package', label: '快速訂購' },
   ];
 
   const logout = async () => {
