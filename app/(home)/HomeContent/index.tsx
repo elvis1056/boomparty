@@ -3,6 +3,7 @@
 import styled from 'styled-components';
 
 import BannerCarousel from '@/app/(home)/HomeContent/BannerCarousel';
+import BalloonOrderCta from '@/app/home/BalloonOrderCta';
 import ProductCarousel from '@/app/home/ProductCarousel';
 import ServicesSection from '@/app/home/ServicesSection';
 import { bannerImages } from '@/constants/bannerImages';
@@ -78,6 +79,9 @@ function HomeContent({ className }: { className?: string }) {
           images={bannerImages}
           showOverlay={true}
         />
+      </div>
+      <div className="section-wrapper section-wrapper-balloon-cta">
+        <BalloonOrderCta />
       </div>
       <div className="section-wrapper section-wrapper-service">
         <ServicesSection />
