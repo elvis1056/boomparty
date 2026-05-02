@@ -288,6 +288,29 @@ This file provides essential guidance to Claude Code (claude.ai/code) when worki
    import Component from './ComponentName/index'
    ```
 
+### 條件 className：必須使用 classnames 套件
+
+專案已安裝 `classnames`。**只要有條件性 class，一律用 `classnames()`，禁止手動拼接字串。**
+
+```typescript
+import classnames from 'classnames';
+
+// ❌ 禁止：手動拼接
+<div className={`card${isActive ? ' active' : ''}`}>
+<div className={`option${selected ? ' selected' : ''}`}>
+
+// ✅ 正確：使用 classnames
+<div className={classnames('card', { active: isActive })}>
+<div className={classnames('option', { selected: isSelected })}>
+
+// ✅ styled-components 的根元素要同時帶入 className prop
+<div className={classnames(className, { selected: quantity > 0 })}>
+```
+
+> 前提：確認 `classnames` 已列在 `package.json` dependencies，再使用此寫法。
+
+---
+
 ### 命名規範：禁止縮寫（重要準則）
 
 **原則：所有變數、函式、CSS class name 必須使用完整英文單字，不得縮寫。**
